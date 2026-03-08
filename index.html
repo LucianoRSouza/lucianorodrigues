@@ -531,6 +531,7 @@
             gap: 10px;
             animation: float 4s ease-in-out infinite;
             font-size: 0.9rem;
+            opacity: 0.85;
         }
         
         .floating-badge i {
@@ -538,9 +539,15 @@
             font-size: 1.2rem;
         }
         
-        .badge-1 { top: 20%; right: 10%; animation-delay: 0s; }
-        .badge-2 { bottom: 30%; right: 5%; animation-delay: 1s; }
-        .badge-3 { top: 60%; right: 15%; animation-delay: 2s; }
+        .badge-1 { top: 15%; right: 5%; animation-delay: 0s; }
+        .badge-2 { top: 45%; right: 0%; animation-delay: 1s; }
+        .badge-3 { bottom: 25%; right: 10%; animation-delay: 2s; }
+        
+        @media (max-width: 1200px) {
+            .floating-badge {
+                display: none;
+            }
+        }
         
         section { 
             padding: 6rem 5%; 
@@ -694,11 +701,59 @@
         
         .timeline { 
             background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+            position: relative;
         }
         
         .timeline-container { 
-            max-width: 1000px; 
+            max-width: 1200px; 
             margin: 0 auto; 
+            position: relative;
+        }
+        
+        .timeline-wrapper {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            position: relative;
+        }
+        
+        .timeline-logos {
+            position: sticky;
+            top: 150px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .company-logo {
+            width: 100%;
+            max-width: 180px;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            opacity: 0.3;
+            transform: scale(0.9);
+            border: 2px solid transparent;
+        }
+        
+        .company-logo.active {
+            opacity: 1;
+            transform: scale(1);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.2);
+        }
+        
+        .company-logo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .timeline-items {
+            position: relative;
         }
         
         .timeline-item { 
@@ -1147,9 +1202,9 @@
         
         .certs-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
             gap: 2rem; 
-            max-width: 1300px; 
+            max-width: 1400px; 
             margin: 0 auto; 
             position: relative;
             z-index: 1;
@@ -1164,6 +1219,8 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
         }
         
         .cert-card::before {
@@ -1188,45 +1245,72 @@
             background: rgba(255,255,255,0.08);
         }
         
-        .cert-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(212,175,55,0.2);
+        .cert-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cert-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
             border-radius: 15px;
+            padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+            flex-shrink: 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
         
-        .cert-card:hover .cert-icon {
-            transform: scale(1.1) rotate(5deg);
-            background: var(--gold);
+        .cert-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
-        .cert-icon i {
-            font-size: 1.8rem;
-            color: var(--gold);
-            transition: color 0.3s ease;
-        }
-        
-        .cert-card:hover .cert-icon i {
-            color: var(--navy);
+        .cert-title-group {
+            flex: 1;
         }
         
         .cert-card h4 { 
             color: var(--gold); 
-            margin-bottom: 0.8rem; 
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 0.3rem; 
+            font-size: 1.3rem;
+        }
+        
+        .cert-card .cert-subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
         
         .cert-card p {
             color: rgba(255,255,255,0.8);
             line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .cert-impact {
+            background: rgba(212,175,55,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+            margin-top: auto;
+        }
+        
+        .cert-impact strong {
+            color: var(--gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cert-impact p {
+            margin: 0.5rem 0 0;
+            font-size: 0.9rem;
         }
         
         .framework-highlight {
@@ -1649,6 +1733,16 @@
             box-shadow: 0 20px 40px rgba(212,175,55,0.5);
         }
         
+        @media (max-width: 1200px) {
+            .timeline-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-logos {
+                display: none;
+            }
+        }
+        
         @media (max-width: 968px) {
             .hero-container { 
                 grid-template-columns: 1fr; 
@@ -1721,6 +1815,19 @@
             
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cert-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cert-logo {
+                margin: 0 auto;
             }
         }
         
@@ -1898,121 +2005,140 @@
             <p>15+ years of progressive leadership—from import analyst to AI-driven procurement strategist</p>
         </div>
         <div class="timeline-container">
-            <div class="timeline-item animate-on-scroll delay-1">
-                <div class="timeline-date">
-                    2025-Present
-                    <span>Senior Level</span>
-                </div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">Senior Buyer – Strategic Procurement & Operations Transformation</h3>
-                    <div class="timeline-company"><i class="fas fa-building"></i> Details Hospitality, Portugal</div>
-                    <p class="timeline-description">Leading comprehensive procurement transformation across hotel and leisure assets. Rather than inheriting existing processes, I rebuilt the procurement framework from zero to ensure full audit compliance and operational excellence. Full ownership of critical Procurement & Operations processes, bridging strategy, execution, and compliance across technical maintenance, hospitality operations, and marketing services.</p>
-                    <div class="achievement-box">
-                        <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                        <ul>
-                            <li>Delivered <strong>€1M+ in cost savings (35% reduction)</strong> within 6 months through AI-powered contract analysis and strategic sourcing</li>
-                            <li>Created proprietary <strong>BidMap framework</strong> from scratch, establishing standardized evaluation criteria that eliminated subjective decision-making</li>
-                            <li>Redesigned <strong>RFP/RFQ processes</strong> with exhaustive technical alignment, ensuring cadernos de encargos perfectly match operational requirements</li>
-                            <li>Implemented <strong>comprehensive follow-up protocols</strong> with detailed project tracking visible to all stakeholders via ASANA integration</li>
-                            <li>Negotiated <strong>bulletproof contractual clauses</strong> including SLA definitions, exit clauses without penalties for non-conformities, and balanced protection for both parties</li>
-                            <li>Leading <strong>transversal collaboration initiative</strong> with Marketing, Technical, and Operations teams—recognized as a major organizational success</li>
-                            <li>Established structured frameworks for critical services: SCIE compliance, Legionella control, Elevator Maintenance with integrated technical and financial KPIs</li>
-                        </ul>
+            <div class="timeline-wrapper">
+                <div class="timeline-logos">
+                    <div class="company-logo active" data-company="details">
+                        <img src="./Details.png" alt="Details Hospitality">
                     </div>
-                    <div class="skills-tags">
-                        <span class="skill-tag">AI Strategy</span>
-                        <span class="skill-tag">Process Architecture</span>
-                        <span class="skill-tag">Contract Negotiation</span>
-                        <span class="skill-tag">Cross-Functional Leadership</span>
-                        <span class="skill-tag">Compliance Frameworks</span>
+                    <div class="company-logo" data-company="skn-global">
+                        <img src="./SKN_Global.png" alt="SKN Global">
+                    </div>
+                    <div class="company-logo" data-company="skn-europe">
+                        <img src="./SKN_Global.png" alt="SKN Global Europe">
+                    </div>
+                    <div class="company-logo" data-company="skn-brasil">
+                        <img src="./SKN_Brasil.png" alt="SKN do Brasil">
                     </div>
                 </div>
-            </div>
+                
+                <div class="timeline-items">
+                    <div class="timeline-item animate-on-scroll delay-1" data-company="details">
+                        <div class="timeline-date">
+                            2025-Present
+                            <span>Senior Level</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Senior Buyer – Strategic Procurement & Operations Transformation</h3>
+                            <div class="timeline-company"><i class="fas fa-building"></i> Details Hospitality, Portugal</div>
+                            <p class="timeline-description">Leading comprehensive procurement transformation across hotel and leisure assets. Rather than inheriting existing processes, I rebuilt the procurement framework from zero to ensure full audit compliance and operational excellence. Full ownership of critical Procurement & Operations processes, bridging strategy, execution, and compliance across technical maintenance, hospitality operations, and marketing services.</p>
+                            <div class="achievement-box">
+                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
+                                <ul>
+                                    <li>Delivered <strong>€1M+ in cost savings (35% reduction)</strong> within 6 months through AI-powered contract analysis and strategic sourcing</li>
+                                    <li>Created proprietary <strong>BidMap framework</strong> from scratch, establishing standardized evaluation criteria that eliminated subjective decision-making</li>
+                                    <li>Redesigned <strong>RFP/RFQ processes</strong> with exhaustive technical alignment, ensuring cadernos de encargos perfectly match operational requirements</li>
+                                    <li>Implemented <strong>comprehensive follow-up protocols</strong> with detailed project tracking visible to all stakeholders via ASANA integration</li>
+                                    <li>Negotiated <strong>bulletproof contractual clauses</strong> including SLA definitions, exit clauses without penalties for non-conformities, and balanced protection for both parties</li>
+                                    <li>Leading <strong>transversal collaboration initiative</strong> with Marketing, Technical, and Operations teams—recognized as a major organizational success</li>
+                                    <li>Established structured frameworks for critical services: SCIE compliance, Legionella control, Elevator Maintenance with integrated technical and financial KPIs</li>
+                                </ul>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="skill-tag">AI Strategy</span>
+                                <span class="skill-tag">Process Architecture</span>
+                                <span class="skill-tag">Contract Negotiation</span>
+                                <span class="skill-tag">Cross-Functional Leadership</span>
+                                <span class="skill-tag">Compliance Frameworks</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="timeline-item animate-on-scroll delay-2">
-                <div class="timeline-date">
-                    2022-2025
-                    <span>Director Level</span>
-                </div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">Director of International Expansion & Product Development</h3>
-                    <div class="timeline-company"><i class="fas fa-globe-europe"></i> SKN Global | EU & Asia</div>
-                    <p class="timeline-description">Led global expansion and premium product development across European and Asian markets. Managed full product lifecycle from concept to market launch for luxury brands, coordinating cross-functional teams across multiple countries and cultures. Established new distribution networks and adapted products to diverse regulatory environments.</p>
-                    <div class="achievement-box">
-                        <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                        <ul>
-                            <li>Managed <strong>$10M+ project portfolio</strong> coordinating engineering teams in Italy and China, delivering Pininfarina Essenza outdoor cooking collection</li>
-                            <li>Established <strong>new distribution partnerships</strong> in 5+ European countries, creating market entry strategies adapted to local regulations</li>
-                            <li>Led complete creation of <strong>licensed product portfolios</strong> for premium European brands including technical adaptations for EU compliance</li>
-                            <li>Conducted <strong>extensive factory audits</strong> across Asia: production line inspections, pre-shipment quality control, storage facility assessments</li>
-                            <li>Developed <strong>gift box strategies</strong> with country-specific mandatory information, instruction manuals, and power cable adaptations</li>
-                            <li>Negotiated <strong>strategic partnerships</strong> with Chinese manufacturers through relationship-building dinners and face-to-face negotiations</li>
-                        </ul>
+                    <div class="timeline-item animate-on-scroll delay-2" data-company="skn-global">
+                        <div class="timeline-date">
+                            2022-2025
+                            <span>Director Level</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Director of International Expansion & Product Development</h3>
+                            <div class="timeline-company"><i class="fas fa-globe-europe"></i> SKN Global | EU & Asia</div>
+                            <p class="timeline-description">Led global expansion and premium product development across European and Asian markets. Managed full product lifecycle from concept to market launch for luxury brands, coordinating cross-functional teams across multiple countries and cultures. Established new distribution networks and adapted products to diverse regulatory environments.</p>
+                            <div class="achievement-box">
+                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
+                                <ul>
+                                    <li>Managed <strong>$10M+ project portfolio</strong> coordinating engineering teams in Italy and China, delivering Pininfarina Essenza outdoor cooking collection</li>
+                                    <li>Established <strong>new distribution partnerships</strong> in 5+ European countries, creating market entry strategies adapted to local regulations</li>
+                                    <li>Led complete creation of <strong>licensed product portfolios</strong> for premium European brands including technical adaptations for EU compliance</li>
+                                    <li>Conducted <strong>extensive factory audits</strong> across Asia: production line inspections, pre-shipment quality control, storage facility assessments</li>
+                                    <li>Developed <strong>gift box strategies</strong> with country-specific mandatory information, instruction manuals, and power cable adaptations</li>
+                                    <li>Negotiated <strong>strategic partnerships</strong> with Chinese manufacturers through relationship-building dinners and face-to-face negotiations</li>
+                                </ul>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Global Expansion</span>
+                                <span class="skill-tag">Luxury Brand Management</span>
+                                <span class="skill-tag">Regulatory Compliance</span>
+                                <span class="skill-tag">Supplier Audits</span>
+                                <span class="skill-tag">R&D Leadership</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Global Expansion</span>
-                        <span class="skill-tag">Luxury Brand Management</span>
-                        <span class="skill-tag">Regulatory Compliance</span>
-                        <span class="skill-tag">Supplier Audits</span>
-                        <span class="skill-tag">R&D Leadership</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="timeline-item animate-on-scroll delay-3">
-                <div class="timeline-date">
-                    2018-2022
-                    <span>Manager Level</span>
-                </div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">International Product & Licensing Manager</h3>
-                    <div class="timeline-company"><i class="fas fa-industry"></i> SKN Global | Europe</div>
-                    <p class="timeline-description">Launched licensed portfolios and built automated analytics systems for European expansion. Led R&D initiatives for home appliances, lighting solutions, and consumer electronics. Established quality control frameworks and supplier audit processes that became company standards.</p>
-                    <div class="achievement-box">
-                        <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                        <ul>
-                            <li>Led complete creation and launch of <strong>Blaupunkt Tools</strong> for European market—from concept to mass production</li>
-                            <li>Built <strong>KPI dashboards using Streamlit, Pandas, Plotly, SQL</strong> that became standard analytics tools across departments</li>
-                            <li>Established <strong>quality control frameworks</strong> and supplier audit processes across 15+ manufacturing partners in Asia</li>
-                            <li>Managed <strong>product localization</strong> including regulatory adaptations, packaging compliance, and technical documentation translation</li>
-                            <li>Created <strong>automated reporting systems</strong> that reduced manual data processing time by 70%</li>
-                        </ul>
+                    <div class="timeline-item animate-on-scroll delay-3" data-company="skn-europe">
+                        <div class="timeline-date">
+                            2018-2022
+                            <span>Manager Level</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">International Product & Licensing Manager</h3>
+                            <div class="timeline-company"><i class="fas fa-industry"></i> SKN Global | Europe</div>
+                            <p class="timeline-description">Launched licensed portfolios and built automated analytics systems for European expansion. Led R&D initiatives for home appliances, lighting solutions, and consumer electronics. Established quality control frameworks and supplier audit processes that became company standards.</p>
+                            <div class="achievement-box">
+                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
+                                <ul>
+                                    <li>Led complete creation and launch of <strong>Blaupunkt Tools</strong> for European market—from concept to mass production</li>
+                                    <li>Built <strong>KPI dashboards using Streamlit, Pandas, Plotly, SQL</strong> that became standard analytics tools across departments</li>
+                                    <li>Established <strong>quality control frameworks</strong> and supplier audit processes across 15+ manufacturing partners in Asia</li>
+                                    <li>Managed <strong>product localization</strong> including regulatory adaptations, packaging compliance, and technical documentation translation</li>
+                                    <li>Created <strong>automated reporting systems</strong> that reduced manual data processing time by 70%</li>
+                                </ul>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Data Analytics</span>
+                                <span class="skill-tag">Quality Systems</span>
+                                <span class="skill-tag">Supplier Management</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Licensing</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Data Analytics</span>
-                        <span class="skill-tag">Quality Systems</span>
-                        <span class="skill-tag">Supplier Management</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Licensing</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="timeline-item animate-on-scroll delay-4">
-                <div class="timeline-date">
-                    2011-2018
-                    <span>Growth Phase</span>
-                </div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">Product & Import Manager → LATAM Area Manager</h3>
-                    <div class="timeline-company"><i class="fas fa-map-marker-alt"></i> SKN do Brasil | Rio de Janeiro</div>
-                    <p class="timeline-description">Progressed from Import Analyst to Area Manager, leading Ford Lighting expansion across Latin America. Managed R&D for lighting solutions, home appliances, beauty care, and audio/video products. Built distributor network from scratch and represented the brand at major international trade shows.</p>
-                    <div class="achievement-box">
-                        <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                        <ul>
-                            <li>Built <strong>distributor network across 12 Latin American countries</strong>, establishing Ford Lighting presence in new markets</li>
-                            <li>Represented Ford Lighting at <strong>Hong Kong International Lighting Fair, Canton Fair</strong>, and regional fairs in Brazil, Guatemala, and Panama</li>
-                            <li>Managed <strong>end-to-end import operations</strong> including customs clearance, logistics coordination, and supplier relationship management</li>
-                            <li>Developed <strong>localized product lines</strong> adapted to LATAM voltage standards, safety regulations, and consumer preferences</li>
-                            <li>Conducted <strong>20+ international trade shows</strong> as both exhibitor and buyer, establishing key industry relationships</li>
-                        </ul>
-                    </div>
-                    <div class="skills-tags">
-                        <span class="skill-tag">LATAM Expansion</span>
-                        <span class="skill-tag">Trade Shows</span>
-                        <span class="skill-tag">Import/Export</span>
-                        <span class="skill-tag">Distribution</span>
-                        <span class="skill-tag">R&D</span>
+                    <div class="timeline-item animate-on-scroll delay-4" data-company="skn-brasil">
+                        <div class="timeline-date">
+                            2011-2018
+                            <span>Growth Phase</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Product & Import Manager → LATAM Area Manager</h3>
+                            <div class="timeline-company"><i class="fas fa-map-marker-alt"></i> SKN do Brasil | Rio de Janeiro</div>
+                            <p class="timeline-description">Progressed from Import Analyst to Area Manager, leading Ford Lighting expansion across Latin America. Managed R&D for lighting solutions, home appliances, beauty care, and audio/video products. Built distributor network from scratch and represented the brand at major international trade shows.</p>
+                            <div class="achievement-box">
+                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
+                                <ul>
+                                    <li>Built <strong>distributor network across 12 Latin American countries</strong>, establishing Ford Lighting presence in new markets</li>
+                                    <li>Represented Ford Lighting at <strong>Hong Kong International Lighting Fair, Canton Fair</strong>, and regional fairs in Brazil, Guatemala, and Panama</li>
+                                    <li>Managed <strong>end-to-end import operations</strong> including customs clearance, logistics coordination, and supplier relationship management</li>
+                                    <li>Developed <strong>localized product lines</strong> adapted to LATAM voltage standards, safety regulations, and consumer preferences</li>
+                                    <li>Conducted <strong>20+ international trade shows</strong> as both exhibitor and buyer, establishing key industry relationships</li>
+                                </ul>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="skill-tag">LATAM Expansion</span>
+                                <span class="skill-tag">Trade Shows</span>
+                                <span class="skill-tag">Import/Export</span>
+                                <span class="skill-tag">Distribution</span>
+                                <span class="skill-tag">R&D</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2116,8 +2242,13 @@
             </div>
 
             <div class="project-card animate-on-scroll delay-3">
-                <div class="project-image">
-                    <i class="fas fa-chart-line" style="font-size: 3.5rem; color: var(--gold);"></i>
+                <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+                    <div style="text-align: center; color: var(--gold);">
+                        <i class="fas fa-brain" style="font-size: 4rem; margin-bottom: 1rem; display: block;"></i>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Neural Network</div>
+                        <div style="width: 120px; height: 2px; background: var(--gold); margin: 10px auto;"></div>
+                        <div style="font-size: 0.8rem; opacity: 0.6;">Predictive Analytics</div>
+                    </div>
                 </div>
                 <div class="project-content">
                     <h3>Sales Prediction ML Engine</h3>
@@ -2134,8 +2265,13 @@
             </div>
 
             <div class="project-card animate-on-scroll delay-1">
-                <div class="project-image">
-                    <i class="fas fa-warehouse" style="font-size: 3.5rem; color: var(--gold);"></i>
+                <div class="project-image" style="background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5a 100%);">
+                    <div style="text-align: center; color: var(--gold);">
+                        <i class="fas fa-network-wired" style="font-size: 4rem; margin-bottom: 1rem; display: block;"></i>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Deep Learning</div>
+                        <div style="width: 120px; height: 2px; background: var(--gold); margin: 10px auto;"></div>
+                        <div style="font-size: 0.8rem; opacity: 0.6;">Optimization</div>
+                    </div>
                 </div>
                 <div class="project-content">
                     <h3>Inventory Optimization System</h3>
@@ -2165,6 +2301,60 @@
                         <span class="project-tag">Portfolio</span>
                         <span class="project-tag">Certification</span>
                         <span class="project-tag">Quality Audits</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card animate-on-scroll delay-3">
+                <div class="project-image">
+                    <img src="./NKS_Estrelas.png" alt="NKS Estrelas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-star\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
+                </div>
+                <div class="project-content">
+                    <h3>NKS Estrelas Product Line</h3>
+                    <p>Premium consumer electronics and home appliances developed for Brazilian market under NKS brand. Complete product lifecycle management from market research to mass production and distribution.</p>
+                    <div class="project-highlights">
+                        <strong>Market:</strong> Brazil | <strong>Category:</strong> Consumer electronics | <strong>Scope:</strong> End-to-end product development
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Electronics</span>
+                        <span class="project-tag">Brazilian Market</span>
+                        <span class="project-tag">Product Launch</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card animate-on-scroll delay-1">
+                <div class="project-image">
+                    <img src="./NKS_Audio.png" alt="NKS Audio" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-music\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
+                </div>
+                <div class="project-content">
+                    <h3>NKS Audio Systems</h3>
+                    <p>Professional and consumer audio equipment including speakers, sound systems, and headphones. Technical specifications, acoustic engineering coordination, and quality certification for LATAM market.</p>
+                    <div class="project-highlights">
+                        <strong>Products:</strong> Speakers, sound systems, headphones | <strong>Focus:</strong> Audio engineering | <strong>Compliance:</strong> ANATEL certification
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Audio</span>
+                        <span class="project-tag">Acoustic Engineering</span>
+                        <span class="project-tag">ANATEL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card animate-on-scroll delay-2">
+                <div class="project-image">
+                    <img src="./NKS_Mais_Vc.png" alt="NKS Mais Você" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-heart\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
+                </div>
+                <div class="project-content">
+                    <h3>NKS Mais Você Collection</h3>
+                    <p>Personal care and beauty appliances product line developed for Brazilian retail. Market-specific adaptations including voltage standards, safety certifications, and consumer preference alignment.</p>
+                    <div class="project-highlights">
+                        <strong>Category:</strong> Beauty & personal care | <strong>Market:</strong> Brazil retail | <strong>Features:</strong> INMETRO certification
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Beauty Care</span>
+                        <span class="project-tag">INMETRO</span>
+                        <span class="project-tag">Retail</span>
                     </div>
                 </div>
             </div>
@@ -2281,8 +2471,8 @@
         <div class="certs-grid">
             <div class="cert-card framework-highlight animate-on-scroll">
                 <div class="framework-content">
-                    <div class="cert-icon">
-                        <i class="fas fa-star"></i>
+                    <div class="cert-icon" style="width: 60px; height: 60px; background: rgba(212,175,55,0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <i class="fas fa-star" style="font-size: 1.8rem; color: var(--gold);"></i>
                     </div>
                     <h3>AI-Driven Strategic Procurement Framework</h3>
                     <p>My proprietary one-page executive framework summarizing how AI, data, and operational alignment elevate procurement performance across hospitality & leisure assets. Developed based on 15+ years of experience and recent AI implementations that delivered €1M+ in savings.</p>
@@ -2296,79 +2486,135 @@
             </div>
 
             <div class="cert-card animate-on-scroll delay-1">
-                <div class="cert-icon">
-                    <i class="fas fa-graduation-cap"></i>
+                <div class="cert-header">
+                    <div class="cert-logo">
+                        <img src="./Maryland_University.png" alt="University of Maryland">
+                    </div>
+                    <div class="cert-title-group">
+                        <h4>University of Maryland</h4>
+                        <div class="cert-subtitle">Robert H. Smith School of Business</div>
+                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> February 2026</span>
+                    </div>
                 </div>
-                <h4>University of Maryland</h4>
-                <p>AI and Career Empowerment<br>Robert H. Smith School of Business<br><strong>February 2026</strong></p>
-                <div class="cert-badge">
-                    <i class="fas fa-award"></i> Business AI
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-2">
-                <div class="cert-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h4>IBM SkillsBuild</h4>
-                <p>Foundations in Generative AI<br>Introduction to Large Language Models<br><strong>2025</strong></p>
-                <div class="cert-badge">
-                    <i class="fas fa-robot"></i> Gen AI
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-3">
-                <div class="cert-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <h4>MIT Sloan</h4>
-                <p>Supply Chain Analytics for Procurement and Operations<br><strong>2025</strong></p>
-                <div class="cert-badge">
-                    <i class="fas fa-chart-line"></i> Analytics
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-1">
-                <div class="cert-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <h4>MIT Sloan</h4>
-                <p>Digital Transformation in Operations<br><strong>2024</strong></p>
-                <div class="cert-badge">
-                    <i class="fas fa-digital-tachograph"></i> Digital
+                <p><strong>AI and Career Empowerment</strong></p>
+                <p>Comprehensive program covering AI applications in business strategy, automation of procurement workflows, and leveraging machine learning for decision-making. Focus on practical implementation of AI tools in professional environments.</p>
+                <div class="cert-impact">
+                    <strong>Impact on My Work:</strong>
+                    <p>Directly applied AI automation concepts to reduce procurement cycle times by 40% and implemented predictive analytics for supplier performance evaluation at Details Hospitality.</p>
                 </div>
             </div>
 
             <div class="cert-card animate-on-scroll delay-2">
-                <div class="cert-icon">
-                    <i class="fas fa-university"></i>
+                <div class="cert-header">
+                    <div class="cert-logo">
+                        <img src="./IBM.png" alt="IBM">
+                    </div>
+                    <div class="cert-title-group">
+                        <h4>IBM SkillsBuild</h4>
+                        <div class="cert-subtitle">Professional Certification</div>
+                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2025</span>
+                    </div>
                 </div>
-                <h4>Harvard University</h4>
-                <p>Decision-Making in Leadership<br><strong>2023</strong></p>
-                <div class="cert-badge">
-                    <i class="fas fa-chess-king"></i> Leadership
+                <p><strong>Foundations in Generative AI & LLMs</strong></p>
+                <p>Deep dive into generative AI technologies, large language models, prompt engineering, and ethical AI deployment. Practical training in implementing AI solutions for business process optimization and content generation.</p>
+                <div class="cert-impact">
+                    <strong>Impact on My Work:</strong>
+                    <p>Utilizing LLMs for automated contract analysis and RFP document generation, saving 15+ hours per week in documentation tasks while improving accuracy and compliance.</p>
                 </div>
             </div>
 
             <div class="cert-card animate-on-scroll delay-3">
-                <div class="cert-icon">
-                    <i class="fas fa-certificate"></i>
+                <div class="cert-header">
+                    <div class="cert-logo">
+                        <img src="./MIT.png" alt="MIT Sloan">
+                    </div>
+                    <div class="cert-title-group">
+                        <h4>MIT Sloan School of Management</h4>
+                        <div class="cert-subtitle">Executive Education</div>
+                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2025</span>
+                    </div>
                 </div>
-                <h4>IBM Data Science</h4>
-                <p>Professional Certificate<br>Machine Learning, Python, SQL<br><strong>Professional Level</strong></p>
-                <div class="cert-badge">
-                    <i class="fas fa-code"></i> Data Science
+                <p><strong>Supply Chain Analytics for Procurement</strong></p>
+                <p>Advanced analytics methodologies for supply chain optimization, demand forecasting, inventory management, and strategic sourcing decisions. Integration of data science with procurement operations.</p>
+                <div class="cert-impact">
+                    <strong>Impact on My Work:</strong>
+                    <p>Implemented demand forecasting models that reduced inventory carrying costs by 30% and developed KPI dashboards now used across procurement teams for real-time decision making.</p>
                 </div>
             </div>
 
             <div class="cert-card animate-on-scroll delay-1">
-                <div class="cert-icon">
-                    <i class="fas fa-code"></i>
+                <div class="cert-header">
+                    <div class="cert-logo">
+                        <img src="./MIT.png" alt="MIT Sloan">
+                    </div>
+                    <div class="cert-title-group">
+                        <h4>MIT Sloan School of Management</h4>
+                        <div class="cert-subtitle">Executive Education</div>
+                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2024</span>
+                    </div>
                 </div>
-                <h4>freeCodeCamp</h4>
-                <p>Machine Learning with Python<br><strong>Technical Certification</strong></p>
-                <div class="cert-badge">
-                    <i class="fab fa-python"></i> Python
+                <p><strong>Digital Transformation in Operations</strong></p>
+                <p>Strategic frameworks for digital transformation, process automation, and technology integration in operations. Focus on change management and building digital capabilities within organizations.</p>
+                <div class="cert-impact">
+                    <strong>Impact on My Work:</strong>
+                    <p>Led digital transformation initiative at Details Hospitality, implementing ASANA-based project tracking and automated approval workflows that increased team productivity by 50%.</p>
+                </div>
+            </div>
+
+            <div class="cert-card animate-on-scroll delay-2">
+                <div class="cert-header">
+                    <div class="cert-logo">
+                        <img src="./Harvard_University.png" alt="Harvard">
+                    </div>
+                    <div class="cert-title-group">
+                        <h4>Harvard University</h4>
+                        <div class="cert-subtitle">Professional Development</div>
+                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2023</span>
+                    </div>
+                </div>
+                <p><strong>Decision-Making in Leadership</strong></p>
+                <p>Evidence-based decision making frameworks, cognitive bias mitigation, strategic thinking, and leadership in complex environments. Focus on high-stakes decision processes under uncertainty.</p>
+                <div class="cert-impact">
+                    <strong>Impact on My Work:</strong>
+                    <p>Applied structured decision-making frameworks to supplier selection processes, reducing subjective bias and improving contract outcomes by 25% through objective evaluation criteria.</p>
+                </div>
+            </div>
+
+            <div class="cert-card animate-on-scroll delay-3">
+                <div class="cert-header">
+                    <div class="cert-logo">
+                        <img src="./IBM.png" alt="IBM">
+                    </div>
+                    <div class="cert-title-group">
+                        <h4>IBM Data Science Professional</h4>
+                        <div class="cert-subtitle">Professional Certificate</div>
+                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-award"></i> Professional Level</span>
+                    </div>
+                </div>
+                <p><strong>Data Science & Machine Learning</strong></p>
+                <p>Comprehensive data science curriculum covering Python, SQL, data visualization, machine learning algorithms, and predictive modeling. Capstone projects in real-world business applications.</p>
+                <div class="cert-impact">
+                    <strong>Impact on My Work:</strong>
+                    <p>Built predictive sales and inventory models achieving 95% accuracy, directly contributing to €1M+ cost savings through data-driven procurement decisions and automated reorder systems.</p>
+                </div>
+            </div>
+
+            <div class="cert-card animate-on-scroll delay-1">
+                <div class="cert-header">
+                    <div class="cert-logo" style="background: #0a0a23;">
+                        <i class="fas fa-code" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <div class="cert-title-group">
+                        <h4>freeCodeCamp</h4>
+                        <div class="cert-subtitle">Technical Certification</div>
+                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-award"></i> Technical Level</span>
+                    </div>
+                </div>
+                <p><strong>Machine Learning with Python</strong></p>
+                <p>Hands-on training in TensorFlow, neural networks, deep learning, and practical ML applications. Projects include image recognition, natural language processing, and predictive analytics systems.</p>
+                <div class="cert-impact">
+                    <strong>Impact on My Work:</strong>
+                    <p>Developed custom ML algorithms for promotional impact analysis and price optimization, enabling data-driven pricing strategies that improved margins by 12%.</p>
                 </div>
             </div>
         </div>
@@ -2450,7 +2696,7 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>Email</h3>
-                    <p>luciano.rsouza@gmail.com</p>
+                    <p>luciano.vlap@gmail.com</p>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">
@@ -2462,13 +2708,13 @@
             </div>
             
             <div class="contact-links animate-on-scroll delay-2">
-                <a href="https://linkedin.com/in/lucianorsouza" target="_blank" class="contact-link">
+                <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="contact-link">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
                 <a href="https://github.com/LucianoRSouza" target="_blank" class="contact-link">
                     <i class="fab fa-github"></i> GitHub
                 </a>
-                <a href="mailto:luciano.rsouza@gmail.com" class="contact-link">
+                <a href="mailto:luciano.vlap@gmail.com" class="contact-link">
                     <i class="fas fa-envelope"></i> Email Me
                 </a>
             </div>
@@ -2481,13 +2727,13 @@
             <p style="opacity: 0.8; margin-bottom: 2rem;">AI-Driven Procurement Leader | Strategic Operations | Data Science</p>
             
             <div class="social-links">
-                <a href="https://linkedin.com/in/lucianorsouza" target="_blank" class="social-link">
+                <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="social-link">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
                 <a href="https://github.com/LucianoRSouza" target="_blank" class="social-link">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="mailto:luciano.rsouza@gmail.com" class="social-link">
+                <a href="mailto:luciano.vlap@gmail.com" class="social-link">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
@@ -2531,6 +2777,9 @@
             } else {
                 scrollTop.classList.remove('visible');
             }
+            
+            // Timeline logo highlighting
+            updateActiveLogo();
         });
 
         // Scroll animations
@@ -2550,6 +2799,29 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // Timeline logo scroll spy
+        function updateActiveLogo() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const logos = document.querySelectorAll('.company-logo');
+            
+            let activeIndex = 0;
+            
+            timelineItems.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight / 2) {
+                    activeIndex = index;
+                }
+            });
+            
+            logos.forEach((logo, index) => {
+                if (index === activeIndex) {
+                    logo.classList.add('active');
+                } else {
+                    logo.classList.remove('active');
+                }
+            });
+        }
 
         // Gallery tabs
         function switchGallery(gallery) {
@@ -2617,13 +2889,18 @@
             showToast(messages[stat]);
         }
 
-        // Language switcher (placeholder for future implementation)
+        // Language switcher - browser translation suggestion
         function changeLang(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
-            showToast('Language switching coming soon! Currently available in English.');
+            
+            if (lang === 'en') {
+                showToast('English is already active');
+            } else {
+                showToast('Right-click and select "Translate to ' + lang.toUpperCase() + '" for automatic translation');
+            }
         }
 
         // Particle animation
