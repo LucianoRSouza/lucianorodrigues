@@ -3,1890 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luciano Rodrigues | AI-Driven Procurement Leader & Strategic Operations</title>
+    <title>Luciano Rodrigues | AI-Driven Procurement Leader</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --navy: #0f1538;
-            --navy-light: #1a2344;
-            --gold: #d4af37;
-            --gold-light: #e5c158;
-            --cream: #f8f6f0;
-            --text: #2c3e50;
-            --text-light: #5a6c7d;
-            --white: #ffffff;
-            --accent: #ff6b6b;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            color: var(--text); 
-            background: var(--cream); 
-            line-height: 1.6; 
-            overflow-x: hidden;
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.3); }
-            50% { box-shadow: 0 0 40px rgba(212,175,55,0.6); }
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-        
-        @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes bounce-subtle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes morph {
-            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-        }
-        
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
-        
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--navy);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loading-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 2rem;
-            animation: pulse-glow 2s infinite;
-        }
-        
-        .loading-bar {
-            width: 200px;
-            height: 3px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        
-        .loading-progress {
-            height: 100%;
-            background: var(--gold);
-            width: 0%;
-            transition: width 0.3s ease;
-            animation: loading 2s ease forwards;
-        }
-        
-        @keyframes loading {
-            to { width: 100%; }
-        }
-        
-        .lang-switcher {
-            position: fixed; 
-            top: 100px; 
-            right: 20px; 
-            z-index: 2000;
-            display: flex; 
-            flex-direction: column;
-            gap: 8px; 
-            background: rgba(255,255,255,0.95);
-            padding: 12px; 
-            border-radius: 15px; 
-            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212,175,55,0.2);
-        }
-        
-        .lang-btn { 
-            background: none; 
-            border: none; 
-            cursor: pointer; 
-            font-weight: 600; 
-            color: var(--text-light); 
-            padding: 8px 12px; 
-            border-radius: 10px; 
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .lang-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--gold);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
-        
-        .lang-btn.active { 
-            color: var(--navy);
-            transform: scale(1.1);
-        }
-        
-        .lang-btn.active::before {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .lang-btn:hover:not(.active) {
-            color: var(--gold);
-            transform: translateX(-5px);
-        }
-        
-        nav { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            background: rgba(15,21,56,0.95);
-            backdrop-filter: blur(20px); 
-            z-index: 1000; 
-            padding: 1rem 5%;
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-            transition: all 0.4s ease;
-        }
-        
-        nav.scrolled {
-            padding: 0.7rem 5%;
-            background: rgba(15,21,56,0.98);
-        }
-        
-        .logo { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2rem; 
-            font-weight: 700; 
-            color: var(--gold); 
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(212,175,55,0.5);
-        }
-        
-        .nav-links { 
-            display: flex; 
-            gap: 2.5rem; 
-            list-style: none; 
-        }
-        
-        .nav-links a { 
-            color: var(--white); 
-            text-decoration: none; 
-            font-weight: 500; 
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 0.95rem;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover { 
-            color: var(--gold); 
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .hero { 
-            min-height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            padding: 120px 5% 80px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #0a0e2e 100%);
-            color: var(--white); 
-            position: relative; 
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
-            animation: rotate-slow 30s linear infinite;
-        }
-        
-        .hero-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 6s infinite;
-        }
-        
-        .hero-container { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            display: grid; 
-            grid-template-columns: 1.2fr 1fr; 
-            gap: 4rem; 
-            align-items: center; 
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-content h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 3.5rem; 
-            line-height: 1.1; 
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-content .subtitle { 
-            font-size: 1.3rem; 
-            color: var(--gold); 
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease 0.2s both;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-        
-        .hero-description { 
-            font-size: 1.1rem; 
-            opacity: 0.9; 
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 1s ease 0.4s both;
-            line-height: 1.8;
-        }
-        
-        .hero-stats { 
-            display: flex; 
-            gap: 1.5rem; 
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 1s ease 0.6s both;
-            flex-wrap: wrap;
-        }
-        
-        .stat-box { 
-            background: rgba(255,255,255,0.05); 
-            padding: 1.5rem; 
-            border-radius: 20px; 
-            text-align: center; 
-            border: 1px solid rgba(212,175,55,0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            min-width: 140px;
-            flex: 1;
-        }
-        
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .stat-box:hover::before {
-            left: 100%;
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(212,175,55,0.1);
-            border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(212,175,55,0.2);
-        }
-        
-        .stat-icon {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-box:hover .stat-icon {
-            transform: scale(1.2) rotate(10deg);
-        }
-        
-        .stat-number { 
-            font-size: 2.2rem; 
-            font-weight: 700; 
-            color: var(--gold); 
-            display: block;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-box:hover .stat-number {
-            transform: scale(1.1);
-            text-shadow: 0 0 20px rgba(212,175,55,0.5);
-        }
-        
-        .stat-label { 
-            font-size: 0.8rem; 
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0.3rem;
-        }
-        
-        .hero-buttons {
-            animation: fadeInUp 1s ease 0.8s both;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn { 
-            padding: 1rem 2.5rem; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex; 
-            align-items: center; 
-            gap: 0.8rem;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
-        }
-        
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .btn-primary { 
-            background: var(--gold); 
-            color: var(--navy); 
-            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(212,175,55,0.4);
-        }
-        
-        .btn-secondary { 
-            background: transparent; 
-            color: var(--white); 
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--navy);
-            transform: translateY(-5px);
-            border-color: var(--white);
-        }
-        
-        .hero-image {
-            animation: fadeInScale 1s ease 0.5s both;
-            position: relative;
-        }
-        
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            border: 3px solid var(--gold);
-            border-radius: 30px;
-            animation: morph 8s ease-in-out infinite;
-            z-index: -1;
-        }
-        
-        .hero-image img { 
-            width: 100%; 
-            max-width: 400px; 
-            border-radius: 30px; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            border: 4px solid rgba(255,255,255,0.1);
-            transition: all 0.5s ease;
-            animation: morph 8s ease-in-out infinite;
-        }
-        
-        .hero-image:hover img {
-            transform: scale(1.03);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-        }
-        
-        .floating-badge {
-            position: absolute;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(212,175,55,0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: float 4s ease-in-out infinite;
-            font-size: 0.9rem;
-            opacity: 0.85;
-        }
-        
-        .floating-badge i {
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-        
-        .badge-1 { top: 15%; right: 5%; animation-delay: 0s; }
-        .badge-2 { top: 45%; right: 0%; animation-delay: 1s; }
-        .badge-3 { bottom: 25%; right: 10%; animation-delay: 2s; }
-        
-        @media (max-width: 1200px) {
-            .floating-badge {
-                display: none;
-            }
-        }
-        
-        section { 
-            padding: 6rem 5%; 
-            position: relative;
-        }
-        
-        .section-header { 
-            text-align: center; 
-            margin-bottom: 4rem; 
-        }
-        
-        .section-header h2 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 3rem; 
-            color: var(--navy); 
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        
-        .section-header:hover h2::after {
-            width: 120px;
-            box-shadow: 0 0 20px rgba(212,175,55,0.5);
-        }
-        
-        .section-header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .about { 
-            background: var(--white); 
-        }
-        
-        .about-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1.5fr; 
-            gap: 5rem; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            align-items: center;
-        }
-        
-        .about-image {
-            position: relative;
-        }
-        
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            right: 30px;
-            bottom: 30px;
-            border: 4px solid var(--gold);
-            border-radius: 20px;
-            z-index: 0;
-            transition: all 0.4s ease;
-        }
-        
-        .about-image:hover::before {
-            top: -15px;
-            left: -15px;
-            right: 15px;
-            bottom: 15px;
-            transform: rotate(2deg);
-        }
-        
-        .about-image img { 
-            width: 100%; 
-            border-radius: 20px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            position: relative;
-            z-index: 1;
-            transition: all 0.5s ease;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.02) rotate(-1deg);
-        }
-        
-        .about-content h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2.2rem; 
-            color: var(--navy); 
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .about-content p {
-            margin-bottom: 1.5rem;
-            color: var(--text);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-        
-        .leadership-philosophy {
-            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05));
-            border-left: 4px solid var(--gold);
-            padding: 1.5rem;
-            border-radius: 0 15px 15px 0;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--navy);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-        }
-        
-        .languages-grid { 
-            display: flex; 
-            gap: 1rem; 
-            margin-top: 2rem; 
-            flex-wrap: wrap; 
-        }
-        
-        .lang-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem; 
-            padding: 0.8rem 1.2rem;
-            background: linear-gradient(135deg, var(--cream), var(--white)); 
-            border-radius: 25px; 
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        
-        .lang-item:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(212,175,55,0.2);
-        }
-        
-        .timeline { 
-            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
-            position: relative;
-        }
-        
-        .timeline-container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            position: relative;
-        }
-        
-        .timeline-wrapper {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 3rem;
-            position: relative;
-        }
-        
-        .timeline-logos {
-            position: sticky;
-            top: 150px;
-            height: fit-content;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        .company-logo {
-            width: 100%;
-            max-width: 180px;
-            padding: 1.5rem;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            opacity: 0.3;
-            transform: scale(0.9);
-            border: 2px solid transparent;
-        }
-        
-        .company-logo.active {
-            opacity: 1;
-            transform: scale(1);
-            border-color: var(--gold);
-            box-shadow: 0 15px 40px rgba(212,175,55,0.2);
-        }
-        
-        .company-logo img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
-        
-        .timeline-items {
-            position: relative;
-        }
-        
-        .timeline-item { 
-            display: grid; 
-            grid-template-columns: 180px 1fr; 
-            gap: 2rem; 
-            margin-bottom: 3rem; 
-            position: relative; 
-            transition: all 0.4s ease;
-        }
-        
-        .timeline-item:hover {
-            transform: translateX(10px);
-        }
-        
-        .timeline-item::before { 
-            content: ''; 
-            position: absolute; 
-            left: 180px; 
-            top: 0; 
-            bottom: -3rem; 
-            width: 3px; 
-            background: linear-gradient(180deg, var(--gold), transparent);
-        }
-        
-        .timeline-date { 
-            font-weight: 700; 
-            color: var(--gold); 
-            text-align: right; 
-            font-size: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 0.5rem;
-        }
-        
-        .timeline-date span {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-        
-        .timeline-content { 
-            background: var(--white); 
-            padding: 2.5rem; 
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
-            margin-left: 2rem; 
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .timeline-content:hover {
-            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-            transform: translateY(-5px);
-            border-color: rgba(212,175,55,0.3);
-        }
-        
-        .timeline-content::before { 
-            content: ''; 
-            position: absolute; 
-            left: -12px; 
-            top: 30px; 
-            width: 24px; 
-            height: 24px; 
-            background: var(--gold); 
-            border-radius: 50%; 
-            border: 5px solid var(--white);
-            box-shadow: 0 0 0 3px var(--gold);
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-item:hover .timeline-content::before {
-            transform: scale(1.3);
-            background: var(--navy);
-            box-shadow: 0 0 0 3px var(--navy);
-        }
-        
-        .timeline-title { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.5rem; 
-            color: var(--navy); 
-            margin-bottom: 0.5rem; 
-        }
-        
-        .timeline-company { 
-            color: var(--gold); 
-            font-weight: 700; 
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .timeline-description {
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .achievement-box { 
-            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05));
-            border-left: 5px solid var(--gold); 
-            padding: 1.5rem; 
-            margin: 1.5rem 0; 
-            border-radius: 0 15px 15px 0;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .achievement-box::before {
-            content: '\f0a3';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 3rem;
-            color: rgba(212,175,55,0.1);
-        }
-        
-        .timeline-content:hover .achievement-box {
-            background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.08));
-            transform: translateX(10px);
-        }
-        
-        .achievement-box strong {
-            color: var(--navy);
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .achievement-box ul {
-            margin-left: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        
-        .achievement-box li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-        
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .skill-tag {
-            padding: 0.4rem 1rem;
-            background: rgba(212,175,55,0.1);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--navy);
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            background: var(--gold);
-            color: var(--white);
-            transform: scale(1.1);
-        }
-        
-        .projects { 
-            background: var(--white); 
-        }
-        
-        .projects-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 2.5rem; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-        }
-        
-        .project-card { 
-            background: var(--white); 
-            border-radius: 25px; 
-            overflow: hidden; 
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .project-card:hover { 
-            transform: translateY(-15px) scale(1.02); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15); 
-        }
-        
-        .project-image { 
-            height: 250px; 
-            background: linear-gradient(135deg, var(--navy), var(--navy-light)); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--gold); 
-            font-size: 3.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.6s ease;
-        }
-        
-        .project-card:hover .project-image img {
-            transform: scale(1.15) rotate(3deg);
-        }
-        
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(15,21,56,0.9) 100%);
-            display: flex;
-            align-items: flex-end;
-            padding: 2rem;
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        
-        .project-overlay-text {
-            color: var(--white);
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
-        }
-        
-        .project-card:hover .project-overlay-text {
-            transform: translateY(0);
-        }
-        
-        .project-content { 
-            padding: 2rem; 
-            position: relative;
-        }
-        
-        .project-content h3 { 
-            font-family: 'Playfair Display', serif; 
-            color: var(--navy); 
-            margin-bottom: 0.8rem; 
-            font-size: 1.4rem;
-            transition: color 0.3s ease;
-        }
-        
-        .project-card:hover .project-content h3 {
-            color: var(--gold);
-        }
-        
-        .project-content p {
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .project-highlights {
-            font-size: 0.9rem;
-            color: var(--text);
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-        
-        .project-tags { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 0.5rem; 
-            margin-top: 1.5rem; 
-        }
-        
-        .project-tag { 
-            padding: 0.4rem 1rem; 
-            background: var(--cream); 
-            border-radius: 25px; 
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        
-        .project-tag:hover {
-            background: var(--gold);
-            color: var(--navy);
-            border-color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212,175,55,0.3);
-        }
-        
-        .trade-shows {
-            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
-        }
-        
-        .gallery-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .gallery-tab {
-            padding: 1rem 2rem;
-            background: var(--white);
-            border: 2px solid transparent;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            color: var(--text);
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        
-        .gallery-tab.active,
-        .gallery-tab:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(212,175,55,0.2);
-        }
-        
-        .gallery-tab.active {
-            background: var(--gold);
-            color: var(--navy);
-        }
-        
-        .gallery-content {
-            display: none;
-            animation: fadeIn 0.6s ease;
-        }
-        
-        .gallery-content.active {
-            display: block;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        
-        .gallery-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            cursor: pointer;
-            aspect-ratio: 16/10;
-            transition: all 0.4s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.6s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(15,21,56,0.95) 0%, transparent 60%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        
-        .gallery-overlay h4 {
-            color: var(--gold);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            transform: translateY(30px);
-            transition: transform 0.4s ease;
-            margin-bottom: 0.5rem;
-        }
-        
-        .gallery-overlay p {
-            color: var(--white);
-            font-size: 0.9rem;
-            transform: translateY(30px);
-            transition: transform 0.4s ease 0.1s;
-            opacity: 0.9;
-        }
-        
-        .gallery-item:hover .gallery-overlay h4,
-        .gallery-item:hover .gallery-overlay p {
-            transform: translateY(0);
-        }
-        
-        .certs { 
-            background: var(--navy); 
-            color: var(--white); 
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .certs::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
-            animation: rotate-slow 40s linear infinite;
-        }
-        
-        .certs .section-header h2 { 
-            color: var(--white); 
-        }
-        
-        .certs-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 2rem; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cert-card { 
-            background: rgba(255,255,255,0.05); 
-            padding: 2rem; 
-            border-radius: 20px; 
-            border: 1px solid rgba(212,175,55,0.2);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .cert-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .cert-card:hover::before {
-            left: 100%;
-        }
-        
-        .cert-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(212,175,55,0.2);
-            background: rgba(255,255,255,0.08);
-        }
-        
-        .cert-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .cert-logo {
-            width: 80px;
-            height: 80px;
-            background: var(--white);
-            border-radius: 15px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-        
-        .cert-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .cert-title-group {
-            flex: 1;
-        }
-        
-        .cert-card h4 { 
-            color: var(--gold); 
-            margin-bottom: 0.3rem; 
-            font-size: 1.3rem;
-        }
-        
-        .cert-card .cert-subtitle {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .cert-card p {
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .cert-impact {
-            background: rgba(212,175,55,0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 3px solid var(--gold);
-            margin-top: auto;
-        }
-        
-        .cert-impact strong {
-            color: var(--gold);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .cert-impact p {
-            margin: 0.5rem 0 0;
-            font-size: 0.9rem;
-        }
-        
-        .framework-highlight {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05));
-            border: 2px solid var(--gold);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .framework-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-        
-        .framework-content p {
-            color: rgba(255,255,255,0.9);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .framework-image {
-            position: relative;
-        }
-        
-        .framework-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: all 0.4s ease;
-        }
-        
-        .framework-highlight:hover .framework-image img {
-            transform: scale(1.03);
-        }
-        
-        .cert-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(212,175,55,0.2);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .cert-badge:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateX(5px);
-        }
-        
-        .github { 
-            background: var(--cream); 
-        }
-        
-        .github-card { 
-            background: var(--white); 
-            padding: 4rem; 
-            border-radius: 30px; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .github-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .github-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-        }
-        
-        .github-card:hover::before {
-            opacity: 1;
-        }
-        
-        .github-icon { 
-            font-size: 5rem; 
-            color: var(--navy); 
-            margin-bottom: 1.5rem;
-            transition: all 0.5s ease;
-            display: inline-block;
-        }
-        
-        .github-card:hover .github-icon {
-            transform: rotate(360deg) scale(1.1);
-            color: var(--gold);
-        }
-        
-        .repo-list { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 1.5rem; 
-            margin: 3rem 0; 
-            text-align: left; 
-        }
-        
-        .repo-item { 
-            padding: 1.5rem; 
-            background: var(--cream); 
-            border-radius: 15px; 
-            border-left: 4px solid var(--gold);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .repo-item::before {
-            content: '\f121';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: rgba(212,175,55,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .repo-item:hover {
-            transform: translateX(10px);
-            background: var(--white);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left-width: 8px;
-        }
-        
-        .repo-item:hover::before {
-            color: rgba(212,175,55,0.2);
-            transform: translateY(-50%) scale(1.2);
-        }
-        
-        .repo-item h4 {
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-        
-        .repo-item:hover h4 {
-            color: var(--gold);
-        }
-        
-        .repo-item p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        .ml-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .metric-box {
-            background: linear-gradient(135deg, var(--navy), var(--navy-light));
-            color: var(--white);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-        }
-        
-        .metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--gold);
-            display: block;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
-        }
-        
-        .contact { 
-            background: var(--white); 
-            position: relative;
-        }
-        
-        .contact-container { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            text-align: center; 
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .contact-card {
-            background: var(--cream);
-            padding: 2.5rem;
-            border-radius: 25px;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-        
-        .contact-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(212,175,55,0.15);
-        }
-        
-        .contact-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.8rem;
-            color: var(--navy);
-            transition: all 0.3s ease;
-        }
-        
-        .contact-card:hover .contact-icon {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
-        }
-        
-        .contact-card h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-card p {
-            color: var(--text-light);
-        }
-        
-        .contact-links { 
-            display: flex; 
-            justify-content: center; 
-            gap: 1.5rem; 
-            margin-top: 3rem; 
-            flex-wrap: wrap; 
-        }
-        
-        .contact-link { 
-            display: flex; 
-            align-items: center; 
-            gap: 0.8rem; 
-            padding: 1.2rem 2rem;
-            background: var(--cream); 
-            border-radius: 50px; 
-            color: var(--text); 
-            text-decoration: none; 
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-            font-weight: 600;
-        }
-        
-        .contact-link:hover { 
-            background: var(--gold); 
-            color: var(--navy);
-            transform: translateY(-5px) scale(1.05);
-            border-color: var(--gold);
-            box-shadow: 0 15px 30px rgba(212,175,55,0.3);
-        }
-        
-        .contact-link i {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .contact-link:hover i {
-            transform: scale(1.3) rotate(15deg);
-        }
-        
-        footer { 
-            background: var(--navy); 
-            color: var(--white); 
-            text-align: center; 
-            padding: 3rem 5%; 
-            position: relative;
-        }
-        
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(212,175,55,0.3);
-        }
-        
-        .social-link:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateY(-5px) scale(1.1);
-            border-color: var(--gold);
-        }
-        
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 3000;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-        }
-        
-        .lightbox.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 15px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            animation: fadeInScale 0.4s ease;
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 50px;
-            color: var(--white);
-            font-size: 3rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-        
-        .lightbox-close:hover {
-            color: var(--gold);
-            transform: rotate(90deg) scale(1.1);
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .scroll-top {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 60px;
-            height: 60px;
-            background: var(--gold);
-            color: var(--navy);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
-            font-size: 1.5rem;
-            border: none;
-        }
-        
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-            animation: bounce-subtle 2s infinite;
-        }
-        
-        .scroll-top:hover {
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 20px 40px rgba(212,175,55,0.5);
-        }
-        
-        @media (max-width: 1200px) {
-            .timeline-wrapper {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-logos {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 968px) {
-            .hero-container { 
-                grid-template-columns: 1fr; 
-                text-align: center; 
-            }
-            
-            .hero-content h1 { 
-                font-size: 2.5rem; 
-            }
-            
-            .hero-stats {
-                justify-content: center;
-            }
-            
-            .floating-badge {
-                display: none;
-            }
-            
-            .about-grid { 
-                grid-template-columns: 1fr; 
-            }
-            
-            .timeline-item { 
-                grid-template-columns: 1fr; 
-            }
-            
-            .timeline-item::before { 
-                display: none; 
-            }
-            
-            .timeline-content { 
-                margin-left: 0; 
-            }
-            
-            .timeline-content::before { 
-                display: none; 
-            }
-            
-            .nav-links { 
-                display: none; 
-            }
-            
-            .gallery-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .framework-highlight {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .lang-switcher {
-                top: 80px;
-                right: 10px;
-                padding: 8px;
-            }
-            
-            .lang-btn {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-            
-            .ml-metrics {
-                grid-template-columns: 1fr;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .certs-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cert-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .cert-logo {
-                margin: 0 auto;
-            }
-        }
-        
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            transform: translate(-50%, -50%);
-        }
-        
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            background: rgba(212,175,55,0.1);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-        
-        .toast {
-            position: fixed;
-            bottom: 120px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--navy);
-            color: var(--gold);
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            z-index: 9999;
-            opacity: 0;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            border: 1px solid rgba(212,175,55,0.3);
-        }
-        
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursorFollower"></div>
-
-    <div class="loading" id="loading">
+    <div id="loading" class="loading">
         <div class="loading-logo">LR.</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
-        </div>
+        <div class="loading-bar"><div class="loading-progress"></div></div>
     </div>
 
     <div class="lang-switcher">
@@ -1908,837 +33,399 @@
         </ul>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-particles" id="particles"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Luciano Rodrigues de Souza</h1>
-                <p class="subtitle">AI-Driven Procurement & Operations Leader | Strategic Transformation</p>
-                <p class="hero-description">I believe exceptional procurement isn't about perfecting processes—it's about empowering people with data-driven insights. Over 15 years, I've led teams through complex transformations across Europe, LATAM, and Asia, delivering €1M+ in savings through AI-powered strategies while building cross-functional coalitions that outlast any single project.</p>
-                
-                <div class="hero-stats">
-                    <div class="stat-box" onclick="showStatDetail('savings')">
-                        <i class="fas fa-piggy-bank stat-icon"></i>
-                        <span class="stat-number">€1M+</span>
-                        <span class="stat-label">Cost Savings</span>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-particles" id="particles"></div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Luciano Rodrigues de Souza</h1>
+                    <p class="subtitle">AI-Driven Procurement & Operations Leader | Strategic Transformation</p>
+                    <p class="hero-description">I believe exceptional procurement isn't about perfecting processes—it's about empowering people with data-driven insights. Over 15 years, I've led teams through complex transformations across Europe, LATAM, and Asia, delivering €1M+ in savings through AI-powered strategies while building cross-functional coalitions that outlast any single project.</p>
+                    <div class="hero-stats">
+                        <div class="stat-box" onclick="showToast('€1M+ saved in 6 months through AI-driven procurement optimization')">
+                            <i class="fas fa-piggy-bank stat-icon"></i>
+                            <span class="stat-number">€1M+</span>
+                            <span class="stat-label">Cost Savings</span>
+                        </div>
+                        <div class="stat-box" onclick="showToast('15+ years leading procurement transformations across 4 continents')">
+                            <i class="fas fa-briefcase stat-icon"></i>
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                        <div class="stat-box" onclick="showToast('$10M+ in product development projects delivered—from concept to market')">
+                            <i class="fas fa-project-diagram stat-icon"></i>
+                            <span class="stat-number">$10M+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-box" onclick="showToast('20+ countries served with deep expertise in EU, LATAM, and Asian markets')">
+                            <i class="fas fa-globe stat-icon"></i>
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
                     </div>
-                    <div class="stat-box" onclick="showStatDetail('experience')">
-                        <i class="fas fa-briefcase stat-icon"></i>
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Years</span>
-                    </div>
-                    <div class="stat-box" onclick="showStatDetail('projects')">
-                        <i class="fas fa-project-diagram stat-icon"></i>
-                        <span class="stat-number">$10M+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-box" onclick="showStatDetail('countries')">
-                        <i class="fas fa-globe stat-icon"></i>
-                        <span class="stat-number">20+</span>
-                        <span class="stat-label">Countries</span>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Let's Connect</a>
+                        <a href="#timeline" class="btn btn-secondary"><i class="fas fa-road"></i> View Journey</a>
                     </div>
                 </div>
-                
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Let's Connect
-                    </a>
-                    <a href="#timeline" class="btn btn-secondary">
-                        <i class="fas fa-road"></i> View Journey
-                    </a>
-                </div>
-            </div>
-            
-            <div class="hero-image">
-                <img src="./Photo_Luciano_início.jpg" alt="Luciano Rodrigues">
-            </div>
-        </div>
-        
-        <div class="floating-badge badge-1">
-            <i class="fas fa-award"></i>
-            <span>Top Performer 2025</span>
-        </div>
-        <div class="floating-badge badge-2">
-            <i class="fas fa-brain"></i>
-            <span>AI Specialist</span>
-        </div>
-        <div class="floating-badge badge-3">
-            <i class="fas fa-handshake"></i>
-            <span>Trusted Leader</span>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="section-header animate-on-scroll">
-            <h2>Leadership Philosophy</h2>
-            <p>From LATAM operations to global procurement strategy—building bridges between data, people, and results</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-image animate-on-scroll delay-1">
-                <img src="./Foto_About_Me.jpg" alt="Luciano in Hong Kong">
-            </div>
-            <div class="about-content animate-on-scroll delay-2">
-                <h3>Transformation Through Collaboration</h3>
-                <p>My career began in Rio de Janeiro managing import operations, where I learned that procurement success depends on relationships built on trust, not just transactions. This philosophy carried me through LATAM expansion for Ford Lighting, where I coordinated distributors across 12 countries, and eventually to leading premium product development for world-renowned brands like Pininfarina, Blaupunkt, and Black+Decker across Europe and Asia.</p>
-                
-                <div class="leadership-philosophy">
-                    "I don't just optimize supply chains—I build cross-functional coalitions that transform how organizations think about procurement. My approach: trust-first, data-informed, results-focused."
-                </div>
-                
-                <p>Today, I combine deep procurement expertise with cutting-edge AI and data science to deliver transformational results. At Details Hospitality, I didn't just achieve €1M+ in cost savings within 6 months—I rebuilt the entire procurement framework from the ground up, creating systems that empower teams to make better decisions faster. I developed proprietary BidMap templates, enhanced RFP/RFQ processes, aligned technical specifications with operational needs, and implemented exhaustive project follow-up protocols that ensure complete transparency across all stakeholders.</p>
-                
-                <p>My work extends beyond procurement—I'm currently leading a transversal initiative with Marketing, Technical, and Operations teams that's being hailed as a major success, demonstrating that procurement can be a strategic partner rather than just a cost center.</p>
-                
-                <div class="languages-grid">
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> Portuguese (Native)</div>
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> English (Native)</div>
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> Spanish (Professional)</div>
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> French (Professional)</div>
+                <div class="hero-image">
+                    <img src="Photo_Luciano_início.jpg" alt="Luciano Rodrigues">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="timeline" id="timeline">
-        <div class="section-header animate-on-scroll">
-            <h2>Professional Journey</h2>
-            <p>15+ years of progressive leadership—from import analyst to AI-driven procurement strategist</p>
-        </div>
-        <div class="timeline-container">
-            <div class="timeline-wrapper">
-                <div class="timeline-logos">
-                    <div class="company-logo active" data-company="details">
-                        <img src="./Details.png" alt="Details Hospitality">
-                    </div>
-                    <div class="company-logo" data-company="skn-global">
-                        <img src="./SKN_Global.png" alt="SKN Global">
-                    </div>
-                    <div class="company-logo" data-company="skn-europe">
-                        <img src="./SKN_Global.png" alt="SKN Global Europe">
-                    </div>
-                    <div class="company-logo" data-company="skn-brasil">
-                        <img src="./SKN_Brasil.png" alt="SKN do Brasil">
+        <section class="about" id="about">
+            <div class="section-header animate-on-scroll">
+                <h2>Leadership Philosophy</h2>
+                <p>From LATAM operations to global procurement strategy—building bridges between data, people, and results</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image animate-on-scroll delay-1">
+                    <img src="Foto_About_Me.jpg" alt="Luciano in Hong Kong">
+                </div>
+                <div class="about-content animate-on-scroll delay-2">
+                    <h3>Transformation Through Collaboration</h3>
+                    <p>My career began in Rio de Janeiro managing import operations, where I learned that procurement success depends on relationships built on trust, not just transactions. This philosophy carried me through LATAM expansion for Ford Lighting, where I coordinated distributors across 12 countries, and eventually to leading premium product development for world-renowned brands like Pininfarina, Blaupunkt, and Black+Decker across Europe and Asia.</p>
+                    <div class="leadership-philosophy">"I don't just optimize supply chains—I build cross-functional coalitions that transform how organizations think about procurement. My approach: trust-first, data-informed, results-focused."</div>
+                    <p>Today, I combine deep procurement expertise with cutting-edge AI and data science to deliver transformational results. At Details Hospitality, I didn't just achieve €1M+ in cost savings within 6 months—I rebuilt the entire procurement framework from the ground up, creating systems that empower teams to make better decisions faster.</p>
+                    <div class="languages-grid">
+                        <div class="lang-item"><i class="fas fa-check-circle"></i> Portuguese (Native)</div>
+                        <div class="lang-item"><i class="fas fa-check-circle"></i> English (Native)</div>
+                        <div class="lang-item"><i class="fas fa-check-circle"></i> Spanish (Professional)</div>
+                        <div class="lang-item"><i class="fas fa-check-circle"></i> French (Professional)</div>
                     </div>
                 </div>
-                
-                <div class="timeline-items">
-                    <div class="timeline-item animate-on-scroll delay-1" data-company="details">
-                        <div class="timeline-date">
-                            2025-Present
-                            <span>Senior Level</span>
+            </div>
+        </section>
+
+        <section class="timeline" id="timeline">
+            <div class="section-header animate-on-scroll">
+                <h2>Professional Journey</h2>
+                <p>15+ years of progressive leadership—from import analyst to AI-driven procurement strategist</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-item animate-on-scroll delay-1">
+                    <div class="timeline-date">2025-Present<span>Senior Level</span></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Senior Buyer -- Strategic Procurement & Operations Transformation</h3>
+                        <div class="timeline-company"><i class="fas fa-building"></i> Details Hospitality, Portugal</div>
+                        <p class="timeline-description">Leading comprehensive procurement transformation across hotel and leisure assets. Rebuilt the procurement framework from zero to ensure full audit compliance and operational excellence.</p>
+                        <div class="achievement-box">
+                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
+                            <ul>
+                                <li>Delivered <strong>€1M+ in cost savings (35% reduction)</strong> within 6 months through AI-powered contract analysis</li>
+                                <li>Created proprietary <strong>BidMap framework</strong> from scratch</li>
+                                <li>Redesigned <strong>RFP/RFQ processes</strong> with exhaustive technical alignment</li>
+                                <li>Implemented <strong>comprehensive follow-up protocols</strong> with ASANA integration</li>
+                                <li>Leading <strong>transversal collaboration initiative</strong> with Marketing, Technical, and Operations teams</li>
+                            </ul>
                         </div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Senior Buyer – Strategic Procurement & Operations Transformation</h3>
-                            <div class="timeline-company"><i class="fas fa-building"></i> Details Hospitality, Portugal</div>
-                            <p class="timeline-description">Leading comprehensive procurement transformation across hotel and leisure assets. Rather than inheriting existing processes, I rebuilt the procurement framework from zero to ensure full audit compliance and operational excellence. Full ownership of critical Procurement & Operations processes, bridging strategy, execution, and compliance across technical maintenance, hospitality operations, and marketing services.</p>
-                            <div class="achievement-box">
-                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                                <ul>
-                                    <li>Delivered <strong>€1M+ in cost savings (35% reduction)</strong> within 6 months through AI-powered contract analysis and strategic sourcing</li>
-                                    <li>Created proprietary <strong>BidMap framework</strong> from scratch, establishing standardized evaluation criteria that eliminated subjective decision-making</li>
-                                    <li>Redesigned <strong>RFP/RFQ processes</strong> with exhaustive technical alignment, ensuring cadernos de encargos perfectly match operational requirements</li>
-                                    <li>Implemented <strong>comprehensive follow-up protocols</strong> with detailed project tracking visible to all stakeholders via ASANA integration</li>
-                                    <li>Negotiated <strong>bulletproof contractual clauses</strong> including SLA definitions, exit clauses without penalties for non-conformities, and balanced protection for both parties</li>
-                                    <li>Leading <strong>transversal collaboration initiative</strong> with Marketing, Technical, and Operations teams—recognized as a major organizational success</li>
-                                    <li>Established structured frameworks for critical services: SCIE compliance, Legionella control, Elevator Maintenance with integrated technical and financial KPIs</li>
-                                </ul>
-                            </div>
-                            <div class="skills-tags">
-                                <span class="skill-tag">AI Strategy</span>
-                                <span class="skill-tag">Process Architecture</span>
-                                <span class="skill-tag">Contract Negotiation</span>
-                                <span class="skill-tag">Cross-Functional Leadership</span>
-                                <span class="skill-tag">Compliance Frameworks</span>
-                            </div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">AI Strategy</span>
+                            <span class="skill-tag">Process Architecture</span>
+                            <span class="skill-tag">Contract Negotiation</span>
+                            <span class="skill-tag">Cross-Functional Leadership</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="timeline-item animate-on-scroll delay-2" data-company="skn-global">
-                        <div class="timeline-date">
-                            2022-2025
-                            <span>Director Level</span>
+                <div class="timeline-item animate-on-scroll delay-2">
+                    <div class="timeline-date">2022-2025<span>Director Level</span></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Director of International Expansion & Product Development</h3>
+                        <div class="timeline-company"><i class="fas fa-globe-europe"></i> SKN Global | EU & Asia</div>
+                        <p class="timeline-description">Led global expansion and premium product development across European and Asian markets. Managed full product lifecycle from concept to market launch for luxury brands.</p>
+                        <div class="achievement-box">
+                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
+                            <ul>
+                                <li>Managed <strong>$10M+ project portfolio</strong> coordinating engineering teams in Italy and China</li>
+                                <li>Established <strong>new distribution partnerships</strong> in 5+ European countries</li>
+                                <li>Led complete creation of <strong>licensed product portfolios</strong> for premium European brands</li>
+                                <li>Conducted <strong>extensive factory audits</strong> across Asia</li>
+                            </ul>
                         </div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Director of International Expansion & Product Development</h3>
-                            <div class="timeline-company"><i class="fas fa-globe-europe"></i> SKN Global | EU & Asia</div>
-                            <p class="timeline-description">Led global expansion and premium product development across European and Asian markets. Managed full product lifecycle from concept to market launch for luxury brands, coordinating cross-functional teams across multiple countries and cultures. Established new distribution networks and adapted products to diverse regulatory environments.</p>
-                            <div class="achievement-box">
-                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                                <ul>
-                                    <li>Managed <strong>$10M+ project portfolio</strong> coordinating engineering teams in Italy and China, delivering Pininfarina Essenza outdoor cooking collection</li>
-                                    <li>Established <strong>new distribution partnerships</strong> in 5+ European countries, creating market entry strategies adapted to local regulations</li>
-                                    <li>Led complete creation of <strong>licensed product portfolios</strong> for premium European brands including technical adaptations for EU compliance</li>
-                                    <li>Conducted <strong>extensive factory audits</strong> across Asia: production line inspections, pre-shipment quality control, storage facility assessments</li>
-                                    <li>Developed <strong>gift box strategies</strong> with country-specific mandatory information, instruction manuals, and power cable adaptations</li>
-                                    <li>Negotiated <strong>strategic partnerships</strong> with Chinese manufacturers through relationship-building dinners and face-to-face negotiations</li>
-                                </ul>
-                            </div>
-                            <div class="skills-tags">
-                                <span class="skill-tag">Global Expansion</span>
-                                <span class="skill-tag">Luxury Brand Management</span>
-                                <span class="skill-tag">Regulatory Compliance</span>
-                                <span class="skill-tag">Supplier Audits</span>
-                                <span class="skill-tag">R&D Leadership</span>
-                            </div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Global Expansion</span>
+                            <span class="skill-tag">Luxury Brand Management</span>
+                            <span class="skill-tag">Supplier Audits</span>
+                            <span class="skill-tag">R&D Leadership</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="timeline-item animate-on-scroll delay-3" data-company="skn-europe">
-                        <div class="timeline-date">
-                            2018-2022
-                            <span>Manager Level</span>
+                <div class="timeline-item animate-on-scroll delay-3">
+                    <div class="timeline-date">2018-2022<span>Manager Level</span></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">International Product & Licensing Manager</h3>
+                        <div class="timeline-company"><i class="fas fa-industry"></i> SKN Global | Europe</div>
+                        <p class="timeline-description">Launched licensed portfolios and built automated analytics systems for European expansion. Led R&D initiatives for home appliances, lighting solutions, and consumer electronics.</p>
+                        <div class="achievement-box">
+                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
+                            <ul>
+                                <li>Led complete creation and launch of <strong>Blaupunkt Tools</strong> for European market</li>
+                                <li>Built <strong>KPI dashboards using Streamlit, Pandas, Plotly, SQL</strong></li>
+                                <li>Established <strong>quality control frameworks</strong> across 15+ manufacturing partners in Asia</li>
+                                <li>Created <strong>automated reporting systems</strong> that reduced manual data processing time by 70%</li>
+                            </ul>
                         </div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">International Product & Licensing Manager</h3>
-                            <div class="timeline-company"><i class="fas fa-industry"></i> SKN Global | Europe</div>
-                            <p class="timeline-description">Launched licensed portfolios and built automated analytics systems for European expansion. Led R&D initiatives for home appliances, lighting solutions, and consumer electronics. Established quality control frameworks and supplier audit processes that became company standards.</p>
-                            <div class="achievement-box">
-                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                                <ul>
-                                    <li>Led complete creation and launch of <strong>Blaupunkt Tools</strong> for European market—from concept to mass production</li>
-                                    <li>Built <strong>KPI dashboards using Streamlit, Pandas, Plotly, SQL</strong> that became standard analytics tools across departments</li>
-                                    <li>Established <strong>quality control frameworks</strong> and supplier audit processes across 15+ manufacturing partners in Asia</li>
-                                    <li>Managed <strong>product localization</strong> including regulatory adaptations, packaging compliance, and technical documentation translation</li>
-                                    <li>Created <strong>automated reporting systems</strong> that reduced manual data processing time by 70%</li>
-                                </ul>
-                            </div>
-                            <div class="skills-tags">
-                                <span class="skill-tag">Data Analytics</span>
-                                <span class="skill-tag">Quality Systems</span>
-                                <span class="skill-tag">Supplier Management</span>
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">Licensing</span>
-                            </div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Data Analytics</span>
+                            <span class="skill-tag">Quality Systems</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Licensing</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="timeline-item animate-on-scroll delay-4" data-company="skn-brasil">
-                        <div class="timeline-date">
-                            2011-2018
-                            <span>Growth Phase</span>
+                <div class="timeline-item animate-on-scroll delay-4">
+                    <div class="timeline-date">2011-2018<span>Growth Phase</span></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Product & Import Manager → LATAM Area Manager</h3>
+                        <div class="timeline-company"><i class="fas fa-map-marker-alt"></i> SKN do Brasil | Rio de Janeiro</div>
+                        <p class="timeline-description">Progressed from Import Analyst to Area Manager, leading Ford Lighting expansion across Latin America. Managed R&D for lighting solutions, home appliances, beauty care, and audio/video products.</p>
+                        <div class="achievement-box">
+                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
+                            <ul>
+                                <li>Built <strong>distributor network across 12 Latin American countries</strong></li>
+                                <li>Represented Ford Lighting at <strong>Hong Kong International Lighting Fair, Canton Fair</strong></li>
+                                <li>Managed <strong>end-to-end import operations</strong> including customs clearance</li>
+                                <li>Conducted <strong>20+ international trade shows</strong> as both exhibitor and buyer</li>
+                            </ul>
                         </div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Product & Import Manager → LATAM Area Manager</h3>
-                            <div class="timeline-company"><i class="fas fa-map-marker-alt"></i> SKN do Brasil | Rio de Janeiro</div>
-                            <p class="timeline-description">Progressed from Import Analyst to Area Manager, leading Ford Lighting expansion across Latin America. Managed R&D for lighting solutions, home appliances, beauty care, and audio/video products. Built distributor network from scratch and represented the brand at major international trade shows.</p>
-                            <div class="achievement-box">
-                                <strong><i class="fas fa-trophy"></i> Key Achievements & Leadership Impact:</strong>
-                                <ul>
-                                    <li>Built <strong>distributor network across 12 Latin American countries</strong>, establishing Ford Lighting presence in new markets</li>
-                                    <li>Represented Ford Lighting at <strong>Hong Kong International Lighting Fair, Canton Fair</strong>, and regional fairs in Brazil, Guatemala, and Panama</li>
-                                    <li>Managed <strong>end-to-end import operations</strong> including customs clearance, logistics coordination, and supplier relationship management</li>
-                                    <li>Developed <strong>localized product lines</strong> adapted to LATAM voltage standards, safety regulations, and consumer preferences</li>
-                                    <li>Conducted <strong>20+ international trade shows</strong> as both exhibitor and buyer, establishing key industry relationships</li>
-                                </ul>
-                            </div>
-                            <div class="skills-tags">
-                                <span class="skill-tag">LATAM Expansion</span>
-                                <span class="skill-tag">Trade Shows</span>
-                                <span class="skill-tag">Import/Export</span>
-                                <span class="skill-tag">Distribution</span>
-                                <span class="skill-tag">R&D</span>
-                            </div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">LATAM Expansion</span>
+                            <span class="skill-tag">Trade Shows</span>
+                            <span class="skill-tag">Import/Export</span>
+                            <span class="skill-tag">Distribution</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="projects" id="projects">
-        <div class="section-header animate-on-scroll">
-            <h2>Featured Projects</h2>
-            <p>Product development excellence and AI innovation portfolio</p>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card animate-on-scroll delay-1">
-                <div class="project-image">
-                    <img src="./Blaupunkt_Tools.png" alt="Blaupunkt Tools" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tools\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>Blaupunkt Tools Portfolio</h3>
-                    <p>Complete creation and launch of power tools and garden equipment line for European market. Full R&D cycle from concept to mass production, including German engineering standards compliance and CE certification.</p>
-                    <div class="project-highlights">
-                        <strong>Scope:</strong> DIY tools, power tools, garden equipment | <strong>Markets:</strong> EU-wide distribution | <strong>Compliance:</strong> CE, German standards
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Product Development</span>
-                        <span class="project-tag">Licensing</span>
-                        <span class="project-tag">EU Compliance</span>
-                    </div>
-                </div>
+        <section class="projects" id="projects">
+            <div class="section-header animate-on-scroll">
+                <h2>Featured Projects</h2>
+                <p>Product development excellence and AI innovation portfolio</p>
             </div>
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll delay-1">
+                    <div class="project-image">
+                        <img src="Blaupunkt_Tools.png" alt="Blaupunkt Tools" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tools\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
+                    </div>
+                    <div class="project-content">
+                        <h3>Blaupunkt Tools Portfolio</h3>
+                        <p>Complete creation and launch of power tools and garden equipment line for European market. Full R&D cycle from concept to mass production.</p>
+                        <div class="project-highlights"><strong>Scope:</strong> DIY tools, power tools, garden equipment | <strong>Markets:</strong> EU-wide | <strong>Compliance:</strong> CE, German standards</div>
+                        <div class="project-tags"><span class="project-tag">Product Development</span><span class="project-tag">Licensing</span><span class="project-tag">EU Compliance</span></div>
+                    </div>
+                </div>
 
-            <div class="project-card animate-on-scroll delay-2">
-                <div class="project-image">
-                    <img src="./Blaupunkt_Power_Tools.png" alt="Blaupunkt Power Tools" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-bolt\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>Blaupunkt Power Tools Line</h3>
-                    <p>Professional-grade power tools including drills, saws, and sanders. Managed complete technical specifications, safety certifications, and production line audits across Asian manufacturing partners.</p>
-                    <div class="project-highlights">
-                        <strong>Innovation:</strong> Professional grade | <strong>Audits:</strong> Production line inspections | <strong>Standards:</strong> German engineering
+                <div class="project-card animate-on-scroll delay-2">
+                    <div class="project-image">
+                        <img src="Pininfarina_BBQ.jpg" alt="Pininfarina Essenza" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-fire-alt\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
                     </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Power Tools</span>
-                        <span class="project-tag">Factory Audits</span>
-                        <span class="project-tag">Quality Control</span>
+                    <div class="project-content">
+                        <h3>Pininfarina Essenza Collection</h3>
+                        <p>Premium outdoor cooking appliances collection developed for EU and Asia markets. Handcrafted in Italy with automotive design excellence.</p>
+                        <div class="project-highlights"><strong>Design:</strong> Italian automotive excellence | <strong>Coordination:</strong> Italy-China teams | <strong>Value:</strong> $10M+ portfolio</div>
+                        <div class="project-tags"><span class="project-tag">Luxury</span><span class="project-tag">Italian Design</span><span class="project-tag">Global Coordination</span></div>
                     </div>
                 </div>
-            </div>
 
-            <div class="project-card animate-on-scroll delay-3">
-                <div class="project-image">
-                    <img src="./Blaupunkt_Garden_Tools.png" alt="Blaupunkt Garden Tools" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-leaf\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>Blaupunkt Garden Equipment</h3>
-                    <p>Outdoor power equipment line including chainsaws, trimmers, and garden tools. Full technical documentation, safety compliance, and pre-shipment inspection protocols.</p>
-                    <div class="project-highlights">
-                        <strong>Products:</strong> Chainsaws, trimmers, outdoor equipment | <strong>Focus:</strong> Safety & compliance | <strong>Process:</strong> End-to-end R&D
+                <div class="project-card animate-on-scroll delay-3">
+                    <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+                        <div style="text-align: center; color: var(--gold);">
+                            <i class="fas fa-brain" style="font-size: 4rem; margin-bottom: 1rem; display: block;"></i>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Neural Network</div>
+                        </div>
                     </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Garden</span>
-                        <span class="project-tag">Outdoor</span>
-                        <span class="project-tag">CE Certified</span>
+                    <div class="project-content">
+                        <h3>Sales Prediction ML Engine</h3>
+                        <p>Machine learning project using Linear Regression, Random Forest, and XGBoost to predict future sales with 95% accuracy.</p>
+                        <div class="project-highlights"><strong>Algorithms:</strong> Linear Regression, Random Forest, XGBoost | <strong>Accuracy:</strong> 95% | <strong>Stack:</strong> Python, scikit-learn</div>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Machine Learning</span><span class="project-tag">Predictive Analytics</span></div>
                     </div>
                 </div>
-            </div>
 
-            <div class="project-card animate-on-scroll delay-1">
-                <div class="project-image">
-                    <img src="./S&J_Cast_Irons_2.jpg" alt="Spear & Jackson Cast Irons" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-fire\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>Spear & Jackson Cast Irons</h3>
-                    <p>Premium enameled cast iron cookware line for the British brand Spear & Jackson (est. 1760). Heritage quality meets modern design, including packaging compliance and instruction manuals for UK market.</p>
-                    <div class="project-highlights">
-                        <strong>Heritage:</strong> British brand since 1760 | <strong>Products:</strong> Enameled cast iron cookware | <strong>Compliance:</strong> UK standards, packaging regs
+                <div class="project-card animate-on-scroll delay-1">
+                    <div class="project-image">
+                        <img src="NKS_Estrelas.png" alt="NKS Estrelas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-star\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
                     </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Cookware</span>
-                        <span class="project-tag">UK Brand</span>
-                        <span class="project-tag">Premium</span>
+                    <div class="project-content">
+                        <h3>NKS Estrelas Product Line</h3>
+                        <p>Premium consumer electronics and home appliances developed for Brazilian market under NKS brand.</p>
+                        <div class="project-highlights"><strong>Market:</strong> Brazil | <strong>Category:</strong> Consumer electronics | <strong>Scope:</strong> End-to-end product development</div>
+                        <div class="project-tags"><span class="project-tag">Electronics</span><span class="project-tag">Brazilian Market</span><span class="project-tag">Product Launch</span></div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card animate-on-scroll delay-2">
-                <div class="project-image">
-                    <img src="./Pininfarina_BBQ.jpg" alt="Pininfarina Essenza" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-fire-alt\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>Pininfarina Essenza Collection</h3>
-                    <p>Premium outdoor cooking appliances collection developed for EU and Asia markets. Handcrafted in Italy with automotive design excellence. Coordinated engineering teams across Italy and China for $10M+ portfolio.</p>
-                    <div class="project-highlights">
-                        <strong>Design:</strong> Italian automotive excellence | <strong>Coordination:</strong> Italy-China engineering teams | <strong>Value:</strong> $10M+ portfolio
+        <section class="trade-shows" id="trade-shows">
+            <div class="section-header animate-on-scroll">
+                <h2>Trade Shows & Global Exhibitions</h2>
+                <p>20+ international fairs as exhibitor and strategic buyer across China, Hong Kong, and worldwide markets</p>
+            </div>
+            <div class="gallery-tabs animate-on-scroll delay-1">
+                <button class="gallery-tab active" onclick="switchGallery('ford')">Ford Lighting</button>
+                <button class="gallery-tab" onclick="switchGallery('blaupunkt')">Blaupunkt</button>
+            </div>
+            <div id="gallery-ford" class="gallery-content active">
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Ford_lighting_solutions_HK_Intl.png" alt="Ford Lighting HK">
+                        <div class="gallery-overlay"><h4>Hong Kong International Lighting Fair</h4><p>Strategic booth design working with Marketing & Merchandising</p></div>
                     </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Luxury</span>
-                        <span class="project-tag">Italian Design</span>
-                        <span class="project-tag">Global Coordination</span>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Ford_lighting_solutions_HK_Intl_1.png" alt="Ford Lighting">
+                        <div class="gallery-overlay"><h4>Global Brand Presence</h4><p>Coordinated exhibition strategy across continents</p></div>
                     </div>
                 </div>
             </div>
+            <div id="gallery-blaupunkt" class="gallery-content">
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Blaupunkt_Illumiation_booth_HK_Fair.png" alt="Blaupunkt Booth">
+                        <div class="gallery-overlay"><h4>Blaupunkt Illumination Booth</h4><p>Hong Kong International Lighting Fair 2016</p></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="Blaupunkt_Illumiation_booth_HK_Fair_1.png" alt="Blaupunkt">
+                        <div class="gallery-overlay"><h4>Premium Brand Experience</h4><p>Collaborated with Marketing to create immersive experiences</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="project-card animate-on-scroll delay-3">
-                <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
-                    <div style="text-align: center; color: var(--gold);">
-                        <i class="fas fa-brain" style="font-size: 4rem; margin-bottom: 1rem; display: block;"></i>
-                        <div style="font-size: 0.9rem; opacity: 0.8;">Neural Network</div>
-                        <div style="width: 120px; height: 2px; background: var(--gold); margin: 10px auto;"></div>
-                        <div style="font-size: 0.8rem; opacity: 0.6;">Predictive Analytics</div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Sales Prediction ML Engine</h3>
-                    <p>Machine learning project using Linear Regression, Random Forest, and XGBoost to predict future sales with 95% accuracy. Implemented data cleaning pipelines to eliminate noise and ensure reliable outputs for strategic decision-making.</p>
-                    <div class="project-highlights">
-                        <strong>Algorithms:</strong> Linear Regression, Random Forest, XGBoost | <strong>Accuracy:</strong> 95% prediction rate | <strong>Stack:</strong> Python, scikit-learn
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Machine Learning</span>
-                        <span class="project-tag">Predictive Analytics</span>
-                    </div>
-                </div>
+        <section class="certs" id="certs">
+            <div class="section-header animate-on-scroll">
+                <h2>Certifications & Education</h2>
+                <p>Continuous learning in AI, Data Science, and Strategic Procurement from world-class institutions</p>
             </div>
+            <div class="certs-grid">
+                <div class="cert-card animate-on-scroll delay-1">
+                    <div class="cert-header">
+                        <div class="cert-logo"><img src="Maryland_University.png" alt="UMD"></div>
+                        <div class="cert-title-group">
+                            <h4>University of Maryland</h4>
+                            <div class="cert-subtitle">Robert H. Smith School of Business</div>
+                            <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> February 2026</span>
+                        </div>
+                    </div>
+                    <p><strong>AI and Career Empowerment</strong></p>
+                    <p>Comprehensive program covering AI applications in business strategy, automation of procurement workflows, and leveraging machine learning for decision-making.</p>
+                    <div class="cert-impact"><strong>Impact:</strong> Applied AI automation concepts to reduce procurement cycle times by 40% at Details Hospitality.</div>
+                </div>
 
-            <div class="project-card animate-on-scroll delay-1">
-                <div class="project-image" style="background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5a 100%);">
-                    <div style="text-align: center; color: var(--gold);">
-                        <i class="fas fa-network-wired" style="font-size: 4rem; margin-bottom: 1rem; display: block;"></i>
-                        <div style="font-size: 0.9rem; opacity: 0.8;">Deep Learning</div>
-                        <div style="width: 120px; height: 2px; background: var(--gold); margin: 10px auto;"></div>
-                        <div style="font-size: 0.8rem; opacity: 0.6;">Optimization</div>
+                <div class="cert-card animate-on-scroll delay-2">
+                    <div class="cert-header">
+                        <div class="cert-logo"><img src="IBM.png" alt="IBM"></div>
+                        <div class="cert-title-group">
+                            <h4>IBM SkillsBuild</h4>
+                            <div class="cert-subtitle">Professional Certification</div>
+                            <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2025</span>
+                        </div>
                     </div>
+                    <p><strong>Foundations in Generative AI & LLMs</strong></p>
+                    <p>Deep dive into generative AI technologies, large language models, prompt engineering, and ethical AI deployment.</p>
+                    <div class="cert-impact"><strong>Impact:</strong> Utilizing LLMs for automated contract analysis and RFP document generation, saving 15+ hours per week.</div>
                 </div>
-                <div class="project-content">
-                    <h3>Inventory Optimization System</h3>
-                    <p>ML-powered inventory management system predicting optimal stock levels for future months. Reduced carrying costs by 30% and stockouts by 85% through intelligent demand forecasting and automated reorder point calculations.</p>
-                    <div class="project-highlights">
-                        <strong>Impact:</strong> 30% cost reduction, 85% fewer stockouts | <strong>Method:</strong> Demand forecasting | <strong>Result:</strong> Automated reorder points
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Optimization</span>
-                        <span class="project-tag">Inventory</span>
-                        <span class="project-tag">Cost Reduction</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="project-card animate-on-scroll delay-2">
-                <div class="project-image">
-                    <img src="./BP_Powertools.jpg" alt="Blaupunkt Powertools" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tools\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>Blaupunkt Powertools Range</h3>
-                    <p>Complete powertools portfolio development including sanders, drills, and multi-tools. Full technical documentation, certification management, and supplier quality audits across Asian manufacturing facilities.</p>
-                    <div class="project-highlights">
-                        <strong>Portfolio:</strong> Complete tool range | <strong>Process:</strong> Certification & audits | <strong>Focus:</strong> Quality assurance
+                <div class="cert-card animate-on-scroll delay-3">
+                    <div class="cert-header">
+                        <div class="cert-logo"><img src="MIT.png" alt="MIT"></div>
+                        <div class="cert-title-group">
+                            <h4>MIT Sloan School of Management</h4>
+                            <div class="cert-subtitle">Executive Education</div>
+                            <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2025</span>
+                        </div>
                     </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Portfolio</span>
-                        <span class="project-tag">Certification</span>
-                        <span class="project-tag">Quality Audits</span>
-                    </div>
+                    <p><strong>Supply Chain Analytics for Procurement</strong></p>
+                    <p>Advanced analytics methodologies for supply chain optimization, demand forecasting, inventory management, and strategic sourcing decisions.</p>
+                    <div class="cert-impact"><strong>Impact:</strong> Implemented demand forecasting models that reduced inventory carrying costs by 30%.</div>
                 </div>
-            </div>
 
-            <div class="project-card animate-on-scroll delay-3">
-                <div class="project-image">
-                    <img src="./NKS_Estrelas.png" alt="NKS Estrelas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-star\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>NKS Estrelas Product Line</h3>
-                    <p>Premium consumer electronics and home appliances developed for Brazilian market under NKS brand. Complete product lifecycle management from market research to mass production and distribution.</p>
-                    <div class="project-highlights">
-                        <strong>Market:</strong> Brazil | <strong>Category:</strong> Consumer electronics | <strong>Scope:</strong> End-to-end product development
+                <div class="cert-card animate-on-scroll delay-1">
+                    <div class="cert-header">
+                        <div class="cert-logo"><img src="Harvard_University.png" alt="Harvard"></div>
+                        <div class="cert-title-group">
+                            <h4>Harvard University</h4>
+                            <div class="cert-subtitle">Professional Development</div>
+                            <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2023</span>
+                        </div>
                     </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Electronics</span>
-                        <span class="project-tag">Brazilian Market</span>
-                        <span class="project-tag">Product Launch</span>
-                    </div>
+                    <p><strong>Decision-Making in Leadership</strong></p>
+                    <p>Evidence-based decision making frameworks, cognitive bias mitigation, strategic thinking, and leadership in complex environments.</p>
+                    <div class="cert-impact"><strong>Impact:</strong> Applied structured decision-making frameworks to supplier selection processes, improving contract outcomes by 25%.</div>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card animate-on-scroll delay-1">
-                <div class="project-image">
-                    <img src="./NKS_Audio.png" alt="NKS Audio" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-music\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
-                </div>
-                <div class="project-content">
-                    <h3>NKS Audio Systems</h3>
-                    <p>Professional and consumer audio equipment including speakers, sound systems, and headphones. Technical specifications, acoustic engineering coordination, and quality certification for LATAM market.</p>
-                    <div class="project-highlights">
-                        <strong>Products:</strong> Speakers, sound systems, headphones | <strong>Focus:</strong> Audio engineering | <strong>Compliance:</strong> ANATEL certification
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Audio</span>
-                        <span class="project-tag">Acoustic Engineering</span>
-                        <span class="project-tag">ANATEL</span>
-                    </div>
-                </div>
+        <section class="github" id="github">
+            <div class="section-header animate-on-scroll">
+                <h2>GitHub & Data Science Projects</h2>
+                <p>Transforming procurement through code, algorithms, and data-driven insights</p>
             </div>
+            <div class="github-card animate-on-scroll delay-1">
+                <i class="fab fa-github github-icon"></i>
+                <h3>github.com/LucianoRSouza</h3>
+                <p>Python enthusiast leveraging data science to revolutionize procurement decision-making.</p>
+                <div class="ml-metrics">
+                    <div class="metric-box"><span class="metric-value">95%</span><span class="metric-label">Prediction Accuracy</span></div>
+                    <div class="metric-box"><span class="metric-value">30%</span><span class="metric-label">Cost Reduction</span></div>
+                    <div class="metric-box"><span class="metric-value">85%</span><span class="metric-label">Stockout Reduction</span></div>
+                </div>
+                <div class="repo-list">
+                    <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/sales_prediction_future_months', '_blank')">
+                        <h4>sales_prediction_future_months</h4>
+                        <p>Linear Regression, Random Forest, XGBoost implementation for sales forecasting with 95% accuracy.</p>
+                    </div>
+                    <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/inventory_optimization_level', '_blank')">
+                        <h4>inventory_optimization_level</h4>
+                        <p>ML models for inventory management using demand forecasting algorithms.</p>
+                    </div>
+                </div>
+                <a href="https://github.com/LucianoRSouza" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View All Repositories</a>
+            </div>
+        </section>
 
-            <div class="project-card animate-on-scroll delay-2">
-                <div class="project-image">
-                    <img src="./NKS_Mais_Vc.png" alt="NKS Mais Você" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-heart\' style=\'font-size: 3.5rem; color: var(--gold);\'></i>'">
+        <section class="contact" id="contact">
+            <div class="section-header animate-on-scroll">
+                <h2>Let's Connect</h2>
+                <p>Ready to transform your procurement strategy? Let's discuss how AI and data-driven insights can deliver measurable results.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-grid animate-on-scroll delay-1">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <h3>Email</h3>
+                        <p>luciano.vlap@gmail.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h3>Location</h3>
+                        <p>Lisbon, Portugal</p>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <h3>NKS Mais Você Collection</h3>
-                    <p>Personal care and beauty appliances product line developed for Brazilian retail. Market-specific adaptations including voltage standards, safety certifications, and consumer preference alignment.</p>
-                    <div class="project-highlights">
-                        <strong>Category:</strong> Beauty & personal care | <strong>Market:</strong> Brazil retail | <strong>Features:</strong> INMETRO certification
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Beauty Care</span>
-                        <span class="project-tag">INMETRO</span>
-                        <span class="project-tag">Retail</span>
-                    </div>
+                <div class="contact-links animate-on-scroll delay-2">
+                    <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/LucianoRSouza" target="_blank" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="mailto:luciano.vlap@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> Email Me</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="trade-shows" id="trade-shows">
-        <div class="section-header animate-on-scroll">
-            <h2>Trade Shows & Global Exhibitions</h2>
-            <p>20+ international fairs as exhibitor and strategic buyer across China, Hong Kong, and worldwide markets</p>
-        </div>
-        
-        <div class="gallery-tabs animate-on-scroll delay-1">
-            <button class="gallery-tab" onclick="switchGallery('ford')">Ford Lighting</button>
-            <button class="gallery-tab active" onclick="switchGallery('blaupunkt')">Blaupunkt</button>
-        </div>
-
-        <div id="gallery-ford" class="gallery-content">
-            <div class="gallery-grid">
-                <div class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
-                    <img src="./Ford_lighting_solutions_HK_Intl.png" alt="Ford Lighting HK Intl">
-                    <div class="gallery-overlay">
-                        <h4>Hong Kong International Lighting Fair</h4>
-                        <p>Strategic booth design working with Marketing & Merchandising to create memorable brand experiences that drive post-show engagement</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll delay-1" onclick="openLightbox(this)">
-                    <img src="./Ford_lighting_solutions_HK_Intl_1.png" alt="Ford Lighting Stand 1">
-                    <div class="gallery-overlay">
-                        <h4>Global Brand Presence</h4>
-                        <p>Coordinated exhibition strategy across continents, ensuring consistent brand messaging while adapting to local market preferences</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll delay-2" onclick="openLightbox(this)">
-                    <img src="./Ford_lighting_solutions_HK_Intl_2.png" alt="Ford Lighting Stand 2">
-                    <div class="gallery-overlay">
-                        <h4>Professional Exhibition Execution</h4>
-                        <p>End-to-end booth management from design conceptualization to lead capture systems and post-show follow-up protocols</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="gallery-blaupunkt" class="gallery-content active">
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair.png" alt="Blaupunkt Booth">
-                    <div class="gallery-overlay">
-                        <h4>Blaupunkt Illumination Booth</h4>
-                        <p>Hong Kong International Lighting Fair 2016—premium German engineering showcase with strategic product positioning</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_1.png" alt="Blaupunkt Booth 1">
-                    <div class="gallery-overlay">
-                        <h4>Premium Brand Experience</h4>
-                        <p>Collaborated with Marketing to create immersive brand experiences that leave lasting impressions on visitors</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_2.png" alt="Blaupunkt Booth 2">
-                    <div class="gallery-overlay">
-                        <h4>Product Display Excellence</h4>
-                        <p>Complete lighting solutions portfolio presentation with technical demonstrations and hands-on experiences</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_3.png" alt="Blaupunkt Booth 3">
-                    <div class="gallery-overlay">
-                        <h4>Innovation Showcase</h4>
-                        <p>LED technology and smart lighting demonstrations attracting qualified leads and strategic partnerships</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_4.png" alt="Blaupunkt Booth 4">
-                    <div class="gallery-overlay">
-                        <h4>360° Brand Experience</h4>
-                        <p>Comprehensive booth design integrating product display, brand storytelling, and visitor engagement strategies</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div style="max-width: 1000px; margin: 4rem auto 0; text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05)); border-radius: 20px; border: 2px solid rgba(212,175,55,0.2);">
-            <h3 style="font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 1rem;"><i class="fas fa-handshake" style="color: var(--gold); margin-right: 10px;"></i>Trade Show Strategy & Execution</h3>
-            <p style="color: var(--text); line-height: 1.8; margin-bottom: 1.5rem;">My approach to trade shows goes beyond booth presence. I work closely with Marketing and Merchandising teams to create <strong>memorable brand experiences</strong> that differentiate us from competitors. From strategic product positioning to branded giveaways that ensure post-show recall, every detail is orchestrated to maximize ROI.</p>
-            <p style="color: var(--text); line-height: 1.8; margin-bottom: 1.5rem;">As a <strong>strategic buyer</strong>, I leverage trade shows for face-to-face renegotiations with key suppliers, discovering emerging technologies before competitors, and building relationships through business dinners—particularly with Chinese partners who value personal connection. Factory visits during show seasons provide critical insights into production capabilities and quality standards.</p>
-            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;">
-                <div style="text-align: center;">
-                    <i class="fas fa-users" style="font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem;"></i>
-                    <p style="font-size: 0.9rem; color: var(--text-light);">Lead Generation</p>
-                </div>
-                <div style="text-align: center;">
-                    <i class="fas fa-comments" style="font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem;"></i>
-                    <p style="font-size: 0.9rem; color: var(--text-light);">Supplier Negotiations</p>
-                </div>
-                <div style="text-align: center;">
-                    <i class="fas fa-industry" style="font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem;"></i>
-                    <p style="font-size: 0.9rem; color: var(--text-light);">Factory Audits</p>
-                </div>
-                <div style="text-align: center;">
-                    <i class="fas fa-lightbulb" style="font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem;"></i>
-                    <p style="font-size: 0.9rem; color: var(--text-light);">Tech Discovery</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="certs" id="certs">
-        <div class="section-header animate-on-scroll">
-            <h2>Certifications & Education</h2>
-            <p>Continuous learning in AI, Data Science, and Strategic Procurement from world-class institutions</p>
-        </div>
-        <div class="certs-grid">
-            <div class="cert-card framework-highlight animate-on-scroll">
-                <div class="framework-content">
-                    <div class="cert-icon" style="width: 60px; height: 60px; background: rgba(212,175,55,0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                        <i class="fas fa-star" style="font-size: 1.8rem; color: var(--gold);"></i>
-                    </div>
-                    <h3>AI-Driven Strategic Procurement Framework</h3>
-                    <p>My proprietary one-page executive framework summarizing how AI, data, and operational alignment elevate procurement performance across hospitality & leisure assets. Developed based on 15+ years of experience and recent AI implementations that delivered €1M+ in savings.</p>
-                    <div class="cert-badge">
-                        <i class="fas fa-check-circle"></i> Proprietary Methodology
-                    </div>
-                </div>
-                <div class="framework-image">
-                    <img src="./AI_Driven_Strategic_Procurement_Framework.png" alt="AI Framework" onerror="this.style.display='none'">
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-1">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./Maryland_University.png" alt="University of Maryland">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>University of Maryland</h4>
-                        <div class="cert-subtitle">Robert H. Smith School of Business</div>
-                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> February 2026</span>
-                    </div>
-                </div>
-                <p><strong>AI and Career Empowerment</strong></p>
-                <p>Comprehensive program covering AI applications in business strategy, automation of procurement workflows, and leveraging machine learning for decision-making. Focus on practical implementation of AI tools in professional environments.</p>
-                <div class="cert-impact">
-                    <strong>Impact on My Work:</strong>
-                    <p>Directly applied AI automation concepts to reduce procurement cycle times by 40% and implemented predictive analytics for supplier performance evaluation at Details Hospitality.</p>
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-2">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./IBM.png" alt="IBM">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>IBM SkillsBuild</h4>
-                        <div class="cert-subtitle">Professional Certification</div>
-                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2025</span>
-                    </div>
-                </div>
-                <p><strong>Foundations in Generative AI & LLMs</strong></p>
-                <p>Deep dive into generative AI technologies, large language models, prompt engineering, and ethical AI deployment. Practical training in implementing AI solutions for business process optimization and content generation.</p>
-                <div class="cert-impact">
-                    <strong>Impact on My Work:</strong>
-                    <p>Utilizing LLMs for automated contract analysis and RFP document generation, saving 15+ hours per week in documentation tasks while improving accuracy and compliance.</p>
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-3">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./MIT.png" alt="MIT Sloan">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>MIT Sloan School of Management</h4>
-                        <div class="cert-subtitle">Executive Education</div>
-                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2025</span>
-                    </div>
-                </div>
-                <p><strong>Supply Chain Analytics for Procurement</strong></p>
-                <p>Advanced analytics methodologies for supply chain optimization, demand forecasting, inventory management, and strategic sourcing decisions. Integration of data science with procurement operations.</p>
-                <div class="cert-impact">
-                    <strong>Impact on My Work:</strong>
-                    <p>Implemented demand forecasting models that reduced inventory carrying costs by 30% and developed KPI dashboards now used across procurement teams for real-time decision making.</p>
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-1">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./MIT.png" alt="MIT Sloan">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>MIT Sloan School of Management</h4>
-                        <div class="cert-subtitle">Executive Education</div>
-                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2024</span>
-                    </div>
-                </div>
-                <p><strong>Digital Transformation in Operations</strong></p>
-                <p>Strategic frameworks for digital transformation, process automation, and technology integration in operations. Focus on change management and building digital capabilities within organizations.</p>
-                <div class="cert-impact">
-                    <strong>Impact on My Work:</strong>
-                    <p>Led digital transformation initiative at Details Hospitality, implementing ASANA-based project tracking and automated approval workflows that increased team productivity by 50%.</p>
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-2">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./Harvard_University.png" alt="Harvard">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>Harvard University</h4>
-                        <div class="cert-subtitle">Professional Development</div>
-                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-calendar"></i> 2023</span>
-                    </div>
-                </div>
-                <p><strong>Decision-Making in Leadership</strong></p>
-                <p>Evidence-based decision making frameworks, cognitive bias mitigation, strategic thinking, and leadership in complex environments. Focus on high-stakes decision processes under uncertainty.</p>
-                <div class="cert-impact">
-                    <strong>Impact on My Work:</strong>
-                    <p>Applied structured decision-making frameworks to supplier selection processes, reducing subjective bias and improving contract outcomes by 25% through objective evaluation criteria.</p>
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-3">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./IBM.png" alt="IBM">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>IBM Data Science Professional</h4>
-                        <div class="cert-subtitle">Professional Certificate</div>
-                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-award"></i> Professional Level</span>
-                    </div>
-                </div>
-                <p><strong>Data Science & Machine Learning</strong></p>
-                <p>Comprehensive data science curriculum covering Python, SQL, data visualization, machine learning algorithms, and predictive modeling. Capstone projects in real-world business applications.</p>
-                <div class="cert-impact">
-                    <strong>Impact on My Work:</strong>
-                    <p>Built predictive sales and inventory models achieving 95% accuracy, directly contributing to €1M+ cost savings through data-driven procurement decisions and automated reorder systems.</p>
-                </div>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-1">
-                <div class="cert-header">
-                    <div class="cert-logo" style="background: #0a0a23;">
-                        <i class="fas fa-code" style="font-size: 2rem; color: white;"></i>
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>freeCodeCamp</h4>
-                        <div class="cert-subtitle">Technical Certification</div>
-                        <span style="color: var(--gold); font-size: 0.9rem;"><i class="fas fa-award"></i> Technical Level</span>
-                    </div>
-                </div>
-                <p><strong>Machine Learning with Python</strong></p>
-                <p>Hands-on training in TensorFlow, neural networks, deep learning, and practical ML applications. Projects include image recognition, natural language processing, and predictive analytics systems.</p>
-                <div class="cert-impact">
-                    <strong>Impact on My Work:</strong>
-                    <p>Developed custom ML algorithms for promotional impact analysis and price optimization, enabling data-driven pricing strategies that improved margins by 12%.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="github" id="github">
-        <div class="section-header animate-on-scroll">
-            <h2>GitHub & Data Science Projects</h2>
-            <p>Transforming procurement through code, algorithms, and data-driven insights</p>
-        </div>
-        <div class="github-card animate-on-scroll delay-1">
-            <i class="fab fa-github github-icon"></i>
-            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 2rem;">github.com/LucianoRSouza</h3>
-            <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">Python enthusiast leveraging data science to revolutionize procurement decision-making. From predictive analytics to automated dashboards, my code delivers measurable business impact.</p>
-            
-            <div class="ml-metrics">
-                <div class="metric-box">
-                    <span class="metric-value">95%</span>
-                    <span class="metric-label">Prediction Accuracy</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">30%</span>
-                    <span class="metric-label">Cost Reduction</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">85%</span>
-                    <span class="metric-label">Stockout Reduction</span>
-                </div>
-            </div>
-            
-            <div class="repo-list">
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/sales_prediction_future_months', '_blank')">
-                    <h4>sales_prediction_future_months</h4>
-                    <p>Linear Regression, Random Forest, XGBoost implementation for sales forecasting with 95% accuracy. Features data cleaning pipelines, feature engineering, and automated model selection.</p>
-                </div>
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/inventory_optimization_level', '_blank')">
-                    <h4>inventory_optimization_level</h4>
-                    <p>ML models for inventory management using demand forecasting algorithms. Reduced carrying costs by 30% and stockouts by 85% through intelligent reorder point calculations.</p>
-                </div>
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/promotional_impact', '_blank')">
-                    <h4>promotional_impact</h4>
-                    <p>Gradient Boosting Regressor for promotional campaign analysis. Identifies optimal discount levels and timing to maximize ROI while protecting brand value.</p>
-                </div>
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/Webapp-Sales-Dashboard', '_blank')">
-                    <h4>Webapp-Sales-Dashboard</h4>
-                    <p>Interactive dashboards with Streamlit + Plotly visualization. Real-time KPI monitoring, drill-down capabilities, and automated reporting for procurement teams.</p>
-                </div>
-            </div>
-
-            <div style="background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05)); padding: 2rem; border-radius: 15px; margin: 2rem 0; text-align: left; border-left: 4px solid var(--gold);">
-                <h4 style="color: var(--navy); margin-bottom: 1rem;"><i class="fas fa-code-branch" style="color: var(--gold); margin-right: 10px;"></i>Technical Stack</h4>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">Python</span>
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">scikit-learn</span>
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">Pandas</span>
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">NumPy</span>
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">Streamlit</span>
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">Plotly</span>
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">SQL</span>
-                    <span style="padding: 0.5rem 1rem; background: var(--white); border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(212,175,55,0.3);">XGBoost</span>
-                </div>
-            </div>
-
-            <a href="https://github.com/LucianoRSouza" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
-                <i class="fab fa-github"></i> View All Repositories
-            </a>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="section-header animate-on-scroll">
-            <h2>Let's Connect</h2>
-            <p>Ready to transform your procurement strategy? Let's discuss how AI and data-driven insights can deliver measurable results for your organization.</p>
-        </div>
-        <div class="contact-container">
-            <div class="contact-grid animate-on-scroll delay-1">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p>luciano.vlap@gmail.com</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Location</h3>
-                    <p>Lisbon, Portugal</p>
-                </div>
-            </div>
-            
-            <div class="contact-links animate-on-scroll delay-2">
-                <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/LucianoRSouza" target="_blank" class="contact-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="mailto:luciano.vlap@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> Email Me
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
             <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem;">Luciano Rodrigues de Souza</p>
             <p style="opacity: 0.8; margin-bottom: 2rem;">AI-Driven Procurement Leader | Strategic Operations | Data Science</p>
-            
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/LucianoRSouza" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:luciano.vlap@gmail.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/LucianoRSouza" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="mailto:luciano.vlap@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
             </div>
-            
-            <p style="opacity: 0.6; font-size: 0.9rem;">© 2025 Luciano Rodrigues. All rights reserved. | Built with passion & precision</p>
+            <p style="opacity: 0.6; font-size: 0.9rem;">© 2025 Luciano Rodrigues. All rights reserved.</p>
         </div>
     </footer>
 
@@ -2747,262 +434,9 @@
         <img src="" alt="Gallery Image" id="lightbox-img">
     </div>
 
-    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
     <div class="toast" id="toast"></div>
 
-    <script>
-        // Loading screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 1500);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            // Scroll to top button
-            const scrollTop = document.getElementById('scrollTop');
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-            
-            // Timeline logo highlighting
-            updateActiveLogo();
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Timeline logo scroll spy
-        function updateActiveLogo() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const logos = document.querySelectorAll('.company-logo');
-            
-            let activeIndex = 0;
-            
-            timelineItems.forEach((item, index) => {
-                const rect = item.getBoundingClientRect();
-                if (rect.top < window.innerHeight / 2) {
-                    activeIndex = index;
-                }
-            });
-            
-            logos.forEach((logo, index) => {
-                if (index === activeIndex) {
-                    logo.classList.add('active');
-                } else {
-                    logo.classList.remove('active');
-                }
-            });
-        }
-
-        // Gallery tabs
-        function switchGallery(gallery) {
-            // Update tabs
-            document.querySelectorAll('.gallery-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update content
-            document.querySelectorAll('.gallery-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById('gallery-' + gallery).classList.add('active');
-        }
-
-        // Lightbox
-        function openLightbox(element) {
-            const img = element.querySelector('img');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            
-            lightboxImg.src = img.src;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Keyboard navigation for lightbox
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Toast notification
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // Stat detail click
-        function showStatDetail(stat) {
-            const messages = {
-                savings: '€1M+ in cost savings achieved through AI-powered procurement strategies',
-                experience: '15+ years leading procurement transformations across 4 continents',
-                projects: '$10M+ in project value managed from concept to delivery',
-                countries: '20+ countries served across Europe, LATAM, and Asia'
-            };
-            showToast(messages[stat]);
-        }
-
-        // Language switcher - browser translation suggestion
-        function changeLang(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            if (lang === 'en') {
-                showToast('English is already active');
-            } else {
-                showToast('Right-click and select "Translate to ' + lang.toUpperCase() + '" for automatic translation');
-            }
-        }
-
-        // Particle animation
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-                container.appendChild(particle);
-            }
-        }
-
-        createParticles();
-
-        // Custom cursor (desktop only)
-        if (window.matchMedia('(pointer: fine)').matches) {
-            const cursor = document.getElementById('cursor');
-            const follower = document.getElementById('cursorFollower');
-            
-            let mouseX = 0, mouseY = 0;
-            let cursorX = 0, cursorY = 0;
-            let followerX = 0, followerY = 0;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-
-            function animateCursor() {
-                // Cursor follows immediately
-                cursorX += (mouseX - cursorX) * 0.2;
-                cursorY += (mouseY - cursorY) * 0.2;
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
-
-                // Follower follows with delay
-                followerX += (mouseX - followerX) * 0.1;
-                followerY += (mouseY - followerY) * 0.1;
-                follower.style.left = followerX + 'px';
-                follower.style.top = followerY + 'px';
-
-                requestAnimationFrame(animateCursor);
-            }
-
-            animateCursor();
-
-            // Hover effects for interactive elements
-            document.querySelectorAll('a, button, .stat-box, .project-card, .gallery-item').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                    follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                    cursor.style.background = 'var(--gold)';
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                    follower.style.transform = 'translate(-50%, -50%) scale(1)';
-                    cursor.style.background = 'transparent';
-                });
-            });
-        } else {
-            // Hide custom cursor on touch devices
-            document.getElementById('cursor').style.display = 'none';
-            document.getElementById('cursorFollower').style.display = 'none';
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Performance: Lazy load images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src || img.src;
-                        img.classList.remove('lazy');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
