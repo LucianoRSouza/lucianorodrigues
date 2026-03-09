@@ -1,165 +1,240 @@
 // ============================================
-// SCRIPT.JS - Toda a lógica em um arquivo
+// LOADING SCREEN
 // ============================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Loading Screen
-    setTimeout(function() {
-        var loading = document.getElementById('loading');
-        if (loading) {
-            loading.classList.add('hidden');
-        }
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('loading').classList.add('hidden');
     }, 1500);
+});
 
-    // 2. Navbar scroll effect
-    var navbar = document.getElementById('navbar');
-    var scrollTop = document.getElementById('scrollTop');
+// ============================================
+// NAVBAR SCROLL EFFECT
+// ============================================
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    const scrollTop = document.getElementById('scrollTop');
+    
+    // Navbar effect
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // Scroll to top button
+    if (window.scrollY > 500) {
+        scrollTop.classList.add('visible');
+    } else {
+        scrollTop.classList.remove('visible');
+    }
+    
+    // Timeline logo spy
+    updateTimelineLogo();
+});
 
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+// ============================================
+// SCROLL ANIMATIONS (Intersection Observer)
+// ============================================
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+});
+
+// ============================================
+// TIMELINE LOGO SCROLL SPY (ÚNICO LOGO QUE MUDA)
+// ============================================
+function updateTimelineLogo() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const logoImg = document.getElementById('logo-img');
+    const indicators = document.querySelectorAll('.indicator-dot');
+    
+    let activeIndex = 0;
+    
+    timelineItems.forEach((item, index) => {
+        const rect = item.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Item está no centro da viewport
+        if (rect.top < windowHeight * 0.6 && rect.bottom > windowHeight * 0.4) {
+            activeIndex = index;
+            item.classList.add('active');
         } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        if (scrollTop) {
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
+            item.classList.remove('active');
         }
     });
+    
+    // Atualiza o logo com base no item ativo
+    const activeItem = timelineItems[activeIndex];
+    if (activeItem && logoImg) {
+        const newLogo = activeItem.getAttribute('data-logo');
+        const currentSrc = logoImg.getAttribute('src');
+        
+        // Só atualiza se for diferente (evita flicker)
+        if (newLogo && newLogo !== currentSrc) {
+            // Animação de fade out/in
+            logoImg.style.opacity = '0';
+            setTimeout(() => {
+                logoImg.src = newLogo;
+                logoImg.style.opacity = '1';
+            }, 200);
+        }
+    }
+    
+    // Atualiza indicadores
+    indicators.forEach((dot, index) => {
+        if (index === activeIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
 
-    // 3. Scroll animations
-    var observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+// Inicializa o logo spy
+updateTimelineLogo();
+
+// ============================================
+// PARTICLES ANIMATION
+// ============================================
+function createParticles() {
+    const container = document.getElementById('particles');
+    if (!container) return;
+    
+    const particleCount = 25;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        container.appendChild(particle);
+    }
+}
+
+createParticles();
+
+// ============================================
+// TOAST NOTIFICATION
+// ============================================
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+    
+    toast.textContent = message;
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+// ============================================
+// STAT DETAIL CLICK
+// ============================================
+function showDetail(stat) {
+    const messages = {
+        savings: '€1M+ em economias através de estratégias de procurement com IA',
+        experience: '15+ anos liderando transformações em 4 continentes',
+        ai: 'Especialista em ML, Python e automação inteligente de processos'
     };
-
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
-        observer.observe(el);
-    });
-
-    // 4. Particles
-    var particlesContainer = document.getElementById('particles');
-    if (particlesContainer) {
-        for (var i = 0; i < 30; i++) {
-            var particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 6 + 's';
-            particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-            particlesContainer.appendChild(particle);
-        }
-    }
-
-    // 5. Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            var target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-});
+    
+    showToast(messages[stat] || 'Detalhes em breve');
+}
 
 // ============================================
-// FUNÇÕES GLOBAIS
+// LANGUAGE SWITCHER
 // ============================================
-
-// Gallery Tabs
-function switchGallery(gallery) {
-    // Update tabs
-    document.querySelectorAll('.gallery-tab').forEach(function(tab) {
-        tab.classList.remove('active');
+function changeLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
     });
+    
     event.target.classList.add('active');
-
-    // Update content
-    document.querySelectorAll('.gallery-content').forEach(function(content) {
-        content.classList.remove('active');
-    });
-
-    var targetGallery = document.getElementById('gallery-' + gallery);
-    if (targetGallery) {
-        targetGallery.classList.add('active');
+    
+    if (lang === 'pt') {
+        showToast('Português já está ativo');
+    } else {
+        showToast(`Clique com botão direito e selecione "Traduzir para ${lang.toUpperCase()}"`);
     }
 }
 
-// Lightbox
-function openLightbox(element) {
-    var img = element.querySelector('img');
-    var lightbox = document.getElementById('lightbox');
-    var lightboxImg = document.getElementById('lightbox-img');
-
-    if (img && lightbox && lightboxImg) {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeLightbox() {
-    var lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Close lightbox with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeLightbox();
-    }
-});
-
-// Scroll to Top
+// ============================================
+// SCROLL TO TOP
+// ============================================
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Toast Notification
-function showToast(message) {
-    var toast = document.getElementById('toast');
-    if (toast) {
-        toast.textContent = message;
-        toast.classList.add('show');
+// ============================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-        setTimeout(function() {
-            toast.classList.remove('show');
-        }, 3000);
-    }
-}
-
-// Language Switcher
-function changeLang(lang) {
-    document.querySelectorAll('.lang-btn').forEach(function(btn) {
-        btn.classList.remove('active');
+// ============================================
+// LAZY LOAD IMAGES
+// ============================================
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                observer.unobserve(img);
+            }
+        });
     });
 
-    if (event && event.target) {
-        event.target.classList.add('active');
-    }
-
-    if (lang === 'en') {
-        showToast('English is already active');
-    } else {
-        showToast('Right-click and select "Translate to ' + lang.toUpperCase() + '" for automatic translation');
-    }
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
 }
+
+// ============================================
+// PERFORMANCE: DEBOUNCE SCROLL EVENTS
+// ============================================
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Aplica debounce no scroll para melhor performance
+window.addEventListener('scroll', debounce(() => {
+    // Ações de scroll otimizadas aqui se necessário
+}, 10));
+
+console.log('🚀 Site de Luciano Rodrigues carregado com sucesso!');
