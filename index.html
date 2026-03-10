@@ -1,891 +1,908 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luciano Rodrigues | AI-Driven Procurement Leader</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luciano Rodrigues — AI-Driven Procurement Leader</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Social Meta -->
+  <meta property="og:title" content="Luciano Rodrigues — AI-Driven Procurement Leader" />
+  <meta property="og:description" content="AI-powered procurement, strategic operations, and product development leadership." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Photo_Luciano_início.jpg" />
 </head>
 <body>
-    <!-- Custom Cursor Original -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursorFollower"></div>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
 
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="loading-logo">LR.</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
+  <!-- Loading -->
+  <div class="loading" id="loading">
+    <div class="loading-logo">LR.</div>
+    <div class="loading-bar"><div class="loading-progress"></div></div>
+  </div>
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher" id="langSwitcher" aria-label="Language">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="pt">PT</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="fr">FR</button>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar" aria-label="Primary">
+    <a href="#" class="logo"><i class="fas fa-crown"></i> LR.</a>
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#timeline" data-i18n="nav.experience">Experience</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#trade-shows" data-i18n="nav.tradeshows">Trade Shows</a></li>
+      <li><a href="#certs" data-i18n="nav.certs">Certifications</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO (detailed version) -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-container">
+      <!-- Content -->
+      <div class="hero-content">
+        <h1 data-i18n="hero.title">Luciano Rodrigues de Souza</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">AI-Driven Procurement &amp; Operations Leader · Strategic Transformation</p>
+        <p class="hero-description" data-i18n="hero.desc">
+          I connect governance, technical rigor, and AI to deliver measurable outcomes: transparent tenders, reliable partners, and resilient operations across Europe, LATAM, and Asia.
+        </p>
+        <!-- Key Metrics -->
+        <div class="hero-stats" aria-label="Key metrics">
+          <div class="stat-box" data-stat="savings" tabindex="0" aria-label="Cumulative savings delivered">
+            <i class="fas fa-piggy-bank stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statSavings">€1M+</span>
+            <span class="stat-label" data-i18n="hero.stats.savings">Cumulative Savings</span>
+            <small class="stat-note" data-i18n="hero.stats.savings_note">Across multi-category negotiations</small>
+          </div>
+          <div class="stat-box" data-stat="rfps" tabindex="0" aria-label="Strategic tenders led">
+            <i class="fas fa-file-contract stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statRFPs">120+</span>
+            <span class="stat-label" data-i18n="hero.stats.rfps">RFP/RFQ Led</span>
+            <small class="stat-note" data-i18n="hero.stats.rfps_note">With technical annexes &amp; weighted scoring</small>
+          </div>
+          <div class="stat-box" data-stat="projects" tabindex="0" aria-label="Project value managed">
+            <i class="fas fa-project-diagram stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statProjects">€10M+</span>
+            <span class="stat-label" data-i18n="hero.stats.projects">Project Portfolio</span>
+            <small class="stat-note" data-i18n="hero.stats.projects_note">From concept to audited mass production</small>
+          </div>
+          <div class="stat-box" data-stat="regions" tabindex="0" aria-label="Regions served">
+            <i class="fas fa-globe stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statRegions">20+</span>
+            <span class="stat-label" data-i18n="hero.stats.regions">Countries</span>
+            <small class="stat-note" data-i18n="hero.stats.regions_note">Europe · LATAM · Asia</small>
+          </div>
         </div>
-    </div>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            <span data-i18n="cta.connect">Let's Connect</span>
+          </a>
+          <a href="#timeline" class="btn btn-secondary">
+            <i class="fas fa-road"></i>
+            <span data-i18n="cta.journey">View Journey</span>
+          </a>
+        </div>
+      </div>
 
-    <!-- Language Switcher -->
-    <div class="lang-switcher">
-        <button class="lang-btn active" onclick="changeLang('en')">EN</button>
-        <button class="lang-btn" onclick="changeLang('es')">ES</button>
-        <button class="lang-btn" onclick="changeLang('fr')">FR</button>
-        <button class="lang-btn" onclick="changeLang('pt')">PT</button>
+      <!-- Image -->
+      <div class="hero-image-wrapper">
+        <div class="hero-image">
+          <img src="./Photo_Luciano_início.jpg" alt="Portrait of Luciano Rodrigues de Souza" />
+        </div>
+        <!-- Floating badges -->
+        <div class="floating-badge badge-top">
+          <i class="fas fa-award" aria-hidden="true"></i>
+          <span data-i18n="hero.badges.top">Top Performer 2025</span>
+        </div>
+        <div class="floating-badge badge-middle">
+          <i class="fas fa-brain" aria-hidden="true"></i>
+          <span data-i18n="hero.badges.middle">AI Specialist</span>
+        </div>
+        <div class="floating-badge badge-bottom">
+          <i class="fas fa-handshake" aria-hidden="true"></i>
+          <span data-i18n="hero.badges.bottom">Trusted Leader</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <a href="#" class="logo"><i class="fas fa-crown"></i> LR.</a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#timeline">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#trade-shows">Trade Shows</a></li>
-            <li><a href="#certs">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
+  <!-- ABOUT (section rebuilt with detailed content) -->
+  <section class="about" id="about" aria-label="About">
+    <div class="section-header animate-on-scroll">
+      <h2 data-i18n="about.title">Leadership Philosophy</h2>
+      <p data-i18n="about.subtitle">From LATAM operations to global procurement strategy</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-image animate-on-scroll delay-1">
+        <img src="./Foto_About_Me.jpg" alt="About Luciano — travel and work context" />
+      </div>
+      <div class="about-content animate-on-scroll delay-2">
+        <h3 data-i18n="about.heading">Transformation Through Collaboration</h3>
+        <p data-i18n="about.body.1">
+          I design procurement systems that scale: from RFI/RFP playbooks and BidMaps to governance, audits, and supplier development.
+          The result is speed with control — faster decisions, lower risk, and clearer accountability.
+        </p>
+        <p data-i18n="about.body.2">
+          My leadership style blends cross‑functional facilitation (Engineering, ESG, Legal, Finance, Operations) with data and AI.
+          I focus on three pillars: clarity of requirements, market transparency, and measurable outcomes.
+        </p>
+        <div class="leadership-philosophy" data-i18n="about.philosophy">
+          “I don't just optimize supply chains — I build cross‑functional coalitions that transform how organizations think about procurement.”
+        </div>
+        <ul class="about-bullets">
+          <li data-i18n="about.points.1"><strong>Process Architecture:</strong> tender kits, weighted scoring, compliance‑by‑design</li>
+          <li data-i18n="about.points.2"><strong>AI &amp; Analytics:</strong> smart RFPs, proposal parsing, forecasting, inventory optimization</li>
+          <li data-i18n="about.points.3"><strong>Supplier Strategy:</strong> audits, capability mapping, dual‑sourcing &amp; continuity</li>
+          <li data-i18n="about.points.4"><strong>Stakeholder Trust:</strong> transparent dashboards, SLAs, and post‑award governance</li>
         </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-particles" id="particles"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Luciano Rodrigues de Souza</h1>
-                <p class="subtitle">AI-Driven Procurement & Operations Leader | Strategic Transformation</p>
-                <p class="hero-description">
-                    I believe exceptional procurement isn't about perfecting processes—it's about empowering people with 
-                    data-driven insights. Over 15 years, I've led teams through complex transformations across Europe, 
-                    LATAM, and Asia, delivering €1M+ in savings through AI-powered strategies.
-                </p>
-
-                <!-- STATS BOXES ORIGINAIS -->
-                <div class="hero-stats">
-                    <div class="stat-box" onclick="showStatDetail('savings')">
-                        <i class="fas fa-piggy-bank stat-icon"></i>
-                        <span class="stat-number">€1M+</span>
-                        <span class="stat-label">Cost Savings</span>
-                    </div>
-                    <div class="stat-box" onclick="showStatDetail('experience')">
-                        <i class="fas fa-briefcase stat-icon"></i>
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Years</span>
-                    </div>
-                    <div class="stat-box" onclick="showStatDetail('projects')">
-                        <i class="fas fa-project-diagram stat-icon"></i>
-                        <span class="stat-number">$10M+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-box" onclick="showStatDetail('countries')">
-                        <i class="fas fa-globe stat-icon"></i>
-                        <span class="stat-number">20+</span>
-                        <span class="stat-label">Countries</span>
-                    </div>
-                </div>
-
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Let's Connect
-                    </a>
-                    <a href="#timeline" class="btn btn-secondary">
-                        <i class="fas fa-road"></i> View Journey
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hero Image com badges reposicionados -->
-            <div class="hero-image-wrapper">
-                <div class="hero-image">
-                    <img src="./Photo_Luciano_início.jpg" alt="Luciano Rodrigues">
-                </div>
-                
-                <!-- BADGES MOVIDOS MAIS PARA ESQUERDA -->
-                <div class="floating-badge badge-top">
-                    <i class="fas fa-award"></i>
-                    <span>Top Performer 2025</span>
-                </div>
-                
-                <div class="floating-badge badge-middle">
-                    <i class="fas fa-brain"></i>
-                    <span>AI Specialist</span>
-                </div>
-                
-                <div class="floating-badge badge-bottom">
-                    <i class="fas fa-handshake"></i>
-                    <span>Trusted Leader</span>
-                </div>
-            </div>
+        <div class="languages-grid">
+          <div class="lang-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="about.lang.pt">Portuguese (Native)</span></div>
+          <div class="lang-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="about.lang.en">English (Native)</span></div>
+          <div class="lang-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="about.lang.es">Spanish (Professional)</span></div>
+          <div class="lang-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="about.lang.fr">French (Professional)</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="section-header animate-on-scroll">
-            <h2>Leadership Philosophy</h2>
-            <p>From LATAM operations to global procurement strategy</p>
-        </div>
-        
-        <div class="about-grid">
-            <div class="about-image animate-on-scroll delay-1">
-                <img src="./Foto_About_Me.jpg" alt="Luciano in Hong Kong">
-            </div>
-            <div class="about-content animate-on-scroll delay-2">
-                <h3>Transformation Through Collaboration</h3>
-                <p>My career began in Rio de Janeiro managing import operations, where 
-                I learned that procurement success depends on relationships built on 
-                trust, not just transactions.</p>
-                
-                <div class="leadership-philosophy">
-                    "I don't just optimize supply chains—I build cross-functional 
-                    coalitions that transform how organizations think about procurement."
-                </div>
-
-                <div class="languages-grid">
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> Portuguese (Native)</div>
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> English (Native)</div>
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> Spanish (Professional)</div>
-                    <div class="lang-item"><i class="fas fa-check-circle"></i> French (Professional)</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="timeline" id="timeline">
-        <div class="section-header animate-on-scroll">
-            <h2>Professional Journey</h2>
-            <p>15+ years of progressive leadership</p>
-        </div>
-
-        <div class="timeline-container">
-            <!-- Logo único sticky -->
-            <div class="timeline-logo-sticky">
-                <div class="company-logo-display" id="current-logo">
-                    <img src="./Details_Symbol.jpg" alt="Company Logo" id="logo-img">
-                    <div class="logo-indicator">
-                        <span class="indicator-dot active"></span>
-                        <span class="indicator-dot"></span>
-                        <span class="indicator-dot"></span>
-                        <span class="indicator-dot"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-items">
-                <!-- Details Hospitality -->
-                <div class="timeline-item" data-company="details" data-logo="./Details_Symbol.jpg">
-                    <div class="timeline-date">
-                        <span class="date-range">2025-Present</span>
-                        <span class="date-level">Senior Level</span>
-                    </div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Senior Buyer — Strategic Procurement & Operations</h3>
-                        <div class="timeline-company">
-                            <i class="fas fa-building"></i> Details Hospitality, Portugal
-                        </div>
-                        <p class="timeline-description">
-                            Leading comprehensive procurement transformation across hotel and leisure assets.
-                        </p>
-                        <div class="achievement-box">
-                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
-                            <ul>
-                                <li>Delivered <strong>€1M+ in cost savings (35% reduction)</strong> within 6 months</li>
-                                <li>Created proprietary <strong>BidMap framework</strong> from scratch</li>
-                                <li>Redesigned <strong>RFP/RFQ processes</strong> with technical alignment</li>
-                            </ul>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="skill-tag">AI Strategy</span>
-                            <span class="skill-tag">Process Architecture</span>
-                            <span class="skill-tag">Contract Negotiation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SKN Global -->
-                <div class="timeline-item" data-company="skn-global" data-logo="./SKN_Global.png">
-                    <div class="timeline-date">
-                        <span class="date-range">2022-2025</span>
-                        <span class="date-level">Director Level</span>
-                    </div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Director of International Expansion</h3>
-                        <div class="timeline-company">
-                            <i class="fas fa-globe-europe"></i> SKN Global | EU & Asia
-                        </div>
-                        <p class="timeline-description">
-                            Led global expansion and premium product development across European and Asian markets.
-                        </p>
-                        <div class="achievement-box">
-                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
-                            <ul>
-                                <li>Managed <strong>$10M+ project portfolio</strong> coordinating teams in Italy and China</li>
-                                <li>Established <strong>new distribution partnerships</strong> in 5+ European countries</li>
-                            </ul>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="skill-tag">Global Expansion</span>
-                            <span class="skill-tag">Luxury Brand Management</span>
-                            <span class="skill-tag">Supplier Audits</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SKN Europe - USA MESMO LOGO SKN_Global.png -->
-                <div class="timeline-item" data-company="skn-europe" data-logo="./SKN_Global.png">
-                    <div class="timeline-date">
-                        <span class="date-range">2018-2022</span>
-                        <span class="date-level">Manager Level</span>
-                    </div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">International Product & Licensing Manager</h3>
-                        <div class="timeline-company">
-                            <i class="fas fa-industry"></i> SKN Global | Europe
-                        </div>
-                        <p class="timeline-description">
-                            Launched licensed portfolios and built automated analytics systems for European expansion.
-                        </p>
-                        <div class="achievement-box">
-                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
-                            <ul>
-                                <li>Led complete creation of <strong>Blaupunkt Tools</strong> for European market</li>
-                                <li>Built <strong>KPI dashboards using Streamlit, Pandas, Plotly, SQL</strong></li>
-                            </ul>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="skill-tag">Data Analytics</span>
-                            <span class="skill-tag">Quality Systems</span>
-                            <span class="skill-tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SKN Brasil -->
-                <div class="timeline-item" data-company="skn-brasil" data-logo="./SKN_Brasil.png">
-                    <div class="timeline-date">
-                        <span class="date-range">2011-2018</span>
-                        <span class="date-level">Growth Phase</span>
-                    </div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Product & Import Manager → LATAM Area Manager</h3>
-                        <div class="timeline-company">
-                            <i class="fas fa-map-marker-alt"></i> SKN do Brasil | Rio de Janeiro
-                        </div>
-                        <p class="timeline-description">
-                            Progressed from Import Analyst to Area Manager, leading Ford Lighting expansion across Latin America.
-                        </p>
-                        <div class="achievement-box">
-                            <strong><i class="fas fa-trophy"></i> Key Achievements:</strong>
-                            <ul>
-                                <li>Built <strong>distributor network across 12 Latin American countries</strong></li>
-                                <li>Represented Ford Lighting at <strong>Hong Kong International Lighting Fair</strong></li>
-                            </ul>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="skill-tag">LATAM Expansion</span>
-                            <span class="skill-tag">Trade Shows</span>
-                            <span class="skill-tag">Import/Export</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section COM GALERIAS -->
-    <section class="projects" id="projects">
-        <div class="section-header animate-on-scroll">
-            <h2>Featured Projects</h2>
-            <p>Product development excellence and AI innovation portfolio</p>
-        </div>
-
-        <div class="projects-grid">
-            <!-- Blaupunkt Tools -->
-            <div class="project-card animate-on-scroll delay-1">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./Blaupunkt_Tools.png" alt="Blaupunkt Tools" class="main-image" onclick="openProjectGallery('blaupunkt-tools')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('blaupunkt-tools')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Blaupunkt Tools Portfolio</h3>
-                    <p>Complete creation and launch of power tools and garden equipment line for European market. Full R&D cycle from concept to mass production.</p>
-                    <div class="project-highlights">
-                        <strong>Scope:</strong> DIY tools, power tools, garden equipment | <strong>Markets:</strong> EU-wide
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Product Development</span>
-                        <span class="project-tag">Licensing</span>
-                        <span class="project-tag">EU Compliance</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Blaupunkt Power Tools -->
-            <div class="project-card animate-on-scroll delay-2">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./Blaupunkt_Power_Tools.png" alt="Blaupunkt Power Tools" class="main-image" onclick="openProjectGallery('blaupunkt-power')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('blaupunkt-power')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Blaupunkt Power Tools Line</h3>
-                    <p>Professional-grade power tools including drills, saws, and sanders. Managed complete technical specifications and safety certifications.</p>
-                    <div class="project-highlights">
-                        <strong>Innovation:</strong> Professional grade | <strong>Audits:</strong> Production line inspections
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Power Tools</span>
-                        <span class="project-tag">Factory Audits</span>
-                        <span class="project-tag">Quality Control</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Blaupunkt Garden -->
-            <div class="project-card animate-on-scroll delay-3">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./Blaupunkt_Garden_Tools.png" alt="Blaupunkt Garden Tools" class="main-image" onclick="openProjectGallery('blaupunkt-garden')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('blaupunkt-garden')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Blaupunkt Garden Equipment</h3>
-                    <p>Outdoor power equipment line including chainsaws, trimmers, and garden tools. Full technical documentation and safety compliance.</p>
-                    <div class="project-highlights">
-                        <strong>Products:</strong> Chainsaws, trimmers | <strong>Focus:</strong> Safety & compliance
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Garden</span>
-                        <span class="project-tag">Outdoor</span>
-                        <span class="project-tag">CE Certified</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Spear & Jackson - COM GALERIA COMPLETA -->
-            <div class="project-card animate-on-scroll delay-1">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./S&J_Cast_Irons_2.jpg" alt="Spear & Jackson" class="main-image" onclick="openProjectGallery('spear-jackson')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('spear-jackson')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery (6 photos)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Spear & Jackson Cast Irons</h3>
-                    <p>Premium enameled cast iron cookware line for the British brand Spear & Jackson (est. 1760). Heritage quality meets modern design.</p>
-                    <div class="project-highlights">
-                        <strong>Heritage:</strong> British brand since 1760 | <strong>Products:</strong> Enameled cast iron cookware
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Cookware</span>
-                        <span class="project-tag">UK Brand</span>
-                        <span class="project-tag">Premium</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pininfarina -->
-            <div class="project-card animate-on-scroll delay-2">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./Pininfarina_BBQ.jpg" alt="Pininfarina Essenza" class="main-image" onclick="openProjectGallery('pininfarina')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('pininfarina')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Pininfarina Essenza Collection</h3>
-                    <p>Premium outdoor cooking appliances collection developed for EU and Asia markets. Handcrafted in Italy with automotive design excellence.</p>
-                    <div class="project-highlights">
-                        <strong>Design:</strong> Italian automotive excellence | <strong>Value:</strong> $10M+ portfolio
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Luxury</span>
-                        <span class="project-tag">Italian Design</span>
-                        <span class="project-tag">Global Coordination</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NKS Estrelas - COM GALERIA COMPLETA -->
-            <div class="project-card animate-on-scroll delay-3">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./NKS_Estrelas.png" alt="NKS Estrelas" class="main-image" onclick="openProjectGallery('nks-estrelas')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('nks-estrelas')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery (6 photos)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>NKS Estrelas Product Line</h3>
-                    <p>Premium consumer electronics and home appliances developed for Brazilian market under NKS brand. Complete product lifecycle management.</p>
-                    <div class="project-highlights">
-                        <strong>Market:</strong> Brazil | <strong>Category:</strong> Consumer electronics
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Electronics</span>
-                        <span class="project-tag">Brazilian Market</span>
-                        <span class="project-tag">Product Launch</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NKS Audio - COM GALERIA -->
-            <div class="project-card animate-on-scroll delay-1">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./NKS_Audio.png" alt="NKS Audio" class="main-image" onclick="openProjectGallery('nks-audio')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('nks-audio')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery (8 photos)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>NKS Audio Systems</h3>
-                    <p>Professional and consumer audio equipment including speakers, sound systems, and headphones. Technical specifications and acoustic engineering.</p>
-                    <div class="project-highlights">
-                        <strong>Products:</strong> Speakers, sound systems, headphones | <strong>Compliance:</strong> ANATEL
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Audio</span>
-                        <span class="project-tag">Acoustic Engineering</span>
-                        <span class="project-tag">ANATEL</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NKS Mais Você - COM GALERIA -->
-            <div class="project-card animate-on-scroll delay-2">
-                <div class="project-gallery">
-                    <div class="gallery-main">
-                        <img src="./NKS_Mais_Vc.png" alt="NKS Mais Você" class="main-image" onclick="openProjectGallery('nks-maisvc')">
-                        <div class="gallery-overlay" onclick="openProjectGallery('nks-maisvc')">
-                            <i class="fas fa-images"></i>
-                            <span>View Gallery (5 photos)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>NKS Mais Você Collection</h3>
-                    <p>Personal care and beauty appliances product line developed for Brazilian retail. Market-specific adaptations and INMETRO certification.</p>
-                    <div class="project-highlights">
-                        <strong>Category:</strong> Beauty & personal care | <strong>Features:</strong> INMETRO certification
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Beauty Care</span>
-                        <span class="project-tag">INMETRO</span>
-                        <span class="project-tag">Retail</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ML Project -->
-            <div class="project-card animate-on-scroll delay-3">
-                <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
-                    <div style="text-align: center; color: var(--gold);">
-                        <i class="fas fa-brain" style="font-size: 4rem; margin-bottom: 1rem; display: block;"></i>
-                        <div style="font-size: 0.9rem; opacity: 0.8;">Neural Network</div>
-                        <div style="width: 120px; height: 2px; background: var(--gold); margin: 10px auto;"></div>
-                        <div style="font-size: 0.8rem; opacity: 0.6;">Predictive Analytics</div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Sales Prediction ML Engine</h3>
-                    <p>Machine learning project using Linear Regression, Random Forest, and XGBoost to predict future sales with 95% accuracy.</p>
-                    <div class="project-highlights">
-                        <strong>Algorithms:</strong> Linear Regression, Random Forest, XGBoost | <strong>Accuracy:</strong> 95%
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Machine Learning</span>
-                        <span class="project-tag">Predictive Analytics</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trade Shows Section - VOLTOU COMPLETA -->
-    <section class="trade-shows" id="trade-shows">
-        <div class="section-header animate-on-scroll">
-            <h2>Trade Shows & Global Exhibitions</h2>
-            <p>20+ international fairs as exhibitor and strategic buyer across China, Hong Kong, and worldwide markets</p>
-        </div>
-
-        <div class="gallery-tabs animate-on-scroll delay-1">
-            <button class="gallery-tab" onclick="switchGallery('ford')">Ford Lighting</button>
-            <button class="gallery-tab active" onclick="switchGallery('blaupunkt')">Blaupunkt</button>
-        </div>
-
-        <div id="gallery-ford" class="gallery-content">
-            <div class="gallery-grid">
-                <div class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
-                    <img src="./Ford_lighting_solutions_HK_Intl.png" alt="Ford Lighting HK Intl">
-                    <div class="gallery-overlay">
-                        <h4>Hong Kong International Lighting Fair</h4>
-                        <p>Strategic booth design working with Marketing & Merchandising to create memorable brand experiences</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll delay-1" onclick="openLightbox(this)">
-                    <img src="./Ford_lighting_solutions_HK_Intl_1.png" alt="Ford Lighting Stand 1">
-                    <div class="gallery-overlay">
-                        <h4>Global Brand Presence</h4>
-                        <p>Coordinated exhibition strategy across continents, ensuring consistent brand messaging</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll delay-2" onclick="openLightbox(this)">
-                    <img src="./Ford_lighting_solutions_HK_Intl_2.png" alt="Ford Lighting Stand 2">
-                    <div class="gallery-overlay">
-                        <h4>Professional Exhibition Execution</h4>
-                        <p>End-to-end booth management from design conceptualization to lead capture systems</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="gallery-blaupunkt" class="gallery-content active">
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair.png" alt="Blaupunkt Booth">
-                    <div class="gallery-overlay">
-                        <h4>Blaupunkt Illumination Booth</h4>
-                        <p>Hong Kong International Lighting Fair 2016—premium German engineering showcase</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_1.png" alt="Blaupunkt Booth 1">
-                    <div class="gallery-overlay">
-                        <h4>Premium Brand Experience</h4>
-                        <p>Collaborated with Marketing to create immersive brand experiences</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_2.png" alt="Blaupunkt Booth 2">
-                    <div class="gallery-overlay">
-                        <h4>Product Display Excellence</h4>
-                        <p>Complete lighting solutions portfolio presentation with technical demonstrations</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_3.png" alt="Blaupunkt Booth 3">
-                    <div class="gallery-overlay">
-                        <h4>Innovation Showcase</h4>
-                        <p>LED technology and smart lighting demonstrations attracting qualified leads</p>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="./Blaupunkt_Illumiation_booth_HK_Fair_4.png" alt="Blaupunkt Booth 4">
-                    <div class="gallery-overlay">
-                        <h4>360° Brand Experience</h4>
-                        <p>Comprehensive booth design integrating product display and brand storytelling</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="trade-show-strategy">
-            <h3><i class="fas fa-handshake" style="color: var(--gold); margin-right: 10px;"></i>Trade Show Strategy & Execution</h3>
-            <p>My approach to trade shows goes beyond booth presence. I work closely with Marketing and Merchandising teams to create <strong>memorable brand experiences</strong> that differentiate us from competitors.</p>
-            <div class="strategy-icons">
-                <div class="strategy-item">
-                    <i class="fas fa-users"></i>
-                    <p>Lead Generation</p>
-                </div>
-                <div class="strategy-item">
-                    <i class="fas fa-comments"></i>
-                    <p>Supplier Negotiations</p>
-                </div>
-                <div class="strategy-item">
-                    <i class="fas fa-industry"></i>
-                    <p>Factory Audits</p>
-                </div>
-                <div class="strategy-item">
-                    <i class="fas fa-lightbulb"></i>
-                    <p>Tech Discovery</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section COM IBM EM DESTAQUE -->
-    <section class="certs" id="certs">
-        <div class="section-header animate-on-scroll">
-            <h2>Certifications & Education</h2>
-            <p>Continuous learning in AI, Data Science, and Strategic Procurement</p>
-        </div>
-
-        <div class="certs-grid">
-            <!-- IBM GENERATIVE AI - DESTAQUE -->
-            <div class="cert-card featured-cert animate-on-scroll">
-                <div class="cert-badge-new">NEW 2025</div>
-                <div class="cert-header">
-                    <div class="cert-logo" style="background: linear-gradient(135deg, #054ada, #0f62fe);">
-                        <i class="fas fa-robot" style="font-size: 2.5rem; color: white;"></i>
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>IBM SkillsBuild</h4>
-                        <div class="cert-subtitle">Foundations in Generative AI</div>
-                        <span class="cert-date"><i class="fas fa-calendar"></i> 2025</span>
-                    </div>
-                </div>
-                <p><strong>Generative AI & LLMs for Procurement Innovation</strong></p>
-                <p>Deep dive into large language models, prompt engineering, and ethical AI deployment. Practical applications in business process optimization.</p>
-                <div class="ai-application">
-                    <strong><i class="fas fa-lightbulb"></i> How I Apply This in Procurement:</strong>
-                    <ul>
-                        <li><strong>Automated Contract Analysis:</strong> Using LLMs to review and extract key clauses from supplier contracts in seconds</li>
-                        <li><strong>RFP Generation:</strong> AI-powered creation of technical specifications and RFP documents, saving 15+ hours per week</li>
-                        <li><strong>Supplier Communication:</strong> Automated email drafting and negotiation preparation with consistent tone</li>
-                        <li><strong>Market Intelligence:</strong> AI analysis of supplier proposals and market trends for strategic sourcing</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- IBM LLMs - DESTAQUE -->
-            <div class="cert-card featured-cert animate-on-scroll delay-1">
-                <div class="cert-badge-new">NEW 2025</div>
-                <div class="cert-header">
-                    <div class="cert-logo" style="background: linear-gradient(135deg, #054ada, #0f62fe);">
-                        <i class="fas fa-brain" style="font-size: 2.5rem; color: white;"></i>
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>IBM SkillsBuild</h4>
-                        <div class="cert-subtitle">Introduction to Large Language Models</div>
-                        <span class="cert-date"><i class="fas fa-calendar"></i> 2025</span>
-                    </div>
-                </div>
-                <p><strong>LLM Architecture & Prompt Engineering</strong></p>
-                <p>Comprehensive understanding of transformer architectures, tokenization, and advanced prompting techniques for business applications.</p>
-                <div class="ai-application">
-                    <strong><i class="fas fa-lightbulb"></i> How I Apply This in Procurement:</strong>
-                    <ul>
-                        <li><strong>Intelligent Data Extraction:</strong> Automated parsing of supplier quotes and technical documents</li>
-                        <li><strong>Predictive Analytics:</strong> LLM-enhanced forecasting models for demand planning and inventory optimization</li>
-                        <li><strong>Compliance Checking:</strong> AI verification of contractual terms against company policies and regulations</li>
-                        <li><strong>Knowledge Management:</strong> Internal AI assistant for procurement guidelines and historical data queries</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Framework -->
-            <div class="cert-card framework-highlight animate-on-scroll delay-2">
-                <div class="framework-content">
-                    <div class="cert-icon" style="width: 60px; height: 60px; background: rgba(212,175,55,0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                        <i class="fas fa-star" style="font-size: 1.8rem; color: var(--gold);"></i>
-                    </div>
-                    <h3>AI-Driven Strategic Procurement Framework</h3>
-                    <p>My proprietary one-page executive framework summarizing how AI, data, and operational alignment elevate procurement performance.</p>
-                    <div class="cert-badge">
-                        <i class="fas fa-check-circle"></i> Proprietary Methodology
-                    </div>
-                </div>
-                <div class="framework-image">
-                    <img src="./AI_Driven_Strategic_Procurement_Framework.png" alt="AI Framework" onerror="this.style.display='none'">
-                </div>
-            </div>
-
-            <!-- Outros certificados -->
-            <div class="cert-card animate-on-scroll delay-1">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./Maryland_University.png" alt="University of Maryland">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>University of Maryland</h4>
-                        <div class="cert-subtitle">AI and Career Empowerment</div>
-                        <span class="cert-date"><i class="fas fa-calendar"></i> February 2026</span>
-                    </div>
-                </div>
-                <p>AI applications in business strategy and automation of procurement workflows.</p>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-2">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./MIT.png" alt="MIT Sloan">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>MIT Sloan School of Management</h4>
-                        <div class="cert-subtitle">Supply Chain Analytics</div>
-                        <span class="cert-date"><i class="fas fa-calendar"></i> 2025</span>
-                    </div>
-                </div>
-                <p>Advanced analytics methodologies for supply chain optimization and demand forecasting.</p>
-            </div>
-
-            <div class="cert-card animate-on-scroll delay-3">
-                <div class="cert-header">
-                    <div class="cert-logo">
-                        <img src="./Harvard_University.png" alt="Harvard">
-                    </div>
-                    <div class="cert-title-group">
-                        <h4>Harvard University</h4>
-                        <div class="cert-subtitle">Decision-Making in Leadership</div>
-                        <span class="cert-date"><i class="fas fa-calendar"></i> 2023</span>
-                    </div>
-                </div>
-                <p>Evidence-based decision making frameworks and strategic thinking.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- GitHub Section -->
-    <section class="github" id="github">
-        <div class="section-header animate-on-scroll">
-            <h2>GitHub & Data Science Projects</h2>
-            <p>Transforming procurement through code, algorithms, and data-driven insights</p>
-        </div>
-
-        <div class="github-card animate-on-scroll delay-1">
-            <i class="fab fa-github github-icon"></i>
-            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 2rem;">github.com/LucianoRSouza</h3>
-            <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">Python enthusiast leveraging data science to revolutionize procurement decision-making.</p>
-
-            <div class="ml-metrics">
-                <div class="metric-box">
-                    <span class="metric-value">95%</span>
-                    <span class="metric-label">Prediction Accuracy</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">30%</span>
-                    <span class="metric-label">Cost Reduction</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">85%</span>
-                    <span class="metric-label">Stockout Reduction</span>
-                </div>
-            </div>
-
-            <div class="repo-list">
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/sales_prediction_future_months', '_blank')">
-                    <h4>sales_prediction_future_months</h4>
-                    <p>Linear Regression, Random Forest, XGBoost for sales forecasting with 95% accuracy.</p>
-                </div>
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/inventory_optimization_level', '_blank')">
-                    <h4>inventory_optimization_level</h4>
-                    <p>ML models reducing carrying costs by 30% and stockouts by 85%.</p>
-                </div>
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/promotional_impact', '_blank')">
-                    <h4>promotional_impact</h4>
-                    <p>Gradient Boosting Regressor for promotional campaign analysis.</p>
-                </div>
-                <div class="repo-item" onclick="window.open('https://github.com/LucianoRSouza/Webapp-Sales-Dashboard', '_blank')">
-                    <h4>Webapp-Sales-Dashboard</h4>
-                    <p>Interactive dashboards with Streamlit + Plotly visualization.</p>
-                </div>
-            </div>
-
-            <a href="https://github.com/LucianoRSouza" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
-                <i class="fab fa-github"></i> View All Repositories
-            </a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-header animate-on-scroll">
-            <h2>Let's Connect</h2>
-            <p>Ready to transform your procurement strategy?</p>
-        </div>
-
-        <div class="contact-container">
-            <div class="contact-grid animate-on-scroll delay-1">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p>luciano.vlap@gmail.com</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Location</h3>
-                    <p>Lisbon, Portugal</p>
-                </div>
-            </div>
-
-            <div class="contact-links animate-on-scroll delay-2">
-                <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/LucianoRSouza" target="_blank" class="contact-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="mailto:luciano.vlap@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> Email Me
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem;">Luciano Rodrigues de Souza</p>
-            <p style="opacity: 0.8; margin-bottom: 2rem;">AI-Driven Procurement Leader | Strategic Operations | Data Science</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/LucianoRSouza" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:luciano.vlap@gmail.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-            <p style="opacity: 0.6; font-size: 0.9rem;">© 2025 Luciano Rodrigues. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Lightbox para galerias -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img src="" alt="Gallery Image" id="lightbox-img">
+  <!-- TIMELINE (detailed version) -->
+  <section class="timeline" id="timeline" aria-label="Professional Journey">
+    <div class="section-header animate-on-scroll">
+      <h2 data-i18n="timeline.title">Professional Journey</h2>
+      <p data-i18n="timeline.subtitle">15+ years of progressive leadership</p>
     </div>
 
-    <!-- Project Gallery Modal -->
-    <div class="project-gallery-modal" id="projectGalleryModal">
-        <div class="gallery-modal-content">
-            <span class="gallery-close" onclick="closeProjectGallery()">&times;</span>
-            <div class="gallery-slider" id="gallerySlider">
-                <!-- Imagens serão inseridas via JS -->
-            </div>
-            <div class="gallery-controls">
-                <button class="gallery-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-                <div class="gallery-dots" id="galleryDots"></div>
-                <button class="gallery-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
-            </div>
+    <div class="timeline-container timeline--compact-logo">
+      <!-- Sticky logo -->
+      <div class="timeline-logo-sticky">
+        <div class="company-logo-display" id="current-logo" aria-label="Company logo">
+          <img src="./Details_Symbol.jpg" alt="Details Hospitality logo" />
+          <div class="logo-indicator" aria-hidden="true">
+            <span class="indicator-dot active"></span>
+            <span class="indicator-dot"></span>
+            <span class="indicator-dot"></span>
+            <span class="indicator-dot"></span>
+          </div>
         </div>
+      </div>
+
+      <!-- Items -->
+      <div class="timeline-items" id="timelineItems">
+        <!-- DETAILS HOSPITALITY -->
+        <div class="timeline-item" data-company="details" data-logo="./Details_Symbol.jpg">
+          <div class="timeline-date">
+            <span class="date-range">2025–Present</span>
+            <span class="date-level" data-i18n="timeline.level.senior">Senior Level</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-title" data-i18n="timeline.details.title">Senior Buyer — Strategic Procurement &amp; Operations</h3>
+            <div class="timeline-company">
+              <i class="fas fa-building" aria-hidden="true"></i>
+              <span data-i18n="timeline.details.company">Details Hospitality, Portugal</span>
+            </div>
+            <p class="timeline-description" data-i18n="timeline.details.desc">
+              Leading a company‑wide procurement transformation across hotel &amp; leisure assets, unifying governance, technical rigor, and AI‑enabled decisioning.
+            </p>
+            <div class="achievement-box">
+              <strong><i class="fas fa-trophy" aria-hidden="true"></i>
+              <span data-i18n="timeline.details.achievements.title">Key Achievements</span>:</strong>
+              <ul>
+                <li data-i18n="timeline.details.achievements.1">Designed end‑to‑end RFI/RFP/RFQ playbooks with technical annexes (A1/A2), weighted scoring and audit‑ready trails.</li>
+                <li data-i18n="timeline.details.achievements.2">Built the BidMap &amp; dashboards (KPIs technical/financial) for transparent award decisions and faster stakeholder alignment.</li>
+                <li data-i18n="timeline.details.achievements.3">Integrated Primavera ↔ e‑procurement for full traceability; standardized templates, clauses and contracting packs.</li>
+                <li data-i18n="timeline.details.achievements.4">Onboarded new assets (e.g., Monte Rei, Els Club, San Lourenzo) with compliance‑by‑design and service continuity.</li>
+                <li data-i18n="timeline.details.achievements.5">Delivered measurable savings &amp; ROI while maintaining service quality across HVAC, SCIE/Fire drills, Legionella, energy, laundry, F&amp;B and marketing services.</li>
+              </ul>
+            </div>
+            <div class="skills-tags">
+              <span class="skill-tag" data-i18n="tags.ai_strategy">AI Strategy</span>
+              <span class="skill-tag" data-i18n="tags.process_architecture">Process Architecture</span>
+              <span class="skill-tag" data-i18n="tags.kpis">KPIs &amp; Dashboards</span>
+              <span class="skill-tag" data-i18n="tags.contracts">Contract Negotiation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKN GLOBAL -->
+        <div class="timeline-item" data-company="skn-global" data-logo="./SKN_Global.png">
+          <div class="timeline-date">
+            <span class="date-range">2022–2025</span>
+            <span class="date-level" data-i18n="timeline.level.director">Director Level</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-title" data-i18n="timeline.skn_global.title">Director of International Expansion</h3>
+            <div class="timeline-company">
+              <i class="fas fa-globe-europe" aria-hidden="true"></i>
+              <span data-i18n="timeline.skn_global.company">SKN Global — EU &amp; Asia</span>
+            </div>
+            <p class="timeline-description" data-i18n="timeline.skn_global.desc">Led multi‑country go‑to‑market and premium portfolio development, orchestrating engineering, marketing and supply partners.</p>
+            <div class="achievement-box">
+              <strong><i class="fas fa-trophy" aria-hidden="true"></i>
+              <span data-i18n="timeline.skn_global.achievements.title">Key Achievements</span>:</strong>
+              <ul>
+                <li data-i18n="timeline.skn_global.achievements.1">Managed €10M+ multi‑category pipeline; opened distribution channels across 5+ European markets.</li>
+                <li data-i18n="timeline.skn_global.achievements.2">Drove supplier qualification and factory audits; negotiated MOQs, tooling and warranty frameworks.</li>
+                <li data-i18n="timeline.skn_global.achievements.3">Co‑led trade show strategy (design, merch, meetings calendar, lead capture &amp; post‑fair pipeline).</li>
+              </ul>
+            </div>
+            <div class="skills-tags">
+              <span class="skill-tag" data-i18n="tags.global_expansion">Global Expansion</span>
+              <span class="skill-tag" data-i18n="tags.brand_mgmt">Brand &amp; Licensing</span>
+              <span class="skill-tag" data-i18n="tags.supplier_audits">Supplier Audits</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKN EUROPE -->
+        <div class="timeline-item" data-company="skn-europe" data-logo="./SKN_Global.png">
+          <div class="timeline-date">
+            <span class="date-range">2018–2022</span>
+            <span class="date-level" data-i18n="timeline.level.manager">Manager Level</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-title" data-i18n="timeline.skn_europe.title">International Product &amp; Licensing Manager</h3>
+            <div class="timeline-company">
+              <i class="fas fa-industry" aria-hidden="true"></i>
+              <span data-i18n="timeline.skn_europe.company">SKN Global — Europe</span>
+            </div>
+            <p class="timeline-description" data-i18n="timeline.skn_europe.desc">Built licensed portfolios end‑to‑end (e.g., Blaupunkt Tools), aligning R&amp;D, certification and mass production for EU markets.</p>
+            <div class="achievement-box">
+              <strong><i class="fas fa-trophy" aria-hidden="true"></i>
+              <span data-i18n="timeline.skn_europe.achievements.title">Key Achievements</span>:</strong>
+              <ul>
+                <li data-i18n="timeline.skn_europe.achievements.1">Launched complete Blaupunkt tools &amp; garden lines with CE conformity and production line inspections.</li>
+                <li data-i18n="timeline.skn_europe.achievements.2">Deployed analytics stack (Python/Streamlit/Plotly/SQL) for portfolio and quality KPIs.</li>
+                <li data-i18n="timeline.skn_europe.achievements.3">Structured licensing contracts &amp; performance guarantees with EU partners.</li>
+              </ul>
+            </div>
+            <div class="skills-tags">
+              <span class="skill-tag" data-i18n="tags.product_dev">Product Development</span>
+              <span class="skill-tag" data-i18n="tags.quality_systems">Quality Systems</span>
+              <span class="skill-tag" data-i18n="tags.data_analytics">Data Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKN BRASIL -->
+        <div class="timeline-item" data-company="skn-brasil" data-logo="./SKN_Brasil.png">
+          <div class="timeline-date">
+            <span class="date-range">2011–2018</span>
+            <span class="date-level" data-i18n="timeline.level.growth">Growth Phase</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-title" data-i18n="timeline.skn_brasil.title">Product &amp; Import Manager → LATAM Area Manager</h3>
+            <div class="timeline-company">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span data-i18n="timeline.skn_brasil.company">SKN do Brasil — Rio de Janeiro</span>
+            </div>
+            <p class="timeline-description" data-i18n="timeline.skn_brasil.desc">Career growth from import analyst to LATAM leadership, building distributor networks and launching portfolios.</p>
+            <div class="achievement-box">
+              <strong><i class="fas fa-trophy" aria-hidden="true"></i>
+              <span data-i18n="timeline.skn_brasil.achievements.title">Key Achievements</span>:</strong>
+              <ul>
+                <li data-i18n="timeline.skn_brasil.achievements.1">Distributor network across 12 LATAM countries; Ford Lighting expansion.</li>
+                <li data-i18n="timeline.skn_brasil.achievements.2">Representation at Hong Kong International Lighting Fair; OEM negotiations &amp; regional certifications.</li>
+                <li data-i18n="timeline.skn_brasil.achievements.3">End‑to‑end import, compliance and logistics time‑to‑market.</li>
+              </ul>
+            </div>
+            <div class="skills-tags">
+              <span class="skill-tag" data-i18n="tags.latam_expansion">LATAM Expansion</span>
+              <span class="skill-tag" data-i18n="tags.trade_shows">Trade Shows</span>
+              <span class="skill-tag" data-i18n="tags.import_export">Import/Export</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS (detailed version) -->
+  <section class="projects" id="projects" aria-label="Featured Projects">
+    <div class="section-header animate-on-scroll">
+      <h2 data-i18n="projects.title">Featured Projects</h2>
+      <p data-i18n="projects.subtitle">Product development excellence and AI innovation portfolio</p>
     </div>
 
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Blaupunkt Tools Portfolio -->
+      <div class="project-card animate-on-scroll" data-gallery="blaupunkt-tools" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Tools.png">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./Blaupunkt_Tools.png" alt="Blaupunkt Tools Portfolio" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Blaupunkt Tools Portfolio</h3>
+          <p data-i18n="proj.blaupunkt.tools.desc">Creation and launch of a complete tools line for the European market — from concept, BOM &amp; compliance to production.</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.scope">Scope:</strong> DIY &amp; power tools · <strong data-i18n="proj.market">Markets:</strong> EU
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Product Development</span>
+            <span class="project-tag">Licensing</span>
+            <span class="project-tag">EU Compliance</span>
+          </div>
+        </div>
+      </div>
 
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
+      <!-- Blaupunkt Power Tools -->
+      <div class="project-card animate-on-scroll" data-gallery="blaupunkt-power" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Power_Tools.png">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./Blaupunkt_Power_Tools.png" alt="Blaupunkt Power Tools" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Blaupunkt Power Tools Line</h3>
+          <p data-i18n="proj.blaupunkt.power.desc">Professional-grade drills, saws, sanders with technical specs, audits and safety certifications.</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.innovation">Innovation:</strong> Pro grade · <strong data-i18n="proj.audits">Audits:</strong> Line inspections
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Power Tools</span>
+            <span class="project-tag">Factory Audits</span>
+            <span class="project-tag">Quality Control</span>
+          </div>
+        </div>
+      </div>
 
-    <script src="js/script.js"></script>
+      <!-- Blaupunkt Garden -->
+      <div class="project-card animate-on-scroll" data-gallery="blaupunkt-garden" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Garden_Tools.png">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./Blaupunkt_Garden_Tools.png" alt="Blaupunkt Garden Equipment" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Blaupunkt Garden Equipment</h3>
+          <p data-i18n="proj.blaupunkt.garden.desc">Outdoor equipment (chainsaws, trimmers) with complete documentation and safety compliance.</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.products">Products:</strong> Chainsaws, trimmers · <strong data-i18n="proj.focus">Focus:</strong> Safety &amp; compliance
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Garden</span>
+            <span class="project-tag">Outdoor</span>
+            <span class="project-tag">CE Certified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spear & Jackson Cast Irons -->
+      <div class="project-card animate-on-scroll" data-gallery="spear-jackson" data-autoslide="true" data-interval="2500" data-images="./S&J_Cast_Irons_2.jpg,./S&J_Cast_Irons_3.jpg,./S&J_Cast_Irons_4.jpg,./S&J_Cast_Irons_5.jpg,./S&J_Cast_Irons_6.jpg,./S&J_Cast_Irons_7.jpg">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./S&amp;J_Cast_Irons_2.jpg" alt="Spear &amp; Jackson Cast Irons" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Spear &amp; Jackson Cast Irons</h3>
+          <p data-i18n="proj.sj.desc">Premium enameled cast iron cookware for a British heritage brand (est. 1760).</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.heritage">Heritage:</strong> UK brand · <strong data-i18n="proj.category">Category:</strong> Cookware
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Cookware</span>
+            <span class="project-tag">Premium</span>
+            <span class="project-tag">UK Brand</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pininfarina Essenza -->
+      <div class="project-card animate-on-scroll" data-gallery="pininfarina" data-autoslide="true" data-interval="2500" data-images="./Pininfarina_BBQ.jpg,./Pininfarina_BBQ_1.jpg">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./Pininfarina_BBQ.jpg" alt="Pininfarina Essenza Collection" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Pininfarina Essenza Collection</h3>
+          <p data-i18n="proj.pininfarina.desc">Premium outdoor cooking appliances with Italian design and global coordination (EU/Asia).</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.design">Design:</strong> Italian automotive · <strong data-i18n="proj.value">Value:</strong> €10M+ portfolio
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Luxury</span>
+            <span class="project-tag">Italian Design</span>
+            <span class="project-tag">Global Coordination</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NKS Estrelas -->
+      <div class="project-card animate-on-scroll" data-gallery="nks-estrelas" data-autoslide="true" data-interval="2500" data-images="./NKS_Estrelas.png,./NKS_Estrelas_1.png,./NKS_Estrelas_2.png,./NKS_Estrelas_3.png,./NKS_Estrelas_4.png,./NKS_Estrelas_5.png">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./NKS_Estrelas.png" alt="NKS Estrelas Product Line" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>NKS Estrelas Product Line</h3>
+          <p data-i18n="proj.nks.estrelas.desc">Consumer electronics &amp; home appliances for the Brazilian market with full lifecycle management.</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.market">Market:</strong> Brazil · <strong data-i18n="proj.category">Category:</strong> Electronics
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Electronics</span>
+            <span class="project-tag">Brazilian Market</span>
+            <span class="project-tag">Product Launch</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NKS Audio -->
+      <div class="project-card animate-on-scroll" data-gallery="nks-audio" data-autoslide="true" data-interval="2500" data-images="./NKS_Audio.png,./NKS_Audio_1.png,./NKS_Audio_2.png,./NKS_Audio_3.png,./NKS_Audio_4.png,./NKS_Audio_5.png,./NKS_Audio_6.png,./NKS_Audio_7.png">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./NKS_Audio.png" alt="NKS Audio Systems" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>NKS Audio Systems</h3>
+          <p data-i18n="proj.nks.audio.desc">Professional &amp; consumer audio: speakers, sound systems and headphones (ANATEL compliance).</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.products">Products:</strong> Speakers &amp; systems · <strong data-i18n="proj.compliance">Compliance:</strong> ANATEL
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Audio</span>
+            <span class="project-tag">Acoustic Engineering</span>
+            <span class="project-tag">ANATEL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NKS Mais Você -->
+      <div class="project-card animate-on-scroll" data-gallery="nks-maisvc" data-autoslide="true" data-interval="2500" data-images="./NKS_Mais_Vc.png,./NKS_Mais_Vc_1.png,./NKS_Mais_Vc_2.png,./NKS_Mais_Vc_3.png,./NKS_Mais_Vc_4.png">
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="./NKS_Mais_Vc.png" alt="NKS Mais Você Collection" />
+            <div class="gallery-overlay">
+              <i class="fas fa-images" aria-hidden="true"></i>
+              <span data-i18n="projects.view_gallery">View Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>NKS Mais Você Collection</h3>
+          <p data-i18n="proj.nks.maisvc.desc">Beauty &amp; personal care line with INMETRO certification tailored to Brazilian retail.</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.category">Category:</strong> Personal care · <strong data-i18n="proj.features">Features:</strong> INMETRO
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Beauty Care</span>
+            <span class="project-tag">INMETRO</span>
+            <span class="project-tag">Retail</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Machine Learning Portfolio (generic) -->
+      <div class="project-card animate-on-scroll" data-gallery="ml-portfolio" data-autoslide="false" data-interval="2800" data-images="">
+        <div class="project-image" style="background: linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); display:flex;align-items:center;justify-content:center;height:250px;">
+          <div style="text-align:center;color:#d4af37;">
+            <i class="fas fa-brain" style="font-size:3.4rem;display:block;margin-bottom:10px;"></i>
+            <div style="font-size:0.9rem;opacity:0.85;" data-i18n="proj.ml.caption1">Machine Learning Portfolio</div>
+            <div style="width:120px;height:2px;background:#d4af37;margin:10px auto;"></div>
+            <div style="font-size:0.8rem;opacity:0.65;" data-i18n="proj.ml.caption2">Forecasting · Optimization · Uplift</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 data-i18n="proj.ml.title">AI &amp; ML Projects (Selected)</h3>
+          <p data-i18n="proj.ml.desc">Consolidated portfolio: sales forecasting, inventory optimization, promotion uplift, price elasticity, anomaly/quality detection, churn &amp; CLV.</p>
+          <div class="project-highlights">
+            <strong data-i18n="proj.stack">Stack:</strong> Python · scikit‑learn · XGBoost · LightGBM · Statsmodels · Streamlit
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Predictive Analytics</span>
+            <span class="project-tag">Optimization</span>
+            <span class="project-tag">MLOps-lite</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRADE SHOWS (detailed version, fixed gallery items) -->
+  <section class="trade-shows" id="trade-shows" aria-label="Trade Shows &amp; Exhibitions">
+    <div class="section-header animate-on-scroll">
+      <h2 data-i18n="tradeshows.title">Trade Shows &amp; Global Exhibitions</h2>
+      <p data-i18n="tradeshows.subtitle">Exhibitor and strategic buyer across worldwide markets</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="gallery-tabs animate-on-scroll delay-1" role="tablist" aria-label="Trade show brands">
+      <button class="gallery-tab active" data-target="gallery-blaupunkt" role="tab" aria-selected="true">Blaupunkt</button>
+      <button class="gallery-tab" data-target="gallery-ford" role="tab" aria-selected="false">Ford Lighting</button>
+    </div>
+
+    <!-- Blaupunkt Gallery -->
+    <div id="gallery-blaupunkt" class="gallery-content active" role="tabpanel" aria-labelledby="tab-blaupunkt">
+      <div class="gallery-grid">
+        <div class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="./Blaupunkt_Illumiation_booth_HK_Fair.png" alt="Blaupunkt Illumination Booth" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.blaupunkt.1.title">Blaupunkt Illumination Booth</h4>
+            <p data-i18n="tradeshows.blaupunkt.1.desc">Hong Kong International Lighting Fair — premium brand experience co-designed with Marketing.</p>
+          </div>
+        </div>
+        <div class="gallery-item animate-on-scroll delay-1" onclick="openLightbox(this)">
+          <img src="./Blaupunkt_Illumiation_booth_HK_Fair_1.png" alt="Stand Design &amp; Storytelling" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.blaupunkt.2.title">Stand Design &amp; Storytelling</h4>
+            <p data-i18n="tradeshows.blaupunkt.2.desc">Layout, flow, lighting demos, and merchandising aligned to category strategy.</p>
+          </div>
+        </div>
+        <div class="gallery-item animate-on-scroll delay-2" onclick="openLightbox(this)">
+          <img src="./Blaupunkt_Illumiation_booth_HK_Fair_2.png" alt="Product Display Excellence" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.blaupunkt.3.title">Product Display Excellence</h4>
+            <p data-i18n="tradeshows.blaupunkt.3.desc">Complete portfolio with compliance highlights and technical feature cards.</p>
+          </div>
+        </div>
+        <div class="gallery-item animate-on-scroll delay-3" onclick="openLightbox(this)">
+          <img src="./Blaupunkt_Illumiation_booth_HK_Fair_3.png" alt="Lead Generation" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.blaupunkt.4.title">Lead Generation</h4>
+            <p data-i18n="tradeshows.blaupunkt.4.desc">On-stand meetings, scanning, qualification, and live slotting into pipeline.</p>
+          </div>
+        </div>
+        <div class="gallery-item animate-on-scroll delay-1" onclick="openLightbox(this)">
+          <img src="./Blaupunkt_Illumiation_booth_HK_Fair_4.png" alt="Global Coordination" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.blaupunkt.5.title">Global Coordination</h4>
+            <p data-i18n="tradeshows.blaupunkt.5.desc">Consistent brand messaging across regions with localized assortments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ford Lighting Gallery -->
+    <div id="gallery-ford" class="gallery-content" role="tabpanel" aria-labelledby="tab-ford">
+      <div class="gallery-grid">
+        <div class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="./Ford_lighting_solutions_HK_Intl.png" alt="Hong Kong International Lighting Fair" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.ford.1.title">Hong Kong International Lighting Fair</h4>
+            <p data-i18n="tradeshows.ford.1.desc">Strategic booth planning with Marketing &amp; Merchandising; category narratives and demos.</p>
+          </div>
+        </div>
+        <div class="gallery-item animate-on-scroll delay-1" onclick="openLightbox(this)">
+          <img src="./Ford_lighting_solutions_HK_Intl_1.png" alt="Meetings &amp; Lead Capture" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.ford.2.title">Meetings &amp; Lead Capture</h4>
+            <p data-i18n="tradeshows.ford.2.desc">Agenda de reuniões, qualificação de leads e follow‑up pós‑feira estruturado.</p>
+          </div>
+        </div>
+        <div class="gallery-item animate-on-scroll delay-2" onclick="openLightbox(this)">
+          <img src="./Ford_lighting_solutions_HK_Intl_2.png" alt="Supplier Engagement" />
+          <div class="gallery-overlay">
+            <h4 data-i18n="tradeshows.ford.3.title">Supplier Engagement</h4>
+            <p data-i18n="tradeshows.ford.3.desc">Negociações, amostras técnicas, custos, MOQs, e roadmaps de certificação.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategy Block -->
+    <div class="trade-show-strategy">
+      <h3><i class="fas fa-handshake" style="color: var(--gold); margin-right: 10px;" aria-hidden="true"></i>
+        <span data-i18n="tradeshows.strategy.title">Trade Show Strategy &amp; Execution</span>
+      </h3>
+      <p data-i18n="tradeshows.strategy.desc">
+        Beyond the booth: I co‑create with Marketing the end‑to‑end journey — stand design, narrative &amp; assets; orchestrate meetings, capture qualified leads, and run the post‑fair pipeline to real outcomes. In parallel, I negotiate with current and new partners, benchmark technologies, and audit factories for capability &amp; compliance.
+      </p>
+      <div class="strategy-icons">
+        <div class="strategy-item"><i class="fas fa-drafting-compass" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.1">Stand Design &amp; Merchandising</p></div>
+        <div class="strategy-item"><i class="fas fa-calendar-check" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.2">Meetings Orchestration &amp; Lead Capture</p></div>
+        <div class="strategy-item"><i class="fas fa-handshake-angle" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.3">Negotiations &amp; Partnering</p></div>
+        <div class="strategy-item"><i class="fas fa-microchip" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.4">Tech Discovery &amp; Benchmark</p></div>
+        <div class="strategy-item"><i class="fas fa-industry" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.5">Factory Audits &amp; Capability Mapping</p></div>
+        <div class="strategy-item"><i class="fas fa-chart-line" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.6">Post‑Fair Pipeline, ROI &amp; Governance</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS & EDUCATION (detailed version) -->
+  <section class="certs" id="certs" aria-label="Certifications &amp; Education">
+    <div class="section-header animate-on-scroll">
+      <h2 data-i18n="certs.title">Certifications &amp; Education</h2>
+      <p data-i18n="certs.subtitle">Continuous learning in AI, Data Science, and Strategic Procurement</p>
+    </div>
+
+    <div class="certs-grid">
+      <!-- AI-Driven Strategic Procurement Framework -->
+      <div class="cert-card framework-highlight animate-on-scroll">
+        <div class="framework-content">
+          <div class="cert-icon" style="width:60px;height:60px;background:rgba(212,175,55,0.2);border-radius:15px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+            <i class="fas fa-star" style="font-size:1.8rem;color:var(--gold);" aria-hidden="true"></i>
+          </div>
+          <h3 data-i18n="framework.title">AI‑Driven Strategic Procurement Framework</h3>
+          <p data-i18n="framework.desc">One‑page executive framework on how AI, data, and operational alignment elevate procurement performance.</p>
+          <div class="cert-badge">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span data-i18n="framework.badge">Proprietary Methodology</span>
+          </div>
+        </div>
+        <div class="framework-image">
+          <img src="./AI_Driven_Strategic_Procurement_Framework.png" alt="AI Framework" onerror="this.style.display='none'" />
+        </div>
+      </div>
+
+      <!-- IBM SkillsBuild — Foundations in Generative AI -->
+      <div class="cert-card animate-on-scroll">
+        <div class="cert-header">
+          <div class="cert-logo">
+            <img src="./Digital Sticker_Foundations in Generative AI.png" alt="IBM Generative AI" onerror="this.style.display='none'" />
+          </div>
+          <div class="cert-title-group">
+            <h4>IBM SkillsBuild</h4>
+            <div class="cert-subtitle" data-i18n="ibm.genai.subtitle">Foundations in Generative AI</div>
+            <span class="cert-date"><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
+          </div>
+        </div>
+        <p data-i18n="ibm.genai.desc">LLM fundamentals, prompt engineering and ethical deployment; practical use in procurement workflows.</p>
+        <ul class="ai-application">
+          <strong><i class="fas fa-lightbulb" aria-hidden="true"></i> <span data-i18n="ibm.apply.title">How I Apply This in Procurement:</span></strong>
+          <li data-i18n="ibm.genai.point1"><strong>Contract Parsing:</strong> clause extraction &amp; risk flags</li>
+          <li data-i18n="ibm.genai.point2"><strong>Smart RFPs:</strong> auto‑draft specs/SoW; save hours weekly</li>
+          <li data-i18n="ibm.genai.point3"><strong>Supplier Comms:</strong> consistent, data‑aware templates</li>
+          <li data-i18n="ibm.genai.point4"><strong>Market Intel:</strong> proposal comparison &amp; insights</li>
+        </ul>
+      </div>
+
+      <!-- IBM SkillsBuild — Introduction to Large Language Models -->
+      <div class="cert-card animate-on-scroll">
+        <div class="cert-header">
+          <div class="cert-logo">
+            <img src="./Digital Sticker_Introduction to Large Language Models.png" alt="IBM LLMs" onerror="this.style.display='none'" />
+          </div>
+          <div class="cert-title-group">
+            <h4>IBM SkillsBuild</h4>
+            <div class="cert-subtitle" data-i18n="ibm.llms.subtitle">Introduction to Large Language Models</div>
+            <span class="cert-date"><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
+          </div>
+        </div>
+        <p data-i18n="ibm.llms.desc">Transformer architecture, tokenization and prompting; patterns for data extraction and decision support.</p>
+        <ul class="ai-application">
+          <strong><i class="fas fa-lightbulb" aria-hidden="true"></i> <span data-i18n="ibm.apply.title">How I Apply This in Procurement:</span></strong>
+          <li data-i18n="ibm.llms.point1"><strong>Doc Intelligence:</strong> quotes/specs parsing</li>
+          <li data-i18n="ibm.llms.point2"><strong>Forecasting Assist:</strong> LLM‑augmented demand signals</li>
+          <li data-i18n="ibm.llms.point3"><strong>Compliance:</strong> policy checks vs. contracts</li>
+          <li data-i18n="ibm.llms.point4"><strong>Knowledge Ops:</strong> internal procurement assistant</li>
+        </ul>
+      </div>
+
+      <!-- University of Maryland -->
+      <div class="cert-card animate-on-scroll">
+        <div class="cert-header">
+          <div class="cert-logo">
+            <img src="./Maryland_University.png" alt="University of Maryland" onerror="this.style.display='none'" />
+          </div>
+          <div class="cert-title-group">
+            <h4>University of Maryland</h4>
+            <div class="cert-subtitle" data-i18n="umd.subtitle">AI and Career Empowerment</div>
+            <span class="cert-date"><i class="fas fa-calendar" aria-hidden="true"></i> Feb 2026</span>
+          </div>
+        </div>
+        <p data-i18n="umd.desc">AI applications in business strategy and automation of procurement workflows.</p>
+      </div>
+
+      <!-- MIT Sloan School of Management -->
+      <div class="cert-card animate-on-scroll">
+        <div class="cert-header">
+          <div class="cert-logo">
+            <img src="./MIT.png" alt="MIT Sloan" onerror="this.style.display='none'" />
+          </div>
+          <div class="cert-title-group">
+            <h4>MIT Sloan School of Management</h4>
+            <div class="cert-subtitle" data-i18n="mit.subtitle">Supply Chain Analytics</div>
+            <span class="cert-date"><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
+          </div>
+        </div>
+        <p data-i18n="mit.desc">Advanced analytics methodologies for supply chain optimization and forecasting.</p>
+      </div>
+
+      <!-- Harvard University -->
+      <div class="cert-card animate-on-scroll">
+        <div class="cert-header">
+          <div class="cert-logo">
+            <img src="./Harvard_University.png" alt="Harvard University" onerror="this.style.display='none'" />
+          </div>
+          <div class="cert-title-group">
+            <h4>Harvard University</h4>
+            <div class="cert-subtitle" data-i18n="harvard.subtitle">Decision‑Making in Leadership</div>
+            <span class="cert-date"><i class="fas fa-calendar" aria-hidden="true"></i> 2023</span>
+          </div>
+        </div>
+        <p data-i18n="harvard.desc">Evidence‑based decision frameworks and strategic thinking for leaders.</p>
+      </div>
+
+      <!-- Education — ESL Diploma -->
+      <div class="cert-card animate-on-scroll">
+        <div class="cert-header">
+          <div class="cert-logo">
+            <img src="./Gadsden_State_Community_College.png" alt="Gadsden State Community College" onerror="this.style.display='none'" />
+          </div>
+          <div class="cert-title-group">
+            <h4 data-i18n="esl.school">Gadsden State Community College</h4>
+            <div class="cert-subtitle" data-i18n="esl.subtitle">Diploma — ESL (English as a Second Language)</div>
+            <span class="cert-date"><i class="fas fa-calendar" aria-hidden="true"></i> 1999–2000</span>
+          </div>
+        </div>
+        <p data-i18n="esl.desc">Academic English program with communication, writing and presentation skills.</p>
+      </div>
+
+      <!-- Volunteering — Instructor (Gadsden State) -->
+      <div class="cert-card animate-on-scroll">
+        <div class="cert-header">
+          <div class="cert-logo">
+            <img src="./Gadsden_State_Community_College.png" alt="Gadsden State Community College" onerror="this.style.display='none'" />
+          </div>
+          <div class="cert-title-group">
+            <h4 data-i18n="vol.title">Volunteering — Instructor</h4>
+            <div class="cert-subtitle" data-i18n="vol.school">Gadsden State Community College</div>
+            <span class="cert-date"><i class="fas fa-calendar" aria-hidden="true"></i> 1999–2000</span>
+          </div>
+        </div>
+        <p data-i18n="vol.desc">Mathematics and English tutoring for students in need of academic support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GITHUB (kept) -->
+  <section class="github" id="github" aria-label="GitHub &amp; Data Science Projects">
+    <div class="section-header animate-on-scroll">
+      <h2 data-i18n="github.title">GitHub &amp; Data Science Projects</h2>
+      <p data-i18n="github.subtitle">Transforming procurement through code, algorithms, and data-driven insights</p>
+    </div>
+    <div class="github-card animate-on-scroll delay-1">
+      <i class="fab fa-github github-icon"></i>
+      <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 2rem;">github.com/LucianoRSouza</h3>
+      <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;" data-i18n="github.tagline">Python enthusiast leveraging data science to revolutionize procurement decision-making.</p>
+      <div class="ml-metrics">
+        <div class="metric-box">
+          <span class="metric-value">95%</span>
+          <span class="metric-label" data-i18n="github.metrics.accuracy">Prediction Accuracy</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-value">30%</span>
+          <span class="metric-label" data-i18n="github.metrics.cost">Cost Reduction</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-value">85%</span>
+          <span class="metric-label" data-i18n="github.metrics.stockout">Stockout Reduction</span>
+        </div>
+      </div>
+      <div class="repo-list" id="repoList"></div>
+      <a href="https://github.com/LucianoRSouza" target="_blank" class="btn btn-primary">
+        <i class="fab fa-github"></i>
+        <span data-i18n="github.cta">View All Repositories</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-label="Contact">
+    <div class="section-header animate-on-scroll">
+      <h2 data-i18n="contact.title">Let's Connect</h2>
+      <p data-i18n="contact.subtitle">Ready to transform your procurement strategy?</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-grid animate-on-scroll delay-1">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <h3 data-i18n="contact.email">Email</h3>
+          <p>luciano.vlap@gmail.com</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3 data-i18n="contact.location">Location</h3>
+          <p>Lisbon, Portugal</p>
+        </div>
+      </div>
+      <div class="contact-links animate-on-scroll delay-2">
+        <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="contact-link">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/LucianoRSouza" target="_blank" class="contact-link">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="mailto:luciano.vlap@gmail.com" class="contact-link">
+          <i class="fas fa-envelope"></i> Email Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem;">Luciano Rodrigues de Souza</p>
+      <p style="opacity: 0.8; margin-bottom: 2rem;">AI-Driven Procurement Leader · Strategic Operations · Data Science</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/LucianoRSouza" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:luciano.vlap@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p style="opacity: 0.6; font-size: 0.9rem;">© 2026 Luciano Rodrigues. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <span class="lightbox-close" id="lightboxClose" aria-label="Close">×</span>
+    <img src="" alt="Gallery Image" id="lightbox-img" />
+  </div>
+
+  <!-- Project Gallery Modal -->
+  <div class="project-gallery-modal" id="projectGalleryModal" role="dialog" aria-modal="true" aria-label="Project gallery">
+    <div class="gallery-modal-content">
+      <span class="gallery-close" id="galleryClose" aria-label="Close">×</span>
+      <div class="gallery-slider" id="gallerySlider"></div>
+      <div class="gallery-controls">
+        <button class="gallery-btn prev" id="galleryPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <div class="gallery-dots" id="galleryDots"></div>
+        <button class="gallery-btn next" id="galleryNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Main JS -->
+  <script src="js/script.js"></script>
 </body>
 </html>
