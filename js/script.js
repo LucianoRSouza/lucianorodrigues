@@ -1,6 +1,6 @@
 // ============================================
 // Luciano Rodrigues - Portfolio JavaScript
-// Corrigido e Revisado
+// Corrigido e Revisado - Versão Final
 // ============================================
 
 // Global State
@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initLightbox();
   initProjectGallery();
   initTimelineSpy();
+  initStatModals();      // NOVO
+  initStrategyItems();   // NOVO
   
   console.log('✅ All systems initialized');
 });
@@ -143,7 +145,7 @@ function initCursor() {
   }
   tick();
   
-  const hoverables = ['a', 'button', '.stat-box', '.project-card', '.repo-item', '.contact-link', '.social-link', '.gallery-item', '.gallery-main'];
+  const hoverables = ['a', 'button', '.stat-box', '.project-card', '.repo-item', '.contact-link', '.social-link', '.gallery-item', '.gallery-main', '.strategy-item'];
   
   $$(hoverables.join(',')).forEach((el) => {
     on(el, 'mouseenter', () => {
@@ -226,7 +228,6 @@ function showToast(message = '') {
 // ============================================
 
 function initTimelineSpy() {
-  // Initial call
   updateTimelineSpy();
 }
 
@@ -1011,10 +1012,140 @@ function closeProjectGallery() {
   }
 }
 
-// Expose functions globally for inline onclick handlers
+// ============================================
+// STAT BOX MODALS - NOVO
+// ============================================
+
+const statModalData = {
+  savings: {
+    icon: 'fa-piggy-bank',
+    title: 'Cumulative Savings Delivered',
+    number: '€1M+',
+    details: [
+      'Multi-category negotiation strategies across HVAC, F&B, and facilities',
+      'Implementation of dynamic pricing models and volume discounts',
+      'Strategic supplier consolidation reducing vendor management costs',
+      'Process automation saving 400+ hours annually in manual tasks',
+      'Early payment discounts and cash flow optimization',
+      'Warranty and service level renegotiations'
+    ]
+  },
+  rfps: {
+    icon: 'fa-file-contract',
+    title: 'Strategic Tenders Led',
+    number: '120+',
+    details: [
+      'End-to-end RFI/RFP/RFQ process design and execution',
+      'Technical annex development (A1/A2 specifications)',
+      'Weighted scoring matrices with 20+ criteria per category',
+      'BidMap implementation for transparent evaluation',
+      'Compliance-by-design documentation frameworks',
+      'E-procurement platform integration and training'
+    ]
+  },
+  projects: {
+    icon: 'fa-project-diagram',
+    title: 'Project Portfolio Value',
+    number: '€10M+',
+    details: [
+      'Full lifecycle from concept to mass production',
+      'Cross-functional team leadership (Engineering, QA, Marketing)',
+      'BOM optimization and cost engineering',
+      'Factory audits and production line inspections',
+      'Certification management (CE, INMETRO, ANATEL)',
+      'Quality gate implementation and milestone tracking'
+    ]
+  },
+  regions: {
+    icon: 'fa-globe',
+    title: 'Global Operations Coverage',
+    number: '20+ Countries',
+    details: [
+      'Europe: Portugal, Spain, Germany, UK, Italy, France',
+      'LATAM: Brazil, Argentina, Chile, Colombia, Mexico, Peru',
+      'Asia: China, Hong Kong, Taiwan, Vietnam, India',
+      'Multi-cultural negotiation and contract adaptation',
+      'Import/export compliance and logistics optimization',
+      'Regional supplier development and risk management'
+    ]
+  }
+};
+
+function initStatModals() {
+  $$('.stat-box').forEach(box => {
+    box.style.cursor = 'pointer';
+    on(box, 'click', () => {
+      const modalType = box.dataset.modal;
+      if (modalType && statModalData[modalType]) {
+        openStatModal(statModalData[modalType]);
+      }
+    });
+  });
+}
+
+function openStatModal(data) {
+  const modal = $('#statModal');
+  if (!modal) return;
+  
+  const iconEl = $('#statModalIcon');
+  if (iconEl) iconEl.innerHTML = `<i class="fas ${data.icon}"></i>`;
+  
+  const titleEl = $('#statModalTitle');
+  if (titleEl) titleEl.textContent = data.title;
+  
+  const numberEl = $('#statModalNumber');
+  if (numberEl) numberEl.textContent = data.number;
+  
+  const detailsEl = $('#statModalDetails');
+  if (detailsEl) {
+    const detailsHtml = `
+      <h4>Key Achievements & Methodology:</h4>
+      <ul>
+        ${data.details.map(d => `<li><i class="fas fa-check-circle"></i> ${d}</li>`).join('')}
+      </ul>
+    `;
+    detailsEl.innerHTML = detailsHtml;
+  }
+  
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeStatModal() {
+  const modal = $('#statModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+// ============================================
+// STRATEGY ITEMS EXPANDABLE - NOVO
+// ============================================
+
+function initStrategyItems() {
+  $$('.strategy-item').forEach(item => {
+    on(item, 'click', () => {
+      // Close others
+      $$('.strategy-item').forEach(other => {
+        if (other !== item) other.classList.remove('expanded');
+      });
+      
+      // Toggle current
+      item.classList.toggle('expanded');
+    });
+  });
+}
+
+// ============================================
+// EXPOSE GLOBALLY
+// ============================================
+
 window.openLightbox = openLightbox;
 window.closeLightbox = closeLightbox;
 window.changeProjectSlide = changeProjectSlide;
 window.goToProjectSlide = goToProjectSlide;
 window.closeProjectGallery = closeProjectGallery;
 window.scrollToTop = scrollToTop;
+window.openStatModal = openStatModal;
+window.closeStatModal = closeStatModal;
