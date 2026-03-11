@@ -65,25 +65,25 @@
           I connect governance, technical rigor, and AI to deliver measurable outcomes: transparent tenders, reliable partners, and resilient operations across Europe, LATAM, and Asia.
         </p>
         <div class="hero-stats" aria-label="Key metrics">
-          <div class="stat-box" data-stat="savings" tabindex="0" aria-label="Cumulative savings delivered">
+          <div class="stat-box" data-stat="savings" tabindex="0" aria-label="Cumulative savings delivered" onclick="openStatModal('savings')">
             <i class="fas fa-piggy-bank stat-icon" aria-hidden="true"></i>
             <span class="stat-number" id="statSavings">€1M+</span>
             <span class="stat-label" data-i18n="hero.stats.savings">Cumulative Savings</span>
             <small class="stat-note" data-i18n="hero.stats.savings_note">Across multi-category negotiations</small>
           </div>
-          <div class="stat-box" data-stat="rfps" tabindex="0" aria-label="Strategic tenders led">
+          <div class="stat-box" data-stat="rfps" tabindex="0" aria-label="Strategic tenders led" onclick="openStatModal('rfps')">
             <i class="fas fa-file-contract stat-icon" aria-hidden="true"></i>
             <span class="stat-number" id="statRFPs">120+</span>
             <span class="stat-label" data-i18n="hero.stats.rfps">RFP/RFQ Led</span>
             <small class="stat-note" data-i18n="hero.stats.rfps_note">With technical annexes &amp; weighted scoring</small>
           </div>
-          <div class="stat-box" data-stat="projects" tabindex="0" aria-label="Project value managed">
+          <div class="stat-box" data-stat="projects" tabindex="0" aria-label="Project value managed" onclick="openStatModal('projects')">
             <i class="fas fa-project-diagram stat-icon" aria-hidden="true"></i>
             <span class="stat-number" id="statProjects">€10M+</span>
             <span class="stat-label" data-i18n="hero.stats.projects">Project Portfolio</span>
             <small class="stat-note" data-i18n="hero.stats.projects_note">From concept to audited mass production</small>
           </div>
-          <div class="stat-box" data-stat="regions" tabindex="0" aria-label="Regions served">
+          <div class="stat-box" data-stat="regions" tabindex="0" aria-label="Regions served" onclick="openStatModal('regions')">
             <i class="fas fa-globe stat-icon" aria-hidden="true"></i>
             <span class="stat-number" id="statRegions">20+</span>
             <span class="stat-label" data-i18n="hero.stats.regions">Countries</span>
@@ -319,7 +319,7 @@
 
     <div class="projects-grid" id="projectsGrid">
       <!-- Blaupunkt Tools Portfolio -->
-      <div class="project-card animate-on-scroll" data-gallery="blaupunkt-tools" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Tools.png">
+            <div class="project-card animate-on-scroll" data-gallery="blaupunkt-tools" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Tools.png,./Blaupunkt_Illumiation_booth_HK_Fair.png,./Blaupunkt_Illumiation_booth_HK_Fair_1.png,./Blaupunkt_Illumiation_booth_HK_Fair_2.png,./Blaupunkt_Illumiation_booth_HK_Fair_3.png,./Blaupunkt_Illumiation_booth_HK_Fair_4.png">
         <div class="project-gallery">
           <div class="gallery-main">
             <img src="./Blaupunkt_Tools.png" alt="Blaupunkt Tools Portfolio" />
@@ -344,7 +344,7 @@
       </div>
 
       <!-- Blaupunkt Power Tools -->
-      <div class="project-card animate-on-scroll" data-gallery="blaupunkt-power" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Power_Tools.png">
+            <div class="project-card animate-on-scroll" data-gallery="blaupunkt-power" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Power_Tools.png,./Blaupunkt_Tools.png,./Blaupunkt_Illumiation_booth_HK_Fair.png,./Blaupunkt_Illumiation_booth_HK_Fair_1.png,./Blaupunkt_Illumiation_booth_HK_Fair_2.png">
         <div class="project-gallery">
           <div class="gallery-main">
             <img src="./Blaupunkt_Power_Tools.png" alt="Blaupunkt Power Tools" />
@@ -369,7 +369,7 @@
       </div>
 
       <!-- Blaupunkt Garden -->
-      <div class="project-card animate-on-scroll" data-gallery="blaupunkt-garden" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Garden_Tools.png">
+            <div class="project-card animate-on-scroll" data-gallery="blaupunkt-garden" data-autoslide="true" data-interval="2500" data-images="./Blaupunkt_Garden_Tools.png,./Blaupunkt_Tools.png,./Blaupunkt_Illumiation_booth_HK_Fair_2.png,./Blaupunkt_Illumiation_booth_HK_Fair_3.png,./Blaupunkt_Illumiation_booth_HK_Fair_4.png">
         <div class="project-gallery">
           <div class="gallery-main">
             <img src="./Blaupunkt_Garden_Tools.png" alt="Blaupunkt Garden Equipment" />
@@ -634,27 +634,27 @@
         Beyond the booth: I co‑create with Marketing the end‑to‑end journey — stand design, narrative &amp; assets; orchestrate meetings, capture qualified leads, and run the post‑fair pipeline to real outcomes. In parallel, I negotiate with current and new partners, benchmark technologies, and audit factories for capability &amp; compliance.
       </p>
       <div class="strategy-grid">
-        <div class="strategy-item">
+        <div class="strategy-item" onclick="openStrategyModal(1)">
           <i class="fas fa-drafting-compass" aria-hidden="true"></i>
           <p data-i18n="tradeshows.strategy.pillars.1">Stand Design &amp; Merchandising</p>
         </div>
-        <div class="strategy-item">
+        <div class="strategy-item" onclick="openStrategyModal(2)">
           <i class="fas fa-calendar-check" aria-hidden="true"></i>
           <p data-i18n="tradeshows.strategy.pillars.2">Meetings Orchestration &amp; Lead Capture</p>
         </div>
-        <div class="strategy-item">
+        <div class="strategy-item" onclick="openStrategyModal(3)">
           <i class="fas fa-handshake-angle" aria-hidden="true"></i>
           <p data-i18n="tradeshows.strategy.pillars.3">Negotiations &amp; Partnering</p>
         </div>
-        <div class="strategy-item">
+        <div class="strategy-item" onclick="openStrategyModal(4)">
           <i class="fas fa-microchip" aria-hidden="true"></i>
           <p data-i18n="tradeshows.strategy.pillars.4">Tech Discovery &amp; Benchmark</p>
         </div>
-        <div class="strategy-item">
+        <div class="strategy-item" onclick="openStrategyModal(5)">
           <i class="fas fa-industry" aria-hidden="true"></i>
           <p data-i18n="tradeshows.strategy.pillars.5">Factory Audits &amp; Capability Mapping</p>
         </div>
-        <div class="strategy-item">
+        <div class="strategy-item" onclick="openStrategyModal(6)">
           <i class="fas fa-chart-line" aria-hidden="true"></i>
           <p data-i18n="tradeshows.strategy.pillars.6">Post‑Fair Pipeline, ROI &amp; Governance</p>
         </div>
@@ -812,7 +812,7 @@
       <div class="cert-card animate-on-scroll">
         <div class="cert-header">
           <div class="cert-logo">
-            <img src="./Gadsden_State_Community_College.png" alt="Gadsden State Community College" onerror="this.style.display='none'" />
+                        <img src="./gadsdenstatecommunitycollege_logo.jpg" alt="Gadsden State Community College" onerror="this.src='./gadsdenstatecommunitycollege.jpg'" />
           </div>
           <div class="cert-title-group">
             <h4 data-i18n="esl.school">Gadsden State Community College</h4>
@@ -840,6 +840,9 @@
       <h2 data-i18n="vol.title">Volunteering &amp; Community Impact</h2>
       <p data-i18n="vol.subtitle">Giving back through education and mentorship</p>
     </div>
+      <div class="volunteer-hero-image animate-on-scroll visible">
+    <img src="./gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College" />
+  </div>
     <div class="volunteer-card animate-on-scroll delay-1">
       <div class="volunteer-icon">
         <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
@@ -934,7 +937,31 @@
       <p style="opacity: 0.6; font-size: 0.9rem;">© 2026 Luciano Rodrigues. All rights reserved.</p>
     </div>
   </footer>
+<!-- Stat Detail Modal -->
+<div class="stat-modal-overlay" id="statModalOverlay">
+  <div class="stat-modal">
+    <button class="stat-modal-close" onclick="closeStatModal()">×</button>
+    <div class="stat-modal-icon"><i class="fas" id="statModalIcon"></i></div>
+    <h3 id="statModalTitle"></h3>
+    <span class="stat-modal-value" id="statModalValue"></span>
+    <div class="stat-modal-details">
+      <ul id="statModalDetails"></ul>
+    </div>
+  </div>
+</div>
 
+<!-- Strategy Detail Modal -->
+<div class="strategy-detail-overlay" id="strategyDetailOverlay">
+  <div class="strategy-detail-card">
+    <div class="strategy-detail-header">
+      <button class="strategy-detail-close" onclick="closeStrategyModal()">×</button>
+      <i class="fas fa-2x" id="strategyDetailIcon" style="color: var(--gold); margin-bottom: 1rem;"></i>
+      <h3 id="strategyDetailTitle"></h3>
+      <p id="strategyDetailSubtitle"></p>
+    </div>
+    <div class="strategy-detail-body" id="strategyDetailBody"></div>
+  </div>
+</div>
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
     <span class="lightbox-close" id="lightboxClose" aria-label="Close" onclick="closeLightbox()">×</span>
