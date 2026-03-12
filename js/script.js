@@ -757,8 +757,135 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  console.log('✅ Portfolio JS (consolidado) inicializado');
+   console.log('✅ Portfolio JS (consolidado) inicializado');
+  
+  // Inicializar modais dos stat boxes
+  initStatModals();
 });
+
+// ============================================
+// STAT BOXES MODAL FUNCTIONALITY
+// ============================================
+
+const statDetailsData = {
+  savings: {
+    icon: "fa-piggy-bank",
+    title: "Cumulative Savings Delivered",
+    value: "€1M+",
+    details: [
+      "Multi-category strategic sourcing initiatives across direct and indirect spend",
+      "Negotiated favorable payment terms (60-90 days) improving cash flow",
+      "Implemented should-cost modeling identifying 15-25% cost reduction opportunities",
+      "Consolidated supplier base from 200+ to 80 key partners",
+      "Zero-based budgeting approach for CAPEX projects saving 20% on average"
+    ]
+  },
+  rfps: {
+    icon: "fa-file-contract",
+    title: "Strategic Tenders Led",
+    value: "120+",
+    details: [
+      "End-to-end RFI/RFP/RFQ process design with technical annexes (A1/A2)",
+      "Weighted scoring matrices balancing technical (40%), commercial (35%), and ESG (25%) criteria",
+      "E-procurement platform integration with full audit trails",
+      "Cross-functional evaluation committees (Engineering, Finance, Legal, Operations)",
+      "Average cycle time reduction from 45 to 28 days while improving compliance"
+    ]
+  },
+  projects: {
+    icon: "fa-project-diagram",
+    title: "Project Portfolio Value",
+    value: "€10M+",
+    details: [
+      "New product development from concept to mass production",
+      "Licensed portfolio launches (Blaupunkt, Spear & Jackson, Pininfarina)",
+      "Factory audits and supplier capability assessments across Asia",
+      "Quality system implementations (ISO 9001, compliance frameworks)",
+      "Cross-border logistics optimization and customs compliance"
+    ]
+  },
+  regions: {
+    icon: "fa-globe",
+    title: "Global Operations Coverage",
+    value: "20+",
+    details: [
+      "Europe: Portugal, Spain, Germany, UK, Netherlands, Italy, France",
+      "LATAM: Brazil, Argentina, Chile, Colombia, Mexico, Peru, Uruguay",
+      "Asia: China, Hong Kong, Taiwan, Vietnam, India, South Korea",
+      "Multi-cultural negotiation experience and local market knowledge",
+      "Time zone coordination for 24/7 project execution"
+    ]
+  }
+};
+
+function initStatModals() {
+  // Criar o overlay do modal se não existir
+  if (!document.getElementById('statModalOverlay')) {
+    const overlay = document.createElement('div');
+    overlay.id = 'statModalOverlay';
+    overlay.className = 'stat-modal-overlay';
+    overlay.innerHTML = `
+      <div class="stat-modal">
+        <button class="stat-modal-close" onclick="closeStatModal()">×</button>
+        <div class="stat-modal-icon">
+          <i class="fas" id="statModalIcon"></i>
+        </div>
+        <h3 id="statModalTitle"></h3>
+        <span class="stat-modal-value" id="statModalValue"></span>
+        <div class="stat-modal-details">
+          <ul id="statModalDetails"></ul>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    
+    // Fechar ao clicar no overlay
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeStatModal();
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeStatModal();
+    });
+  }
+  
+  // Adicionar evento de clique em todos os stat-boxes
+  document.querySelectorAll('.stat-box').forEach(box => {
+    box.style.cursor = 'pointer';
+    box.addEventListener('click', () => {
+      const statKey = box.dataset.stat;
+      if (statKey && statDetailsData[statKey]) {
+        openStatModal(statKey);
+      }
+    });
+  });
+}
+
+function openStatModal(key) {
+  const data = statDetailsData[key];
+  const overlay = document.getElementById('statModalOverlay');
+  
+  if (!data || !overlay) return;
+  
+  document.getElementById('statModalIcon').className = `fas ${data.icon}`;
+  document.getElementById('statModalTitle').textContent = data.title;
+  document.getElementById('statModalValue').textContent = data.value;
+  document.getElementById('statModalDetails').innerHTML = data.details
+    .map(item => `<li>${item}</li>`)
+    .join('');
+  
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeStatModal() {
+  const overlay = document.getElementById('statModalOverlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
 
 /* Expor globais chamadas pelo HTML inline */
 window.openStatModal        = openStatModal;
