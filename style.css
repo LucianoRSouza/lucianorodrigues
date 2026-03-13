@@ -1,4 +1,4 @@
-/* === Base & Theme (lightweight) === */
+/* === Base & Theme (leve e robusto) === */
 :root{--bg:#0e1330;--bg2:#12183d;--card:#ffffff;--ink:#1b2238;--ink-2:#4b5678;--gold:#d4af37;--cream:#f7f5ee;--shadow:0 10px 30px rgba(0,0,0,.12)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink)}img{max-width:100%;display:block}
 
@@ -61,8 +61,8 @@
 /* Modal */
 .modal{position:fixed;inset:0;background:rgba(15,21,56,.92);display:none;align-items:center;justify-content:center;padding:1rem;z-index:1000}
 .modal[aria-hidden="false"]{display:flex}
-.modal__card{background:#fff;border-radius:18px;max-width:640px;width:100%;padding:1.2rem 1.2rem 1.2rem;border:3px solid var(--gold);box-shadow:0 40px 80px rgba(0,0,0,.45)}
-.modal__close{position:absolute;right:calc(50% - 320px + .8rem);top:calc(50% - 240px + .8rem);background:#fff;border:2px solid var(--gold);border-radius:999px;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
+.modal__card{background:#fff;border-radius:18px;max-width:640px;width:100%;padding:1.2rem 1.2rem 1.2rem;border:3px solid var(--gold);box-shadow:0 40px 80px rgba(0,0,0,.45);position:relative}
+.modal__close{position:absolute;right:.8rem;top:.8rem;background:#fff;border:2px solid var(--gold);border-radius:999px;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
 .modal__title{margin:.2rem 0 .4rem;color:var(--ink)}
 .modal__subtitle{color:var(--ink-2);margin:0 0 .6rem}
 .modal__list{margin:0;padding-left:1.2rem}
