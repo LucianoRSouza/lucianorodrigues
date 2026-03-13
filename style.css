@@ -181,3 +181,5 @@
     font-size: 0.9rem;
   }
 }
+
+html.modal-open, body.modal-open { overflow: hidden; }
