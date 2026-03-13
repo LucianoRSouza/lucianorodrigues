@@ -3,15 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Luciano Rodrigues — Portfolio</title>
-  <meta name="description" content="Portfolio profissional — procurement orientado por dados e execução operacional." />
-  <link rel="stylesheet" href="./css/style.css" />
+  <meta name="description" content="Portfolio profissional — procurement orientado por dados, execução com governança e resultados mensuráveis." />
+  <!-- CSS principal (mantenha a pasta/lowercase) -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Loader (fail‑safe: some JS paths remove this) -->
+  <!-- Loader leve com fail-safe -->
   <div id="app-loader" class="loader" aria-live="polite" aria-busy="true">
-    <div class="loader__logo">LR</div>
-    <div class="loader__bar"><span></span></div>
+    <div class="loader__logo" aria-hidden="true">LR</div>
+    <div class="loader__bar" aria-hidden="true"><span></span></div>
+    <noscript>Carregamento concluído.</noscript>
   </div>
 
   <header class="nav" role="banner">
@@ -58,12 +61,12 @@
         </div>
       </div>
       <figure class="hero__img">
-        <img src="./Photo_Luciano_início.jpg" alt="Foto de perfil de Luciano" onerror="this.style.display='none'" />
+        <img src="Photo_Luciano_inicio.jpg" alt="Foto de perfil de Luciano" onerror="this.style.display='none'" />
       </figure>
     </div>
   </section>
 
-  <!-- ABOUT (resumo curto) -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <header class="section__hd">
       <h2>Filosofia de liderança</h2>
@@ -71,7 +74,7 @@
     </header>
     <div class="grid grid--2">
       <figure class="card card--img">
-        <img src="./Foto_About_Me.jpg" alt="Contexto de trabalho e viagens" onerror="this.style.display='none'"/>
+        <img src="Foto_About_Me.jpg" alt="Contexto de trabalho e viagens" onerror="this.style.display='none'"/>
       </figure>
       <div class="card">
         <ul class="bullets">
@@ -84,7 +87,7 @@
     </div>
   </section>
 
-  <!-- PROJECTS (galeria leve) -->
+  <!-- PROJECTS -->
   <section id="projects" class="section">
     <header class="section__hd">
       <h2>Projetos em destaque</h2>
@@ -92,17 +95,17 @@
     </header>
     <div class="grid grid--3">
       <article class="card proj" data-gallery="blaupunkt-tools">
-        <div class="proj__media"><img src="./Blaupunkt_Tools.png" alt="Blaupunkt Tools" onerror="this.style.display='none'"/></div>
+        <div class="proj__media"><img src="Blaupunkt_Tools.png" alt="Blaupunkt Tools" onerror="this.style.display='none'"/></div>
         <h3>Blaupunkt Tools</h3>
         <p>Linha completa para o mercado europeu: conceito → produção auditada.</p>
       </article>
       <article class="card proj" data-gallery="spear-jackson">
-        <div class="proj__media"><img src="./S&J_Cast_Irons_2.jpg" alt="Spear & Jackson" onerror="this.style.display='none'"/></div>
+        <div class="proj__media"><img src="S&J_Cast_Irons_2.jpg" alt="Spear & Jackson" onerror="this.style.display='none'"/></div>
         <h3>Spear & Jackson</h3>
         <p>Cookware premium esmaltado, qualidade e conformidade.</p>
       </article>
       <article class="card proj" data-gallery="pininfarina">
-        <div class="proj__media"><img src="./Pininfarina_BBQ.jpg" alt="Pininfarina" onerror="this.style.display='none'"/></div>
+        <div class="proj__media"><img src="Pininfarina_BBQ.jpg" alt="Pininfarina" onerror="this.style.display='none'"/></div>
         <h3>Pininfarina Essenza</h3>
         <p>Design italiano, coordenação global EU/Ásia.</p>
       </article>
@@ -125,7 +128,7 @@
     </div>
   </section>
 
-  <!-- CERTS (placeholder leve) -->
+  <!-- CERTS -->
   <section id="certs" class="section">
     <header class="section__hd">
       <h2>Certificações & Formação</h2>
@@ -138,14 +141,14 @@
     </div>
   </section>
 
-  <!-- VOLUNTEER (imagem central com moldura) -->
+  <!-- VOLUNTEER -->
   <section id="volunteer" class="section">
     <header class="section__hd">
       <h2>Voluntariado & Comunidade</h2>
       <p>Ensino de Matemática e Inglês — 1999–2000</p>
     </header>
     <figure class="vol__frame">
-      <img src="./gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College" onerror="this.style.display='none'"/>
+      <img src="gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College" onerror="this.style.display='none'"/>
     </figure>
     <div class="card card--center">
       <p>Planos de estudo personalizados, mentoria e impacto direto na evolução dos alunos — base para comunicação clara e didática na liderança de procurement.</p>
@@ -178,7 +181,8 @@
     </div>
   </div>
 
-  <script src="./js/script.js" defer></script>
+  <!-- JS principal (mantenha a pasta/lowercase) -->
+  <script src="js/script.js" defer></script>
   <noscript><style>#app-loader{display:none!important}</style></noscript>
 </body>
 </html>
