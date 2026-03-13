@@ -1,28 +1,3 @@
-console.log('[JS_VERSION:20260313T171501Z]');
-
-// ======= Overlay helpers (top-layer & Chromium-safe) =======
-function __ensureOverlayTop(overlay){
-  if(!overlay) return;
-  try{ document.body.appendChild(overlay); }catch(_){ }
-  overlay.style.position = 'fixed';
-  overlay.style.top = '0'; overlay.style.left = '0';
-  overlay.style.right = '0'; overlay.style.bottom = '0';
-  overlay.style.zIndex = '999999';
-}
-function __showOverlay(overlay){
-  __ensureOverlayTop(overlay);
-  overlay.style.display = 'flex';
-  overlay.offsetHeight; // reflow para transição
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function __hideOverlay(overlay){
-  if(!overlay) return;
-  overlay.classList.remove('active');
-  setTimeout(()=>{ overlay.style.display='none'; }, 300);
-  document.body.style.overflow = 'auto';
-}
-
 /* =========================================================
    Luciano Rodrigues — Portfolio JS (consolidado e limpo)
    ========================================================= */
@@ -259,57 +234,30 @@ const strategyDetailsData = {
 /* -------------------------
    Modais — Stats
 --------------------------*/
-
-function openStatModal(key){
+function openStatModal(key) {
   const data = statDetailsData[key];
-  const overlay = document.getElementById('statModalOverlay');
-  if(!data || !overlay) return;
-  const iconEl  = document.getElementById('statModalIcon');
-  const titleEl = document.getElementById('statModalTitle');
-  const valueEl = document.getElementById('statModalValue');
-  const listEl  = document.getElementById('statModalDetails');
-  if(iconEl)  iconEl.className = `fas ${data.icon}`;
-  if(titleEl) titleEl.textContent = data.title;
-  if(valueEl) valueEl.textContent = data.value;
-  if(listEl)  listEl.innerHTML = (data.details||[]).map(it=>`<li>${it}</li>`).join('');
-  __showOverlay(overlay);
-}
-`;
+  if (!data) return;
+  $('#statModalIcon').className = `fas ${data.icon}`;
   $('#statModalTitle').textContent = data.title;
   $('#statModalValue').textContent = data.value;
   $('#statModalDetails').innerHTML = data.details.map(it => `<li>${it}</li>`).join('');
   $('#statModalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
-
-function closeStatModal(){
-  const overlay = document.getElementById('statModalOverlay');
-  __hideOverlay(overlay);
+function closeStatModal() {
+  const overlay = $('#statModalOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = 'auto';
 }
-
 
 /* -------------------------
    Modais — Estratégia
 --------------------------*/
-
-function openStrategyModal(num){
+function openStrategyModal(num) {
   const data = strategyDetailsData[num];
-  const overlay = document.getElementById('strategyDetailOverlay');
-  if(!data || !overlay) return;
-  const icon=document.getElementById('strategyDetailIcon');
-  const t=document.getElementById('strategyDetailTitle');
-  const s=document.getElementById('strategyDetailSubtitle');
-  const body=document.getElementById('strategyDetailBody');
-  if(icon) icon.className = `fas ${data.icon}`;
-  if(t) t.textContent=data.title;
-  if(s) s.textContent=data.subtitle||'';
-  if(body) body.innerHTML=(data.sections||[]).map(sec=>{
-    const items=(sec.items||[]).map(li=>`<li>${li}</li>`).join('');
-    return `<div class="strategy-detail-section"><h4><i class="fas fa-chevron-right"></i> ${sec.title}</h4><ul>${items}</ul></div>`;
-  }).join('');
-  __showOverlay(overlay);
-}
-`;
+  if (!data) return;
+  $('#strategyDetailIcon').className = `fas ${data.icon}`;
   $('#strategyDetailTitle').textContent = data.title;
   $('#strategyDetailSubtitle').textContent = data.subtitle;
   const body = data.sections.map(sec => {
@@ -320,12 +268,12 @@ function openStrategyModal(num){
   $('#strategyDetailOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
-
-function closeStrategyModal(){
-  const ov = document.getElementById('strategyDetailOverlay');
-  __hideOverlay(ov);
+function closeStrategyModal() {
+  const overlay = $('#strategyDetailOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = 'auto';
 }
-
 
 /* -------------------------
    Galerias de Projetos
@@ -777,7 +725,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoading();
   initNavbarScroll();
   initScrollAnimations();
-  initCursor();
   initParticles();
   initSmoothAnchors();
 
@@ -879,12 +826,22 @@ window.closeProjectGallery  = closeProjectGallery;
 window.scrollToTop          = scrollToTop;
 
 
-function initCursor(){
-  if(!window.matchMedia||!window.matchMedia('(pointer:fine)').matches) return;
-  const c=document.getElementById('cursor'), f=document.getElementById('cursorFollower');
-  if(!c||!f) return; let mx=0,my=0,cx=0,cy=0,fx=0,fy=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
-  function tick(){ cx+=(mx-cx)*0.22; cy+=(my-cy)*0.22; c.style.left=cx+'px'; c.style.top=cy+'px'; fx+=(mx-fx)*0.12; fy+=(my-fy)*0.12; f.style.left=fx+'px'; f.style.top=fy+'px'; requestAnimationFrame(tick);} tick();
-  const hov=['a','button','.stat-box','.project-card','.repo-item','.contact-link','.social-link','.gallery-item','.gallery-main'];
-  document.querySelectorAll(hov.join(',')).forEach(el=>{ el.addEventListener('mouseenter',()=>{ c.style.transform='translate(-50%,-50%) scale(1.4)'; f.style.transform='translate(-50%,-50%) scale(1.35)'; c.style.background='var(--gold)'; c.style.borderColor='var(--gold)';}); el.addEventListener('mouseleave',()=>{ c.style.transform='translate(-50%,-50%) scale(1)'; f.style.transform='translate(-50%,-50%) scale(1)'; c.style.background='transparent'; c.style.borderColor='var(--gold)';}); });
-}
+/* ==== ADDED: stat & strategy modals module (defensive) ==== */
+
+// ============== GLOBAL LISTENERS =====================
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape'){
+    try{ closeStatModal(); }catch(_){ }
+    try{ closeStrategyModal(); }catch(_){ }
+  }
+});
+
+window.openStatModal = openStatModal;
+window.closeStatModal = closeStatModal;
+window.openStrategyModal = openStrategyModal;
+window.closeStrategyModal = closeStrategyModal;
+
+// Ensure init
+if (document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', ()=>{ try{ initStatModals(); }catch(e){} });
+}else{ try{ initStatModals(); }catch(e){} }
