@@ -54,47 +54,42 @@
     </ul>
   </nav>
 
- <section class="hero" id="home" aria-label="Hero">
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero">
     <div class="hero-particles" id="particles"></div>
     <div class="hero-container">
       <div class="hero-content">
         <h1 data-i18n="hero.title">Luciano Rodrigues de Souza</h1>
         <p class="subtitle" data-i18n="hero.subtitle">AI-Driven Procurement &amp; Operations Leader · Strategic Transformation</p>
-        
         <p class="hero-description" data-i18n="hero.desc">
           I connect governance, technical rigor, and AI to deliver measurable outcomes: transparent tenders, reliable partners, and resilient operations across Europe, LATAM, and Asia.
         </p>
-
-        <div class="hero-stats">
-          <div class="stat-box" onclick="openStatModal('savings')" data-stat="savings">
-            <div class="stat-icon"><i class="fas fa-piggy-bank"></i></div>
-            <span class="stat-number">€1M+</span>
-            <span class="stat-label" data-i18n="hero.stats.savings">Savings</span>
-            <span class="stat-note">Cumulative</span>
+        <div class="hero-stats" aria-label="Key metrics">
+          <div class="stat-box" data-stat="savings" tabindex="0" aria-label="Cumulative savings delivered">
+            <i class="fas fa-piggy-bank stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statSavings">€1M+</span>
+            <span class="stat-label" data-i18n="hero.stats.savings">Cumulative Savings</span>
+            <small class="stat-note" data-i18n="hero.stats.savings_note">Across multi-category negotiations</small>
           </div>
-
-          <div class="stat-box" onclick="openStatModal('rfps')" data-stat="rfps">
-            <div class="stat-icon"><i class="fas fa-file-contract"></i></div>
-            <span class="stat-number">120+</span>
-            <span class="stat-label" data-i18n="hero.stats.rfps">Strategic</span>
-            <span class="stat-note">Tenders Led</span>
+          <div class="stat-box" data-stat="rfps" tabindex="0" aria-label="Strategic tenders led" onclick="openStatModal('rfps')">
+            <i class="fas fa-file-contract stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statRFPs">120+</span>
+            <span class="stat-label" data-i18n="hero.stats.rfps">RFP/RFQ Led</span>
+            <small class="stat-note" data-i18n="hero.stats.rfps_note">With technical annexes &amp; weighted scoring</small>
           </div>
-
-          <div class="stat-box" onclick="openStatModal('projects')" data-stat="projects">
-            <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
-            <span class="stat-number">€10M+</span>
-            <span class="stat-label" data-i18n="hero.stats.projects">Value</span>
-            <span class="stat-note">Portfolio</span>
+          <div class="stat-box" data-stat="projects" tabindex="0" aria-label="Project value managed" onclick="openStatModal('projects')">
+            <i class="fas fa-project-diagram stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statProjects">€10M+</span>
+            <span class="stat-label" data-i18n="hero.stats.projects">Project Portfolio</span>
+            <small class="stat-note" data-i18n="hero.stats.projects_note">From concept to audited mass production</small>
           </div>
-
-          <div class="stat-box" onclick="openStatModal('regions')" data-stat="regions">
-            <div class="stat-icon"><i class="fas fa-globe"></i></div>
-            <span class="stat-number">20+</span>
+          <div class="stat-box" data-stat="regions" tabindex="0" aria-label="Regions served" onclick="openStatModal('regions')">
+            <i class="fas fa-globe stat-icon" aria-hidden="true"></i>
+            <span class="stat-number" id="statRegions">20+</span>
             <span class="stat-label" data-i18n="hero.stats.regions">Countries</span>
-            <span class="stat-note">Global Ops</span>
+            <small class="stat-note" data-i18n="hero.stats.regions_note">Europe · LATAM · Asia</small>
           </div>
         </div>
-
         <div class="hero-buttons">
           <a href="#contact" class="btn btn-primary">
             <i class="fas fa-paper-plane"></i>
@@ -1998,17 +1993,26 @@ function goToProjectSlide(idx) {
   slides[PG_state.index]?.classList.add('active');
   dots[PG_state.index]?.classList.add('active');
 }
-<div id="statModalOverlay" class="stat-modal-overlay" onclick="if(event.target===this) closeStatModal()">
-    <div class="stat-modal">
-      <button class="stat-modal-close" onclick="closeStatModal()">&times;</button>
-      <div id="statModalIcon" class="stat-modal-icon"></div>
-      <h3 id="statModalTitle"></h3>
-      <span id="statModalValue" class="stat-modal-value"></span>
-      <ul id="statModalDetails" class="stat-modal-details"></ul>
-    </div>
-  </div>
 
-  <script src="./js/script.js"></script>
+function closeProjectGallery() {
+  const modal = $('#projectGalleryModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
 
+// Expose functions globally for inline onclick handlers
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
+window.changeProjectSlide = changeProjectSlide;
+window.goToProjectSlide = goToProjectSlide;
+window.closeProjectGallery = closeProjectGallery;
+window.scrollToTop = scrollToTop;
+  </script>
+
+<!-- ✅ Inclui o seu arquivo externo JS (carrega TODO o código do script.js) -->
+<script src="./js/script.js"></script>
 </body>
 </html>
+
