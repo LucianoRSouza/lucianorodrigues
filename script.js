@@ -725,7 +725,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoading();
   initNavbarScroll();
   initScrollAnimations();
-  initCursor();
   initParticles();
   initSmoothAnchors();
 
@@ -765,98 +764,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// STAT BOXES MODAL FUNCTIONS
-// ============================================
-
-function initStatModals() {
-  // Adicionar evento de clique em todos os stat-boxes
-  document.querySelectorAll('.stat-box').forEach(box => {
-    box.style.cursor = 'pointer';
-    box.addEventListener('click', function(e) {
-      const statKey = this.dataset.stat;
-      if (statKey && statDetailsData[statKey]) {
-        openStatModal(statKey);
-      }
-    });
-  });
-  
-  console.log('✅ Stat modals initialized');
-}
-
-function openStatModal(key) {
-  const data = statDetailsData[key];
-  const overlay = document.getElementById('statModalOverlay');
-  
-  if (!data || !overlay) {
-    console.error('Modal data or overlay not found:', key);
-    return;
-  }
-  
-  document.getElementById('statModalIcon').className = `fas ${data.icon}`;
-  document.getElementById('statModalTitle').textContent = data.title;
-  document.getElementById('statModalValue').textContent = data.value;
-  document.getElementById('statModalDetails').innerHTML = data.details
-    .map(item => `<li>${item}</li>`)
-    .join('');
-  
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeStatModal() {
-  const overlay = document.getElementById('statModalOverlay');
-  if (overlay) {
-    overlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-}
-
-/* Expor globais chamadas pelo HTML inline */
-window.openStatModal        = openStatModal;
-window.closeStatModal       = closeStatModal;
-window.openStrategyModal    = openStrategyModal;
-window.closeStrategyModal   = closeStrategyModal;
-
-window.openLightbox         = openLightbox;
-window.closeLightbox        = closeLightbox;
-
-window.changeProjectSlide   = changeProjectSlide;
-window.goToProjectSlide     = goToProjectSlide;
-window.closeProjectGallery  = closeProjectGallery;
-
-window.scrollToTop          = scrollToTop;
-
-
-// =================== Cursor custom (suave) ===================
-function initCursor(){
-  if(!window.matchMedia || !window.matchMedia('(pointer:fine)').matches) return;
-  const cursor = document.getElementById('cursor');
-  const follower = document.getElementById('cursorFollower');
-  if(!cursor || !follower) return;
-  let mx=0,my=0; let cx=mx, cy=my; let fx=mx, fy=my;
-  function move(e){ mx=e.clientX; my=e.clientY; }
-  document.addEventListener('mousemove', move, {passive:true});
-  function tick(){
-    cx += (mx - cx) * 0.22; cy += (my - cy) * 0.22;
-    cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
-    fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
-    follower.style.left = fx + 'px'; follower.style.top = fy + 'px';
-    requestAnimationFrame(tick);
-  }
-  tick();
-  const hoverables = ['a','button','.stat-box','.project-card','.repo-item','.contact-link','.social-link','.gallery-item','.gallery-main'];
-  document.querySelectorAll(hoverables.join(',')).forEach(el=>{
-    el.addEventListener('mouseenter', ()=>{
-      cursor.style.transform = 'translate(-50%,-50%) scale(1.4)';
-      follower.style.transform = 'translate(-50%,-50%) scale(1.35)';
-      cursor.style.background = 'var(--gold)';
-      cursor.style.borderColor = 'var(--gold)';
-    });
-    el.addEventListener('mouseleave', ()=>{
-      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-      follower.style.transform = 'translate(-50%,-50%) scale(1)';
-      cursor.style.background = 'transparent';
-      cursor.style.borderColor = 'var(--gold)';
-    });
-  });
-}
