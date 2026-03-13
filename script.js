@@ -764,3 +764,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
+
+
+// -- Added: initStatModals to wire up stat boxes without inline onclick --
+function initStatModals(){
+  document.querySelectorAll('.stat-box').forEach(box=>{
+    if(!box.hasAttribute('onclick')){
+      box.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); const k=box.dataset.stat; if(k) openStatModal(k); });
+      box.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); const k=box.dataset.stat; if(k) openStatModal(k); }});
+    }
+  });
+  const overlay=document.getElementById('statModalOverlay');
+  if(overlay){ overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeStatModal(); }); }
+  const closeBtn=document.querySelector('#statModalOverlay .stat-modal-close, #statModalClose');
+  if(closeBtn){ closeBtn.addEventListener('click', closeStatModal); }
+}
+
+
+// -- Added: cursor follower --
+function initCursorFollower(){
+  const dot=document.getElementById('cursor');
+  const ring=document.getElementById('cursorFollower');
+  if(!dot||!ring) return;
+  let x=0,y=0,tx=0,ty=0; const speed=0.18;
+  function loop(){ tx+=(x-tx)*speed; ty+=(y-ty)*speed; dot.style.transform=\`translate3d(${x}px,${y}px,0)\`; ring.style.transform=\`translate3d(${tx}px,${ty}px,0)\`; requestAnimationFrame(loop);}
+  document.addEventListener('mousemove', e=>{ x=e.clientX; y=e.clientY; }, {passive:true});
+  requestAnimationFrame(loop);
+}
+
+// ensure inits run even if not wired earlier
+/*__extra_inits__*/
+document.addEventListener('DOMContentLoaded', ()=>{
+  try{ initStatModals && initStatModals(); }catch(e){}
+  try{ initCursorFollower && initCursorFollower(); }catch(e){}
+});
