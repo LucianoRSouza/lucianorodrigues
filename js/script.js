@@ -826,7 +826,7 @@ window.closeProjectGallery  = closeProjectGallery;
 window.scrollToTop          = scrollToTop;
 
 
-/* ==== ADDED MODAL MODULES (stat & strategy) ==== */
+/* ==== ADDED: stat & strategy modals module (defensive) ==== */
 
 // ============== GLOBAL LISTENERS =====================
 document.addEventListener('keydown', (e)=>{
@@ -836,8 +836,12 @@ document.addEventListener('keydown', (e)=>{
   }
 });
 
-// Expose for inline handlers present in HTML
 window.openStatModal = openStatModal;
 window.closeStatModal = closeStatModal;
 window.openStrategyModal = openStrategyModal;
 window.closeStrategyModal = closeStrategyModal;
+
+// Ensure init
+if (document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', ()=>{ try{ initStatModals(); }catch(e){} });
+}else{ try{ initStatModals(); }catch(e){} }
