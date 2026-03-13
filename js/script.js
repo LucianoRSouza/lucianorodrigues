@@ -797,8 +797,6 @@ function initStatModals() {
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
-
-/* Expor globais chamadas pelo HTML inline */
 window.openStatModal        = openStatModal;
 window.closeStatModal       = closeStatModal;
 window.openStrategyModal    = openStrategyModal;
