@@ -770,31 +770,36 @@ document.addEventListener('DOMContentLoaded', () => {
 function initStatModals() {
   document.querySelectorAll('.stat-box').forEach(box => {
     box.style.cursor = 'pointer';
-    box.addEventListener('click', function() {
-      const statKey = this.dataset.stat;
-      if (statKey) openStatModal(statKey);
-    });
   });
   console.log('✅ Stat modals initialized');
 }
 
 function openStatModal(key) {
+  // 1. Verificar se os dados existem
   const data = statDetailsData[key];
-  const overlay = document.getElementById('statModalOverlay');
-  
-  if (!data || !overlay) {
-    console.error('Modal data or overlay not found:', key);
+  if (!data) {
+    console.error('Dados não encontrados para:', key);
     return;
   }
-  
-  // Preenche os elementos do modal
-  document.getElementById('statModalIcon').className = `fas ${data.icon}`;
+
+  // 2. Localizar o modal
+  const overlay = document.getElementById('statModalOverlay');
+  if (!overlay) {
+    console.error('Elemento statModalOverlay não encontrado no HTML!');
+    return;
+  }
+
+  // 3. Preencher os campos
+  document.getElementById('statModalIcon').className = `fas ${data.icon} stat-modal-icon`;
   document.getElementById('statModalTitle').textContent = data.title;
   document.getElementById('statModalValue').textContent = data.value;
-  document.getElementById('statModalDetails').innerHTML = data.details
+  
+  const detailsList = document.getElementById('statModalDetails');
+  detailsList.innerHTML = data.details
     .map(item => `<li>${item}</li>`)
     .join('');
-  
+
+  // 4. Mostrar o modal
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
