@@ -7,33 +7,16 @@
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  <!-- NEW: external CSS for modals & volunteer frame -->
+  <!-- External CSS (ALL styles) -->
   <link rel="stylesheet" href="./css/style.css" />
-  <!-- Favicon & Meta -->
   <link rel="icon" href="favicon.ico" />
   <meta property="og:title" content="Luciano Rodrigues — AI-Driven Procurement Leader" />
   <meta property="og:description" content="AI-powered procurement, strategic operations, and product development leadership." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="Photo_Luciano_início.jpg" />
-  
-  <!-- Keep the user's inline base styles (layout, sections, etc.) to avoid regressions -->
-  <!-- NOTE: These are identical to your current file; only the modal/volunteer styles live in css/style.css -->
-  <style>
-  :root{--navy:#0f1538;--navy-light:#1a2344;--gold:#d4af37;--gold-light:#e5c158;--cream:#f8f6f0;--white:#ffffff;--text:#2c3e50;--text-light:#5a6c7d;--container-pad:5%;--radius-xl:30px;--radius-lg:25px;--radius-md:20px;--radius-sm:15px;--shadow-1:0 10px 30px rgba(0,0,0,.08);--shadow-2:0 20px 40px rgba(0,0,0,.15);--shadow-3:0 30px 60px rgba(0,0,0,.25)}
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--cream);line-height:1.6;overflow-x:hidden}
-  img{display:block;max-width:100%;height:auto}
-  ul{list-style:none}
-  a{text-decoration:none;color:inherit}
-  button{border:0;background:none;cursor:pointer}
-  /* ... (unchanged: all your existing inline styles for layout, hero, sections, projects, certs, contact, footer, etc.) ... */
-  </style>
 </head>
 <body>
-  <!-- Language switcher, Navbar, HERO with stat boxes (data-stat on each box) -->
-  <!-- We reuse your original markup; only relevant excerpt shown below for brevity -->
-
+  <!-- Navbar -->
   <nav id="navbar" class="navbar" aria-label="Primary">
     <a href="#" class="logo"><i class="fas fa-crown"></i> LR.</a>
     <ul class="nav-links">
@@ -46,6 +29,7 @@
     </ul>
   </nav>
 
+  <!-- HERO (stats clicáveis) -->
   <section class="hero" id="home" aria-label="Hero">
     <div class="hero-particles" id="particles"></div>
     <div class="hero-container">
@@ -54,80 +38,19 @@
         <p class="subtitle" data-i18n="hero.subtitle">AI-Driven Procurement & Operations Leader · Strategic Transformation</p>
         <p class="hero-description" data-i18n="hero.desc">I connect governance, technical rigor, and AI to deliver measurable outcomes: transparent tenders, reliable partners, and resilient operations across Europe, LATAM, and Asia.</p>
         <div class="hero-stats" aria-label="Key metrics">
-          <div class="stat-box" data-stat="savings" tabindex="0" aria-label="Cumulative savings delivered">
-            <i class="fas fa-piggy-bank stat-icon" aria-hidden="true"></i>
-            <span class="stat-number">€1M+</span>
-            <span class="stat-label" data-i18n="hero.stats.savings">Cumulative Savings</span>
-            <small class="stat-note" data-i18n="hero.stats.savings_note">Across multi-category negotiations</small>
-          </div>
-          <div class="stat-box" data-stat="rfps" tabindex="0" aria-label="Strategic tenders led">
-            <i class="fas fa-file-contract stat-icon" aria-hidden="true"></i>
-            <span class="stat-number">120+</span>
-            <span class="stat-label" data-i18n="hero.stats.rfps">RFP/RFQ Led</span>
-            <small class="stat-note" data-i18n="hero.stats.rfps_note">With technical annexes & weighted scoring</small>
-          </div>
-          <div class="stat-box" data-stat="projects" tabindex="0" aria-label="Project value managed">
-            <i class="fas fa-project-diagram stat-icon" aria-hidden="true"></i>
-            <span class="stat-number">€10M+</span>
-            <span class="stat-label" data-i18n="hero.stats.projects">Project Portfolio</span>
-            <small class="stat-note" data-i18n="hero.stats.projects_note">From concept to audited mass production</small>
-          </div>
-          <div class="stat-box" data-stat="regions" tabindex="0" aria-label="Regions served">
-            <i class="fas fa-globe stat-icon" aria-hidden="true"></i>
-            <span class="stat-number">20+</span>
-            <span class="stat-label" data-i18n="hero.stats.regions">Countries</span>
-            <small class="stat-note" data-i18n="hero.stats.regions_note">Europe · LATAM · Asia</small>
-          </div>
+          <div class="stat-box" data-stat="savings" tabindex="0"><i class="fas fa-piggy-bank stat-icon"></i><span class="stat-number">€1M+</span><span class="stat-label" data-i18n="hero.stats.savings">Cumulative Savings</span><small class="stat-note" data-i18n="hero.stats.savings_note">Across multi-category negotiations</small></div>
+          <div class="stat-box" data-stat="rfps" tabindex="0"><i class="fas fa-file-contract stat-icon"></i><span class="stat-number">120+</span><span class="stat-label" data-i18n="hero.stats.rfps">RFP/RFQ Led</span><small class="stat-note" data-i18n="hero.stats.rfps_note">With technical annexes & weighted scoring</small></div>
+          <div class="stat-box" data-stat="projects" tabindex="0"><i class="fas fa-project-diagram stat-icon"></i><span class="stat-number">€10M+</span><span class="stat-label" data-i18n="hero.stats.projects">Project Portfolio</span><small class="stat-note" data-i18n="hero.stats.projects_note">From concept to audited mass production</small></div>
+          <div class="stat-box" data-stat="regions" tabindex="0"><i class="fas fa-globe stat-icon"></i><span class="stat-number">20+</span><span class="stat-label" data-i18n="hero.stats.regions">Countries</span><small class="stat-note" data-i18n="hero.stats.regions_note">Europe · LATAM · Asia</small></div>
         </div>
       </div>
-      <div class="hero-image-wrapper">
-        <div class="hero-image">
-          <img src="./Photo_Luciano_início.jpg" alt="Portrait of Luciano Rodrigues de Souza" />
-        </div>
-      </div>
+      <div class="hero-image-wrapper"><div class="hero-image"><img src="./Photo_Luciano_início.jpg" alt="Portrait of Luciano"></div></div>
     </div>
   </section>
 
-  <!-- ... About, Timeline, Projects (unchanged from your version) ... -->
+  <!-- (Demais seções omitidas para foco desta correção) -->
 
-  <!-- Trade Shows: strategy grid with 6 items (click to open details) -->
-  <section class="trade-shows" id="trade-shows" aria-label="Trade Shows & Exhibitions">
-    <div class="section-header"><h2 data-i18n="tradeshows.title">Trade Shows & Global Exhibitions</h2><p data-i18n="tradeshows.subtitle">Exhibitor and strategic buyer across worldwide markets</p></div>
-    <!-- (tabs and galleries omitted for brevity) -->
-    <div class="trade-show-strategy">
-      <h3><i class="fas fa-handshake" style="color: var(--gold); margin-right: 10px;" aria-hidden="true"></i>
-        <span data-i18n="tradeshows.strategy.title">Trade Show Strategy & Execution</span>
-      </h3>
-      <p data-i18n="tradeshows.strategy.desc">Beyond the booth: ...</p>
-      <div class="strategy-grid">
-        <div class="strategy-item" onclick="openStrategyModal(1)"><i class="fas fa-drafting-compass" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.1">Stand Design & Merchandising</p></div>
-        <div class="strategy-item" onclick="openStrategyModal(2)"><i class="fas fa-calendar-check" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.2">Meetings Orchestration & Lead Capture</p></div>
-        <div class="strategy-item" onclick="openStrategyModal(3)"><i class="fas fa-handshake-angle" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.3">Negotiations & Partnering</p></div>
-        <div class="strategy-item" onclick="openStrategyModal(4)"><i class="fas fa-microchip" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.4">Tech Discovery & Benchmark</p></div>
-        <div class="strategy-item" onclick="openStrategyModal(5)"><i class="fas fa-industry" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.5">Factory Audits & Capability Mapping</p></div>
-        <div class="strategy-item" onclick="openStrategyModal(6)"><i class="fas fa-chart-line" aria-hidden="true"></i><p data-i18n="tradeshows.strategy.pillars.6">Post-Fair Pipeline, ROI & Governance</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTS (unchanged) -->
-
-  <!-- VOLUNTEERING: Centered hero photo with frame (styled via css/style.css) -->
-  <section class="volunteer-section" id="volunteering" aria-label="Volunteering">
-    <div class="section-header"><h2 data-i18n="vol.title">Volunteering & Community Impact</h2><p data-i18n="vol.subtitle">Giving back through education and mentorship</p></div>
-    <div class="volunteer-hero-image animate-on-scroll visible">
-      <img src="./gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College" />
-    </div>
-    <div class="volunteer-card animate-on-scroll">
-      <div class="volunteer-icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></div>
-      <h3 data-i18n="vol.position">Mathematics & English Instructor</h3>
-      <div class="school" data-i18n="vol.school">Gadsden State Community College</div>
-      <div class="period">1999–2000</div>
-      <div class="description" data-i18n="vol.desc">Mathematics and English tutoring ...</div>
-    </div>
-  </section>
-
-  <!-- FOOTER, toast, lightbox, project gallery modal, and both modals -->
+  <!-- Modais (stats & strategy) -->
   <div class="stat-modal-overlay" id="statModalOverlay">
     <div class="stat-modal">
       <button class="stat-modal-close" onclick="closeStatModal()">×</button>
@@ -137,7 +60,6 @@
       <div class="stat-modal-details"><ul id="statModalDetails"></ul></div>
     </div>
   </div>
-
   <div class="strategy-detail-overlay" id="strategyDetailOverlay">
     <div class="strategy-detail-card">
       <div class="strategy-detail-header">
@@ -150,27 +72,15 @@
     </div>
   </div>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
-    <span class="lightbox-close" id="lightboxClose" aria-label="Close" onclick="closeLightbox()">×</span>
-    <img src="" alt="Gallery Image" id="lightbox-img" />
-  </div>
+  <!-- Lightbox e Gallery Modal (presentes no seu site) -->
+  <div class="lightbox" id="lightbox"><span class="lightbox-close" onclick="closeLightbox()">×</span><img id="lightbox-img" alt="Gallery" /></div>
+  <div class="project-gallery-modal" id="projectGalleryModal"><div class="gallery-modal-content"><span class="gallery-close" onclick="closeProjectGallery()">×</span><div class="gallery-slider" id="gallerySlider"></div><div class="gallery-controls"><button class="gallery-btn prev" onclick="changeProjectSlide(-1)"><i class="fas fa-chevron-left"></i></button><div class="gallery-dots" id="galleryDots"></div><button class="gallery-btn next" onclick="changeProjectSlide(1)"><i class="fas fa-chevron-right"></i></button></div></div></div>
 
-  <div class="project-gallery-modal" id="projectGalleryModal" role="dialog" aria-modal="true" aria-label="Project gallery">
-    <div class="gallery-modal-content">
-      <span class="gallery-close" id="galleryClose" aria-label="Close" onclick="closeProjectGallery()">×</span>
-      <div class="gallery-slider" id="gallerySlider"></div>
-      <div class="gallery-controls">
-        <button class="gallery-btn prev" id="galleryPrev" aria-label="Previous" onclick="changeProjectSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-        <div class="gallery-dots" id="galleryDots"></div>
-        <button class="gallery-btn next" id="galleryNext" aria-label="Next" onclick="changeProjectSlide(1)"><i class="fas fa-chevron-right"></i></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
-
-  <!-- IMPORTANT: No inline JS here. All logic lives in ./js/script.js to avoid duplicates/conflicts. -->
+  <!-- JS consolidado -->
+  <script>
+  // Expor I18N se não estiver definido (evita erro em páginas reduzidas)
+  window.I18N = window.I18N || { en:{}, pt:{}, es:{}, fr:{} };
+  </script>
   <script src="./js/script.js"></script>
 </body>
 </html>
