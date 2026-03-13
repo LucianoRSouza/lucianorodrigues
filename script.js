@@ -1,18 +1,17 @@
 "use strict";
 (function(){
-  // ---------- Fail-safe Loader ----------
+  // ---------- Loader fail-safe ----------
   const loader = document.getElementById('app-loader');
   const hideLoader = ()=>{ if(!loader) return; loader.classList.add('hidden'); setTimeout(()=>loader.remove(), 320); };
   if(document.readyState === 'complete' || document.readyState === 'interactive'){
-    setTimeout(hideLoader, 120); // quick hide after DOM ready
+    setTimeout(hideLoader, 50);
   } else {
     document.addEventListener('DOMContentLoaded', hideLoader, { once:true });
   }
   window.addEventListener('load', hideLoader, { once:true });
-  // safety fallback if anything blocks
-  setTimeout(hideLoader, 2500);
+  setTimeout(hideLoader, 2000); // redundância de segurança
 
-  // ---------- Data (Stats & Strategy) ----------
+  // ---------- Dados ----------
   const statData = {
     savings:{ title:'Poupança acumulada', value:'€1M+', items:[
       'Iniciativas multi-categoria (diretos/indiretos) com foco em TCO',
@@ -89,7 +88,7 @@
     ]}
   };
 
-  // ---------- Modal Core ----------
+  // ---------- Modal ----------
   const modal = document.getElementById('modal');
   const mTitle = document.getElementById('modal-title');
   const mSub   = document.getElementById('modal-sub');
