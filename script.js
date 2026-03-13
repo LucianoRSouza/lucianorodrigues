@@ -725,6 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoading();
   initNavbarScroll();
   initScrollAnimations();
+  initCursor();
   initParticles();
   initSmoothAnchors();
 
@@ -826,22 +827,36 @@ window.closeProjectGallery  = closeProjectGallery;
 window.scrollToTop          = scrollToTop;
 
 
-/* ==== ADDED: stat & strategy modals module (defensive) ==== */
-
-// ============== GLOBAL LISTENERS =====================
-document.addEventListener('keydown', (e)=>{
-  if(e.key==='Escape'){
-    try{ closeStatModal(); }catch(_){ }
-    try{ closeStrategyModal(); }catch(_){ }
+// =================== Cursor custom (suave) ===================
+function initCursor(){
+  if(!window.matchMedia || !window.matchMedia('(pointer:fine)').matches) return;
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  if(!cursor || !follower) return;
+  let mx=0,my=0; let cx=mx, cy=my; let fx=mx, fy=my;
+  function move(e){ mx=e.clientX; my=e.clientY; }
+  document.addEventListener('mousemove', move, {passive:true});
+  function tick(){
+    cx += (mx - cx) * 0.22; cy += (my - cy) * 0.22;
+    cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
+    fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+    follower.style.left = fx + 'px'; follower.style.top = fy + 'px';
+    requestAnimationFrame(tick);
   }
-});
-
-window.openStatModal = openStatModal;
-window.closeStatModal = closeStatModal;
-window.openStrategyModal = openStrategyModal;
-window.closeStrategyModal = closeStrategyModal;
-
-// Ensure init
-if (document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', ()=>{ try{ initStatModals(); }catch(e){} });
-}else{ try{ initStatModals(); }catch(e){} }
+  tick();
+  const hoverables = ['a','button','.stat-box','.project-card','.repo-item','.contact-link','.social-link','.gallery-item','.gallery-main'];
+  document.querySelectorAll(hoverables.join(',')).forEach(el=>{
+    el.addEventListener('mouseenter', ()=>{
+      cursor.style.transform = 'translate(-50%,-50%) scale(1.4)';
+      follower.style.transform = 'translate(-50%,-50%) scale(1.35)';
+      cursor.style.background = 'var(--gold)';
+      cursor.style.borderColor = 'var(--gold)';
+    });
+    el.addEventListener('mouseleave', ()=>{
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      follower.style.transform = 'translate(-50%,-50%) scale(1)';
+      cursor.style.background = 'transparent';
+      cursor.style.borderColor = 'var(--gold)';
+    });
+  });
+}
