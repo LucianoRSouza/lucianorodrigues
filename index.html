@@ -1,188 +1,474 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Luciano Rodrigues — Portfolio</title>
-  <meta name="description" content="Portfolio profissional — procurement orientado por dados, execução com governança e resultados mensuráveis." />
-  <!-- CSS principal (mantenha a pasta/lowercase) -->
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luciano Rodrigues — AI-Driven Procurement Leader</title>
+  <meta name="description" content="AI-powered procurement, strategic operations, and product development leadership.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Loader leve com fail-safe -->
-  <div id="app-loader" class="loader" aria-live="polite" aria-busy="true">
-    <div class="loader__logo" aria-hidden="true">LR</div>
-    <div class="loader__bar" aria-hidden="true"><span></span></div>
-    <noscript>Carregamento concluído.</noscript>
+  <!-- Loading -->
+  <div class="loading" id="loading">
+    <div class="loading-logo">LR.</div>
+    <div class="loading-bar"><div class="loading-progress"></div></div>
   </div>
 
-  <header class="nav" role="banner">
-    <div class="nav__inner">
-      <a class="nav__brand" href="#home" aria-label="Início">LR.</a>
-      <nav class="nav__links" role="navigation" aria-label="Principal">
-        <a href="#about">Sobre</a>
-        <a href="#projects">Projetos</a>
-        <a href="#trade">Feiras</a>
-        <a href="#certs">Certificações</a>
-        <a href="#volunteer">Voluntariado</a>
-        <a href="#contact">Contato</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Language Switcher -->
+  <div class="lang-switcher" id="langSwitcher" aria-label="Language selector">
+    <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+    <button class="lang-btn" data-lang="pt" aria-label="Portuguese">PT</button>
+    <button class="lang-btn" data-lang="es" aria-label="Spanish">ES</button>
+    <button class="lang-btn" data-lang="fr" aria-label="French">FR</button>
+  </div>
 
-  <!-- HERO -->
-  <section id="home" class="hero" aria-label="Hero">
-    <div class="hero__inner">
-      <div class="hero__copy">
-        <h1>Luciano Rodrigues de Souza</h1>
-        <p class="hero__subtitle">Procurement & Operações orientados por dados · Execução com governança</p>
-        <div class="hero__stats" aria-label="Métricas principais">
-          <button class="stat" data-stat="savings" aria-haspopup="dialog" aria-controls="modal">
-            <span class="stat__val">€1M+</span>
-            <span class="stat__lbl">Poupança acumulada</span>
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar" aria-label="Main navigation">
+    <a href="#home" class="logo" aria-label="Home">
+      <i class="fas fa-crown" aria-hidden="true"></i>
+      <span>LR.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#timeline" data-i18n="nav.experience">Experience</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#trade-shows" data-i18n="nav.tradeshows">Trade Shows</a></li>
+      <li><a href="#certs" data-i18n="nav.certs">Certifications</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home" aria-label="Introduction">
+    <div class="hero-particles" id="particles" aria-hidden="true"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 data-i18n="hero.title">Luciano Rodrigues de Souza</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">AI-Driven Procurement & Operations Leader · Strategic Transformation</p>
+        <p class="hero-description" data-i18n="hero.desc">
+          I connect governance, technical rigor, and AI to deliver measurable outcomes: transparent tenders, reliable partners, and resilient operations across Europe, LATAM, and Asia.
+        </p>
+
+        <!-- Stats Grid -->
+        <div class="hero-stats" role="list" aria-label="Key achievements">
+          <button class="stat-box" data-stat="savings" role="listitem" aria-label="View savings details">
+            <i class="fas fa-piggy-bank stat-icon" aria-hidden="true"></i>
+            <span class="stat-number">€1M+</span>
+            <span class="stat-label" data-i18n="hero.stats.savings">Cumulative Savings</span>
+            <small class="stat-note" data-i18n="hero.stats.savings_note">Across multi-category negotiations</small>
           </button>
-          <button class="stat" data-stat="rfps" aria-haspopup="dialog" aria-controls="modal">
-            <span class="stat__val">120+</span>
-            <span class="stat__lbl">RFP/RFQ liderados</span>
+
+          <button class="stat-box" data-stat="rfps" role="listitem" aria-label="View RFP details">
+            <i class="fas fa-file-contract stat-icon" aria-hidden="true"></i>
+            <span class="stat-number">120+</span>
+            <span class="stat-label" data-i18n="hero.stats.rfps">RFP/RFQ Led</span>
+            <small class="stat-note" data-i18n="hero.stats.rfps_note">With technical annexes & weighted scoring</small>
           </button>
-          <button class="stat" data-stat="projects" aria-haspopup="dialog" aria-controls="modal">
-            <span class="stat__val">€10M+</span>
-            <span class="stat__lbl">Portfólio de projetos</span>
+
+          <button class="stat-box" data-stat="projects" role="listitem" aria-label="View projects details">
+            <i class="fas fa-project-diagram stat-icon" aria-hidden="true"></i>
+            <span class="stat-number">€10M+</span>
+            <span class="stat-label" data-i18n="hero.stats.projects">Project Portfolio</span>
+            <small class="stat-note" data-i18n="hero.stats.projects_note">From concept to audited mass production</small>
           </button>
-          <button class="stat" data-stat="regions" aria-haspopup="dialog" aria-controls="modal">
-            <span class="stat__val">20+</span>
-            <span class="stat__lbl">Países</span>
+
+          <button class="stat-box" data-stat="regions" role="listitem" aria-label="View regions details">
+            <i class="fas fa-globe stat-icon" aria-hidden="true"></i>
+            <span class="stat-number">20+</span>
+            <span class="stat-label" data-i18n="hero.stats.regions">Countries</span>
+            <small class="stat-note" data-i18n="hero.stats.regions_note">Europe · LATAM · Asia</small>
           </button>
         </div>
-        <div class="hero__cta">
-          <a class="btn" href="#contact">Falar comigo</a>
-          <a class="btn btn--ghost" href="#timeline">Ver trajetória</a>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            <span data-i18n="cta.connect">Let's Connect</span>
+          </a>
+          <a href="#timeline" class="btn btn-secondary">
+            <i class="fas fa-road" aria-hidden="true"></i>
+            <span data-i18n="cta.journey">View Journey</span>
+          </a>
         </div>
       </div>
-      <figure class="hero__img">
-        <img src="Photo_Luciano_inicio.jpg" alt="Foto de perfil de Luciano" onerror="this.style.display='none'" />
-      </figure>
+
+      <div class="hero-image-wrapper">
+        <div class="hero-image">
+          <img src="Photo_Luciano_início.jpg" alt="Luciano Rodrigues de Souza - Professional Portrait" loading="eager">
+        </div>
+        <div class="floating-badge badge-top">
+          <i class="fas fa-award" aria-hidden="true"></i>
+          <span data-i18n="hero.badges.top">Top Performer 2025</span>
+        </div>
+        <div class="floating-badge badge-middle">
+          <i class="fas fa-brain" aria-hidden="true"></i>
+          <span data-i18n="hero.badges.middle">AI Specialist</span>
+        </div>
+        <div class="floating-badge badge-bottom">
+          <i class="fas fa-handshake" aria-hidden="true"></i>
+          <span data-i18n="hero.badges.bottom">Trusted Leader</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <header class="section__hd">
-      <h2>Filosofia de liderança</h2>
-      <p>Velocidade com controle: especificação clara, transparência de mercado e accountability mensurável.</p>
-    </header>
-    <div class="grid grid--2">
-      <figure class="card card--img">
-        <img src="Foto_About_Me.jpg" alt="Contexto de trabalho e viagens" onerror="this.style.display='none'"/>
-      </figure>
-      <div class="card">
-        <ul class="bullets">
-          <li><b>Arquitetura de Processo:</b> playbooks RFI/RFP, scoring ponderado, auditoria-by-design.</li>
-          <li><b>Analytics & AI:</b> parsing de propostas, forecasting, otimização de inventário.</li>
-          <li><b>Fornecedores:</b> auditorias, mapeamento de capacidades, dual-sourcing & continuidade.</li>
-          <li><b>Governança:</b> KPIs, SLAs, dashboards e pós‑contrato.</li>
+  <!-- About Section -->
+  <section class="about" id="about" aria-label="About me">
+    <div class="section-header">
+      <h2 data-i18n="about.title">Leadership Philosophy</h2>
+      <p data-i18n="about.subtitle">From LATAM operations to global procurement strategy</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="Foto_About_Me.jpg" alt="Luciano in professional context" loading="lazy">
+      </div>
+      <div class="about-content">
+        <h3 data-i18n="about.heading">Transformation Through Collaboration</h3>
+        <p data-i18n="about.body.1">
+          I design procurement systems that scale: from RFI/RFP playbooks and BidMaps to governance, audits, and supplier development. The result is speed with control — faster decisions, lower risk, and clearer accountability.
+        </p>
+        <p data-i18n="about.body.2">
+          My leadership style blends cross-functional facilitation (Engineering, ESG, Legal, Finance, Operations) with data and AI. I focus on three pillars: clarity of requirements, market transparency, and measurable outcomes.
+        </p>
+        <blockquote class="leadership-philosophy" data-i18n="about.philosophy">
+          "I don't just optimize supply chains — I build cross-functional coalitions that transform how organizations think about procurement."
+        </blockquote>
+        <ul class="about-bullets">
+          <li data-i18n="about.points.1"><strong>Process Architecture:</strong> tender kits, weighted scoring, compliance-by-design</li>
+          <li data-i18n="about.points.2"><strong>AI & Analytics:</strong> smart RFPs, proposal parsing, forecasting, inventory optimization</li>
+          <li data-i18n="about.points.3"><strong>Supplier Strategy:</strong> audits, capability mapping, dual-sourcing & continuity</li>
+          <li data-i18n="about.points.4"><strong>Stakeholder Trust:</strong> transparent dashboards, SLAs, and post-award governance</li>
         </ul>
+        <div class="languages-grid">
+          <div class="lang-item">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span data-i18n="about.lang.pt">Portuguese (Native)</span>
+          </div>
+          <div class="lang-item">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span data-i18n="about.lang.en">English (Native)</span>
+          </div>
+          <div class="lang-item">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span data-i18n="about.lang.es">Spanish (Professional)</span>
+          </div>
+          <div class="lang-item">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span data-i18n="about.lang.fr">French (Professional)</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <header class="section__hd">
-      <h2>Projetos em destaque</h2>
-      <p>Desenvolvimento de produto e execução ponta a ponta.</p>
-    </header>
-    <div class="grid grid--3">
-      <article class="card proj" data-gallery="blaupunkt-tools">
-        <div class="proj__media"><img src="Blaupunkt_Tools.png" alt="Blaupunkt Tools" onerror="this.style.display='none'"/></div>
-        <h3>Blaupunkt Tools</h3>
-        <p>Linha completa para o mercado europeu: conceito → produção auditada.</p>
-      </article>
-      <article class="card proj" data-gallery="spear-jackson">
-        <div class="proj__media"><img src="S&J_Cast_Irons_2.jpg" alt="Spear & Jackson" onerror="this.style.display='none'"/></div>
-        <h3>Spear & Jackson</h3>
-        <p>Cookware premium esmaltado, qualidade e conformidade.</p>
-      </article>
-      <article class="card proj" data-gallery="pininfarina">
-        <div class="proj__media"><img src="Pininfarina_BBQ.jpg" alt="Pininfarina" onerror="this.style.display='none'"/></div>
-        <h3>Pininfarina Essenza</h3>
-        <p>Design italiano, coordenação global EU/Ásia.</p>
-      </article>
+  <!-- Timeline Section -->
+  <section class="timeline" id="timeline" aria-label="Professional experience">
+    <div class="section-header">
+      <h2 data-i18n="timeline.title">Professional Journey</h2>
+      <p data-i18n="timeline.subtitle">15+ years of progressive leadership</p>
+    </div>
+    <div class="timeline-container">
+      <div class="timeline-logo-sticky">
+        <div class="company-logo-display" id="current-logo">
+          <img id="logo-img" src="Details_Symbol.jpg" alt="Company logo" loading="lazy">
+          <div class="logo-indicator" aria-hidden="true">
+            <span class="indicator-dot active" data-index="0"></span>
+            <span class="indicator-dot" data-index="1"></span>
+            <span class="indicator-dot" data-index="2"></span>
+            <span class="indicator-dot" data-index="3"></span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-items" id="timelineItems">
+        <!-- Timeline items will be populated by JS -->
+      </div>
     </div>
   </section>
 
-  <!-- TRADE SHOWS (6 pilares com modal) -->
-  <section id="trade" class="section">
-    <header class="section__hd">
-      <h2>Feiras & Execução</h2>
-      <p>Do stand ao pipeline pós‑evento, com ROI real.</p>
-    </header>
-    <div class="grid grid--3 strategy">
-      <button class="card strategy__item" data-strategy="1" aria-haspopup="dialog" aria-controls="modal"><b>Stand & VM</b><span>Design e experiência</span></button>
-      <button class="card strategy__item" data-strategy="2" aria-haspopup="dialog" aria-controls="modal"><b>Reuniões & Leads</b><span>Agenda e captação</span></button>
-      <button class="card strategy__item" data-strategy="3" aria-haspopup="dialog" aria-controls="modal"><b>Negociações</b><span>Parcerias e termos</span></button>
-      <button class="card strategy__item" data-strategy="4" aria-haspopup="dialog" aria-controls="modal"><b>Tech & Benchmark</b><span>Inteligência de mercado</span></button>
-      <button class="card strategy__item" data-strategy="5" aria-haspopup="dialog" aria-controls="modal"><b>Auditorias</b><span>Capacidades e risco</span></button>
-      <button class="card strategy__item" data-strategy="6" aria-haspopup="dialog" aria-controls="modal"><b>Pipeline & ROI</b><span>Métricas e governance</span></button>
+  <!-- Projects Section -->
+  <section class="projects" id="projects" aria-label="Featured projects">
+    <div class="section-header">
+      <h2 data-i18n="projects.title">Featured Projects</h2>
+      <p data-i18n="projects.subtitle">Product development excellence and AI innovation portfolio</p>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Projects populated by JS -->
     </div>
   </section>
 
-  <!-- CERTS -->
-  <section id="certs" class="section">
-    <header class="section__hd">
-      <h2>Certificações & Formação</h2>
-      <p>Aprendizado contínuo aplicado à execução.</p>
-    </header>
-    <div class="grid grid--3">
-      <div class="card"><h3>MIT — Supply Chain Analytics</h3><p>Forecasting, inventário e otimização.</p></div>
-      <div class="card"><h3>Harvard — Decision Making</h3><p>Estruturação de decisões complexas.</p></div>
-      <div class="card"><h3>IBM — GenAI</h3><p>LLMs práticos para operações de compras.</p></div>
+  <!-- Trade Shows Section -->
+  <section class="trade-shows" id="trade-shows" aria-label="Trade shows and exhibitions">
+    <div class="section-header">
+      <h2 data-i18n="tradeshows.title">Trade Shows & Global Exhibitions</h2>
+      <p data-i18n="tradeshows.subtitle">Exhibitor and strategic buyer across worldwide markets</p>
+    </div>
+
+    <div class="gallery-tabs" role="tablist" aria-label="Trade show galleries">
+      <button class="gallery-tab active" data-target="gallery-blaupunkt" role="tab" aria-selected="true" id="tab-blaupunkt">
+        Blaupunkt
+      </button>
+      <button class="gallery-tab" data-target="gallery-ford" role="tab" aria-selected="false" id="tab-ford">
+        Ford Lighting
+      </button>
+    </div>
+
+    <div class="gallery-content active" id="gallery-blaupunkt" role="tabpanel" aria-labelledby="tab-blaupunkt">
+      <div class="gallery-grid" id="blaupunktGrid"></div>
+    </div>
+    <div class="gallery-content" id="gallery-ford" role="tabpanel" aria-labelledby="tab-ford" hidden>
+      <div class="gallery-grid" id="fordGrid"></div>
+    </div>
+
+    <!-- Strategy Section -->
+    <div class="trade-show-strategy">
+      <h3>
+        <i class="fas fa-handshake" aria-hidden="true"></i>
+        <span data-i18n="tradeshows.strategy.title">Trade Show Strategy & Execution</span>
+      </h3>
+      <p data-i18n="tradeshows.strategy.desc">
+        Beyond the booth: I co-create with Marketing the end-to-end journey — stand design, narrative & assets; orchestrate meetings, capture qualified leads, and run the post-fair pipeline to real outcomes. In parallel, I negotiate with current and new partners, benchmark technologies, and audit factories for capability & compliance.
+      </p>
+      <div class="strategy-grid">
+        <button class="strategy-item" data-strategy="1" aria-label="View stand design details">
+          <i class="fas fa-drafting-compass" aria-hidden="true"></i>
+          <p data-i18n="tradeshows.strategy.pillars.1">Stand Design & Merchandising</p>
+        </button>
+        <button class="strategy-item" data-strategy="2" aria-label="View meetings orchestration details">
+          <i class="fas fa-calendar-check" aria-hidden="true"></i>
+          <p data-i18n="tradeshows.strategy.pillars.2">Meetings Orchestration & Lead Capture</p>
+        </button>
+        <button class="strategy-item" data-strategy="3" aria-label="View negotiations details">
+          <i class="fas fa-handshake-angle" aria-hidden="true"></i>
+          <p data-i18n="tradeshows.strategy.pillars.3">Negotiations & Partnering</p>
+        </button>
+        <button class="strategy-item" data-strategy="4" aria-label="View tech discovery details">
+          <i class="fas fa-microchip" aria-hidden="true"></i>
+          <p data-i18n="tradeshows.strategy.pillars.4">Tech Discovery & Benchmark</p>
+        </button>
+        <button class="strategy-item" data-strategy="5" aria-label="View factory audits details">
+          <i class="fas fa-industry" aria-hidden="true"></i>
+          <p data-i18n="tradeshows.strategy.pillars.5">Factory Audits & Capability Mapping</p>
+        </button>
+        <button class="strategy-item" data-strategy="6" aria-label="View post-fair pipeline details">
+          <i class="fas fa-chart-line" aria-hidden="true"></i>
+          <p data-i18n="tradeshows.strategy.pillars.6">Post-Fair Pipeline, ROI & Governance</p>
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- VOLUNTEER -->
-  <section id="volunteer" class="section">
-    <header class="section__hd">
-      <h2>Voluntariado & Comunidade</h2>
-      <p>Ensino de Matemática e Inglês — 1999–2000</p>
-    </header>
-    <figure class="vol__frame">
-      <img src="gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College" onerror="this.style.display='none'"/>
-    </figure>
-    <div class="card card--center">
-      <p>Planos de estudo personalizados, mentoria e impacto direto na evolução dos alunos — base para comunicação clara e didática na liderança de procurement.</p>
+  <!-- Certifications Section -->
+  <section class="certs" id="certs" aria-label="Certifications and education">
+    <div class="section-header">
+      <h2 data-i18n="certs.title">Certifications & Education</h2>
+      <p data-i18n="certs.subtitle">Continuous learning in AI, Data Science, and Strategic Procurement</p>
+    </div>
+    <div class="certs-grid" id="certsGrid"></div>
+  </section>
+
+  <!-- Volunteering Section -->
+  <section class="volunteer-section" id="volunteering" aria-label="Volunteering experience">
+    <div class="section-header">
+      <h2 data-i18n="vol.title">Volunteering & Community Impact</h2>
+      <p data-i18n="vol.subtitle">Giving back through education and mentorship</p>
+    </div>
+
+    <div class="volunteer-hero-container">
+      <div class="volunteer-hero-image">
+        <img src="gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College campus" loading="lazy">
+      </div>
+    </div>
+
+    <div class="volunteer-card">
+      <div class="volunteer-icon">
+        <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+      </div>
+      <h3 data-i18n="vol.position">Mathematics & English Instructor</h3>
+      <div class="school" data-i18n="vol.school">Gadsden State Community College</div>
+      <div class="period">1999–2000</div>
+      <div class="description" data-i18n="vol.desc">
+        Mathematics and English tutoring for students in need of academic support. Developed personalized learning plans, mentored diverse student populations, and contributed to community education initiatives. This experience strengthened my communication skills, patience, and ability to explain complex concepts — skills I now apply in procurement training and cross-functional team leadership.
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <header class="section__hd">
-      <h2>Contato</h2>
-      <p>Vamos transformar sua estratégia de compras.</p>
-    </header>
-    <div class="grid grid--2">
-      <div class="card"><h3>Email</h3><p><a class="link" href="mailto:luciano.vlap@gmail.com">luciano.vlap@gmail.com</a></p></div>
-      <div class="card"><h3>LinkedIn</h3><p><a class="link" href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" rel="noopener">/luciano-rodrigues</a></p></div>
+  <!-- GitHub Section -->
+  <section class="github" id="github" aria-label="GitHub projects">
+    <div class="section-header">
+      <h2 data-i18n="github.title">GitHub & Data Science Projects</h2>
+      <p data-i18n="github.subtitle">Transforming procurement through code, algorithms, and data-driven insights</p>
+    </div>
+    <div class="github-card">
+      <i class="fab fa-github github-icon" aria-hidden="true"></i>
+      <h3>LucianoRSouza</h3>
+      <p class="github-tagline" data-i18n="github.tagline">Python enthusiast leveraging data science to revolutionize procurement decision-making.</p>
+
+      <div class="ml-metrics">
+        <div class="metric-box">
+          <span class="metric-value">95%</span>
+          <span class="metric-label" data-i18n="github.metrics.accuracy">Prediction Accuracy</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-value">23%</span>
+          <span class="metric-label" data-i18n="github.metrics.cost">Cost Reduction</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-value">40%</span>
+          <span class="metric-label" data-i18n="github.metrics.stockout">Stockout Reduction</span>
+        </div>
+      </div>
+
+      <div class="repo-list" id="repoList"></div>
+
+      <a href="https://github.com/LucianoRSouza" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
+        <i class="fab fa-github" aria-hidden="true"></i>
+        <span data-i18n="github.cta">View All Repositories</span>
+      </a>
     </div>
   </section>
 
-  <footer class="footer">
-    <p>© 2026 Luciano Rodrigues. Todos os direitos reservados.</p>
+  <!-- Contact Section -->
+  <section class="contact" id="contact" aria-label="Contact information">
+    <div class="section-header">
+      <h2 data-i18n="contact.title">Let's Connect</h2>
+      <p data-i18n="contact.subtitle">Ready to transform your procurement strategy?</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-grid">
+        <a href="mailto:luciano.vlap@gmail.com" class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </div>
+          <h3 data-i18n="contact.email">Email</h3>
+          <p>luciano.vlap@gmail.com</p>
+        </a>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          </div>
+          <h3 data-i18n="contact.location">Location</h3>
+          <p>Lisbon, Portugal</p>
+        </div>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" class="contact-link" rel="noopener noreferrer">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/LucianoRSouza" target="_blank" class="contact-link" rel="noopener noreferrer">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="mailto:luciano.vlap@gmail.com" class="contact-link">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span>Email Me</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p class="footer-name">Luciano Rodrigues de Souza</p>
+      <p class="footer-title">AI-Driven Procurement Leader · Strategic Operations · Data Science</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/luciano-rodrigues-541a2544/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/LucianoRSouza" target="_blank" aria-label="GitHub" rel="noopener noreferrer">
+          <i class="fab fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:luciano.vlap@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+      <p class="copyright">© 2026 Luciano Rodrigues. All rights reserved.</p>
+    </div>
   </footer>
 
-  <!-- Modal genérico (stats/strategy) -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
-    <div class="modal__card" role="document">
-      <button class="modal__close" data-close aria-label="Fechar">×</button>
-      <h3 id="modal-title" class="modal__title"></h3>
-      <div id="modal-sub" class="modal__subtitle"></div>
-      <ul id="modal-body" class="modal__list"></ul>
+  <!-- Stat Detail Modal -->
+  <div class="modal-overlay" id="statModalOverlay" role="dialog" aria-modal="true" aria-labelledby="statModalTitle" hidden>
+    <div class="modal stat-modal">
+      <button class="modal-close" id="statModalClose" aria-label="Close modal">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <div class="modal-icon stat-modal-icon">
+        <i class="fas" id="statModalIcon" aria-hidden="true"></i>
+      </div>
+      <h3 id="statModalTitle" class="modal-title"></h3>
+      <span id="statModalValue" class="stat-modal-value"></span>
+      <div class="modal-body">
+        <ul id="statModalDetails" class="stat-details-list"></ul>
+      </div>
     </div>
   </div>
 
-  <!-- JS principal (mantenha a pasta/lowercase) -->
-  <script src="js/script.js" defer></script>
-  <noscript><style>#app-loader{display:none!important}</style></noscript>
+  <!-- Strategy Detail Modal -->
+  <div class="modal-overlay" id="strategyModalOverlay" role="dialog" aria-modal="true" aria-labelledby="strategyModalTitle" hidden>
+    <div class="modal strategy-modal">
+      <button class="modal-close" id="strategyModalClose" aria-label="Close modal">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <div class="modal-header strategy-modal-header">
+        <i class="fas" id="strategyModalIcon" aria-hidden="true"></i>
+        <h3 id="strategyModalTitle" class="modal-title"></h3>
+        <p id="strategyModalSubtitle" class="modal-subtitle"></p>
+      </div>
+      <div class="modal-body" id="strategyModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Project Gallery Modal -->
+  <div class="modal-overlay" id="projectModalOverlay" role="dialog" aria-modal="true" aria-label="Project gallery" hidden>
+    <div class="modal project-modal">
+      <button class="modal-close" id="projectModalClose" aria-label="Close gallery">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <div class="project-slider">
+        <div class="slider-container" id="sliderContainer"></div>
+        <button class="slider-btn prev" id="sliderPrev" aria-label="Previous image">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button class="slider-btn next" id="sliderNext" aria-label="Next image">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <img src="" alt="Gallery preview" id="lightboxImg">
+  </div>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" hidden>
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
