@@ -242,13 +242,13 @@ function openStatModal(key) {
   $('#statModalValue').textContent = data.value;
   $('#statModalDetails').innerHTML = data.details.map(it => `<li>${it}</li>`).join('');
   $('#statModalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; document.documentElement.classList.add('modal-open');
 }
 function closeStatModal() {
   const overlay = $('#statModalOverlay');
   if (!overlay) return;
   overlay.classList.remove('active');
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = 'auto'; document.documentElement.classList.remove('modal-open');
 }
 
 /* -------------------------
@@ -266,13 +266,13 @@ function openStrategyModal(num) {
   }).join('');
   $('#strategyDetailBody').innerHTML = body;
   $('#strategyDetailOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; document.documentElement.classList.add('modal-open');
 }
 function closeStrategyModal() {
   const overlay = $('#strategyDetailOverlay');
   if (!overlay) return;
   overlay.classList.remove('active');
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = 'auto'; document.documentElement.classList.remove('modal-open');
 }
 
 /* -------------------------
@@ -348,7 +348,7 @@ function openProjectGalleryFromCard(card) {
 
   buildProjectSlides(images);
   modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; document.documentElement.classList.add('modal-open');
 }
 
 function buildProjectSlides(images) {
@@ -402,7 +402,7 @@ function closeProjectGallery() {
   const modal = $('#projectGalleryModal');
   if (modal) {
     modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; document.documentElement.classList.remove('modal-open');
   }
 }
 
@@ -557,13 +557,13 @@ function openLightbox(el) {
   if (!img?.src) return;
   lbImg.src = img.src;
   lb.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; document.documentElement.classList.add('modal-open');
 }
 function closeLightbox() {
   const lb = $('#lightbox');
   if (!lb) return;
   lb.classList.remove('active');
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = 'auto'; document.documentElement.classList.remove('modal-open');
 }
 
 function initTradeTabs() {
@@ -764,3 +764,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
+
+
+// ===== Added: robust Stat Modals init =====
+function initStatModals(){
+  // Click to open on boxes WITHOUT inline onclick
+  document.querySelectorAll('.stat-box').forEach(box=>{
+    if(!box.hasAttribute('onclick')){
+      box.addEventListener('click', (e)=>{e.preventDefault();e.stopPropagation(); const k=box.dataset.stat; if(k) openStatModal(k);});
+    }
+  });
+  // Close on overlay click
+  const overlay=document.getElementById('statModalOverlay');
+  if(overlay){ overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeStatModal(); }); }
+  // Close button
+  const btn=document.querySelector('#statModalOverlay .stat-modal-close, #statModalClose');
+  if(btn){ btn.addEventListener('click', closeStatModal); }
+  // ESC handled globally em outro listener
+}
+
+
+// ===== Added: Cursor follower =====
+function initCursorFollower(){
+  const dot=document.getElementById('cursor');
+  const ring=document.getElementById('cursorFollower');
+  if(!dot||!ring) return;
+  let x=0,y=0, tx=0,ty=0;
+  const speed=0.18;
+  function loop(){ tx += (x-tx)*speed; ty += (y-ty)*speed; dot.style.transform=\`translate3d(${x}px, ${y}px, 0)\`; ring.style.transform=\`translate3d(${tx}px, ${ty}px, 0)\`; requestAnimationFrame(loop);}
+  document.addEventListener('mousemove', (e)=>{ x=e.clientX; y=e.clientY; }, {passive:true});
+  requestAnimationFrame(loop);
+}
+
+// Close strategy modal on overlay click as well
+function initStrategyModalHelpers(){
+  const ov=document.getElementById('strategyDetailOverlay');
+  if(ov){ ov.addEventListener('click', (e)=>{ if(e.target===ov) closeStrategyModal(); }); }
+}
+document.addEventListener('DOMContentLoaded', ()=>{ try{ initStrategyModalHelpers(); }catch(e){} });
