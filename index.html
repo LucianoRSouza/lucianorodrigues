@@ -2025,6 +2025,33 @@ window.scrollToTop = scrollToTop;
     <ul id="statModalDetails" class="stat-modal-details"></ul>
   </div>
 </div>
+  <!-- Stat Detail Modal (para os 4 blocos do Hero) -->
+<div class="stat-modal-overlay" id="statModalOverlay">
+  <div class="stat-modal">
+    <button class="stat-modal-close" onclick="closeStatModal()" aria-label="Close">×</button>
+    <div class="stat-modal-icon">
+      <i class="fas" id="statModalIcon"></i>
+    </div>
+    <h3 id="statModalTitle"></h3>
+    <span class="stat-modal-value" id="statModalValue"></span>
+    <div class="stat-modal-details">
+      <ul id="statModalDetails"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Strategy Detail Modal (para os 6 pilares das Feiras) -->
+<div class="strategy-detail-overlay" id="strategyDetailOverlay">
+  <div class="strategy-detail-card">
+    <div class="strategy-detail-header">
+      <button class="strategy-detail-close" onclick="closeStrategyModal()" aria-label="Close">×</button>
+      <i class="fas fa-2x" id="strategyDetailIcon" style="color: var(--gold); margin-bottom: 1rem;"></i>
+      <h3 id="strategyDetailTitle"></h3>
+      <p id="strategyDetailSubtitle"></p>
+    </div>
+    <div class="strategy-detail-body" id="strategyDetailBody"></div>
+  </div>
+</div>
 </body>
 </html>
 
