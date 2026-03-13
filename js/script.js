@@ -781,10 +781,6 @@ function initStatModals() {
   
   console.log('✅ Stat modals initialized');
 }
-
-function openStatModal(key) {
-  const data = statDetailsData[key];
-  const overlay = document.getElementById('statModalOverlay');
   
   if (!data || !overlay) {
     console.error('Modal data or overlay not found:', key);
@@ -800,14 +796,6 @@ function openStatModal(key) {
   
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
-}
-
-function closeStatModal() {
-  const overlay = document.getElementById('statModalOverlay');
-  if (overlay) {
-    overlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
 }
 
 /* Expor globais chamadas pelo HTML inline */
