@@ -1234,60 +1234,86 @@ window.closeStrategyModal = closeStrategyModal;
 
 
 
-// === Additions (safe): strategy click, strict Blaupunkt mapping, cursor, timeline mobile badges ===
-// Attach clicks to strategy items (no inline handlers)
-document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.strategy-item[data-strategy]').forEach(el=>{
-    el.addEventListener('click',()=>{ const n=Number(el.getAttribute('data-strategy')); if(!isNaN(n) && window.openStrategyModal) window.openStrategyModal(n); });
+// ================= Additions: cursor, stat modal nav, strategy data-click, gallery fixes, badges ==================
+(function(){
+  // attach click for strategy items via data attribute (no inline handlers needed)
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelectorAll('.strategy-item[data-strategy]').forEach(el=>{
+      el.addEventListener('click', ()=>{ const n=Number(el.getAttribute('data-strategy')); if(!isNaN(n) && window.openStrategyModal) window.openStrategyModal(n); });
+    });
   });
-});
 
-// Strict mapping by filename tokens for Blaupunkt
-function fixBlaupunktGalleriesStrict(){
-  const tools = ['./Blaupunkt_Tools.png','./Blaupunkt_Power_Tools.png','./Blaupunkt_Garden_Tools.png'];
-  const power = ['./Blaupunkt_Power_Tools.png'];
-  const garden = ['./Blaupunkt_Garden_Tools.png'];
-  const set = (key, arr)=>{ const el=document.querySelector(`.project-card[data-gallery="${key}"]`); if(el) el.setAttribute('data-images', arr.join(',')); };
-  set('blaupunkt-tools', tools);
-  set('blaupunkt-power', power);
-  set('blaupunkt-garden', garden);
-}
+  // Cursor animation (if elements exist)
+  function initCursor(){
+    try{
+      if(!window.matchMedia || !window.matchMedia('(pointer:fine)').matches) return;
+      const cursor=document.getElementById('cursor');
+      const follower=document.getElementById('cursorFollower');
+      if(!cursor||!follower) return;
+      let mx=0,my=0,cx=0,cy=0,fx=0,fy=0;
+      document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+      (function tick(){cx+=(mx-cx)*0.22; cy+=(my-cy)*0.22; cursor.style.left=cx+'px'; cursor.style.top=cy+'px'; fx+=(mx-fx)*0.12; fy+=(my-fy)*0.12; follower.style.left=fx+'px'; follower.style.top=fy+'px'; requestAnimationFrame(tick);})();
+      const hoverables=['a','button','.stat-box','.project-card','.repo-item','.contact-link','.social-link','.gallery-item','.gallery-main'];
+      document.querySelectorAll(hoverables.join(',')).forEach(el=>{
+        el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(1.4)'; follower.style.transform='translate(-50%,-50%) scale(1.35)'; cursor.style.background='var(--gold)'; cursor.style.borderColor='var(--gold)';});
+        el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)'; follower.style.transform='translate(-50%,-50%) scale(1)'; cursor.style.background='transparent'; cursor.style.borderColor='var(--gold)';});
+      });
+    }catch(e){console.warn('initCursor patch failed',e)}
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{ try{ initCursor(); }catch(_){} });
 
-// Cursor animation (copied from inline behavior)
-function initCursor(){
-  try{
-    if(!window.matchMedia || !window.matchMedia('(pointer:fine)').matches) return;
-    const cursor=document.getElementById('cursor');
-    const follower=document.getElementById('cursorFollower');
-    if(!cursor||!follower) return;
-    let mx=0,my=0,cx=0,cy=0,fx=0,fy=0;
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-    (function tick(){cx+=(mx-cx)*0.22; cy+=(my-cy)*0.22; cursor.style.left=cx+'px'; cursor.style.top=cy+'px'; fx+=(mx-fx)*0.12; fy+=(my-fy)*0.12; follower.style.left=fx+'px'; follower.style.top=fy+'px'; requestAnimationFrame(tick);})();
-    const hoverables=['a','button','.stat-box','.project-card','.repo-item','.contact-link','.social-link','.gallery-item','.gallery-main'];
-    document.querySelectorAll(hoverables.join(',')).forEach(el=>{
-      el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(1.4)'; follower.style.transform='translate(-50%,-50%) scale(1.35)'; cursor.style.background='var(--gold)'; cursor.style.borderColor='var(--gold)';});
-      el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)'; follower.style.transform='translate(-50%,-50%) scale(1)'; cursor.style.background='transparent'; cursor.style.borderColor='var(--gold)';});
-    });
-  }catch(e){console.warn('initCursor fail',e)}
-}
+  // Stat modal navigation
+  const STAT_ORDER=['savings','rfps','projects','regions'];
+  let CURRENT_STAT_INDEX=0;
+  const _openStatOrig = window.openStatModal;
+  window.openStatModal = function(key){
+    if(typeof _openStatOrig==='function') _openStatOrig(key);
+    CURRENT_STAT_INDEX=Math.max(0, STAT_ORDER.indexOf(key));
+    const modal=document.querySelector('#statModalOverlay .stat-modal');
+    if(!modal) return;
+    if(!modal.querySelector('.stat-modal-nav.left')){
+      const L=document.createElement('button'); L.className='stat-modal-nav left'; L.innerHTML='<i class="fas fa-chevron-left"></i>'; L.addEventListener('click',()=>navigateStat(-1)); modal.appendChild(L);
+    }
+    if(!modal.querySelector('.stat-modal-nav.right')){
+      const R=document.createElement('button'); R.className='stat-modal-nav right'; R.innerHTML='<i class="fas fa-chevron-right"></i>'; R.addEventListener('click',()=>navigateStat(1)); modal.appendChild(R);
+    }
+  }
+  function navigateStat(dir){ CURRENT_STAT_INDEX=(CURRENT_STAT_INDEX+dir+STAT_ORDER.length)%STAT_ORDER.length; window.openStatModal(STAT_ORDER[CURRENT_STAT_INDEX]); }
+  document.addEventListener('keydown', (e)=>{ const act=document.getElementById('statModalOverlay'); if(act&&act.classList.contains('active')){ if(e.key==='ArrowLeft') navigateStat(-1); if(e.key==='ArrowRight') navigateStat(1); }});
 
-// Mobile badges per timeline item (not fixed on page)
-function injectTimelineMobileBadges(){
-  try{
+  // Open gallery reliably (delegate)
+  document.body.addEventListener('click', (e)=>{
+    const card=e.target.closest('.project-card');
+    if(!card) return;
+    if(e.target.closest('.gallery-main') || e.target.closest('.gallery-overlay') || e.target.closest('.project-image')){
+      if(window.openProjectGalleryFromCard) window.openProjectGalleryFromCard(card);
+    }
+  }, true);
+
+  // Fix Blaupunkt mappings
+  function fixBlaupunktGalleries(){
+    const tools=['./Blaupunkt_Tools.png','./Blaupunkt_Power_Tools.png','./Blaupunkt_Garden_Tools.png','./Blaupunkt_Illumiation_booth_HK_Fair.png','./Blaupunkt_Illumiation_booth_HK_Fair_1.png','./Blaupunkt_Illumiation_booth_HK_Fair_2.png','./Blaupunkt_Illumiation_booth_HK_Fair_3.png','./Blaupunkt_Illumiation_booth_HK_Fair_4.png'];
+    const power=['./Blaupunkt_Power_Tools.png','./Blaupunkt_Tools.png'];
+    const garden=['./Blaupunkt_Garden_Tools.png','./Blaupunkt_Tools.png'];
+    const set=(key,arr)=>{const el=document.querySelector(`.project-card[data-gallery="${key}"]`); if(el) el.setAttribute('data-images', arr.join(','));};
+    set('blaupunkt-tools', tools); set('blaupunkt-power', power); set('blaupunkt-garden', garden);
+  }
+
+  // Volunteer icon: G badge
+  function swapVolunteerIconToG(){
+    const icon=document.querySelector('.volunteer-icon'); if(!icon) return; icon.innerHTML='';
+    const img=document.createElement('img'); img.src='./gadsdenstatecommunitycollege_logo.jpg'; img.alt='Gadsden logo'; img.className='g-badge'; img.onerror=function(){ this.remove(); }; icon.appendChild(img);
+  }
+
+  // Mobile badges
+  function injectMobileCompanyBadges(){
     if(window.matchMedia && !window.matchMedia('(max-width: 768px)').matches) return;
-    document.querySelectorAll('.timeline-item').forEach(it=>{
-      if(it.querySelector('.timeline-badge-mobile')) return;
-      const src=it.getAttribute('data-logo'); if(!src) return;
-      const badge=document.createElement('div'); badge.className='timeline-badge-mobile';
-      const im=document.createElement('img'); im.src=src; im.alt='Company';
-      badge.appendChild(im); it.appendChild(badge);
-    });
-  }catch(e){console.warn('injectTimelineMobileBadges fail',e)}
-}
+    if(document.querySelector('.company-badges-mobile')) return;
+    const wrap=document.createElement('div'); wrap.className='company-badges-mobile';
+    const items=[{src:'./Details_Symbol.jpg',alt:'Details'},{src:'./SKN_Global.png',alt:'SKN Global'},{src:'./SKN_Brasil.png',alt:'NKS / SKN Brasil'}];
+    items.forEach(it=>{const b=document.createElement('div'); b.className='company-badge'; const im=document.createElement('img'); im.src=it.src; im.alt=it.alt; b.appendChild(im); wrap.appendChild(b);});
+    document.body.appendChild(wrap);
+  }
 
-// Bootstrap the additions without touching existing bootstraps
-document.addEventListener('DOMContentLoaded',()=>{
-  try{ fixBlaupunktGalleriesStrict(); }catch(_){ }
-  try{ initCursor(); }catch(_){ }
-  try{ injectTimelineMobileBadges(); }catch(_){ }
-});
+  document.addEventListener('DOMContentLoaded', ()=>{ try{fixBlaupunktGalleries()}catch(_){} try{swapVolunteerIconToG()}catch(_){} try{injectMobileCompanyBadges()}catch(_){} });
+})();
