@@ -1,107 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Luciano — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
+  <title>Luciano Rodrigues — Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Loading overlay -->
-  <div class="loading" id="loading">
-    <div class="loading-logo">LR.</div>
-    <div class="loading-bar"><div class="loading-progress"></div></div>
-  </div>
+  <!-- ======================= NAV ======================= -->
+  <header id="navbar" class="navbar">
+    <div class="container">
+      <a class="brand" href="#">LR.</a>
+      <nav class="menu">
+        <a href="#about">Sobre</a>
+        <a href="#timeline">Experiência</a>
+        <a href="#projects">Projetos</a>
+        <a href="#trade-shows">Feiras</a>
+        <a href="#certs">Certificações</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Navbar (dummy) -->
-  <nav id="navbar" class="navbar">
-    <a href="#" class="logo"><i class="fas fa-crown"></i> LR.</a>
-  </nav>
+  <!-- Optional particles background -->
+  <div id="particles" aria-hidden="true"></div>
 
-  <!-- Hero with stats -->
-  <section class="hero" id="home">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1>Luciano Rodrigues de Souza</h1>
-        <p class="subtitle">AI-Driven Procurement & Operations</p>
-        <div class="hero-stats">
-          <div class="stat-box" data-stat="savings" tabindex="0" role="button">
-            <i class="fas fa-piggy-bank stat-icon"></i>
-            <span class="stat-number">€1M+</span>
-            <span class="stat-label">Cumulative Savings</span>
-          </div>
-          <div class="stat-box" data-stat="rfps" tabindex="0" role="button">
-            <i class="fas fa-file-contract stat-icon"></i>
-            <span class="stat-number">120+</span>
-            <span class="stat-label">RFP/RFQ Led</span>
-          </div>
-          <div class="stat-box" data-stat="projects" tabindex="0" role="button">
-            <i class="fas fa-project-diagram stat-icon"></i>
-            <span class="stat-number">€10M+</span>
-            <span class="stat-label">Project Portfolio</span>
-          </div>
-          <div class="stat-box" data-stat="regions" tabindex="0" role="button">
-            <i class="fas fa-globe stat-icon"></i>
-            <span class="stat-number">20+</span>
-            <span class="stat-label">Countries</span>
-          </div>
+  <!-- ======================= HIGHLIGHTS ======================= -->
+  <section id="highlights" class="section">
+    <div class="container grid-4">
+      <article class="stat-box clickable" data-stat="savings" tabindex="0" aria-label="Detalhes de poupanças cumulativas">
+        <div class="stat-value">€1M+</div>
+        <div class="stat-label">Poupanças</div>
+      </article>
+      <article class="stat-box clickable" data-stat="rfps" tabindex="0" aria-label="Detalhes de RFPs liderados">
+        <div class="stat-value">120+</div>
+        <div class="stat-label">RFP/RFQ</div>
+      </article>
+      <article class="stat-box clickable" data-stat="projects" tabindex="0" aria-label="Detalhes do portefólio de projetos">
+        <div class="stat-value">€10M+</div>
+        <div class="stat-label">Portefólio</div>
+      </article>
+      <article class="stat-box clickable" data-stat="regions" tabindex="0" aria-label="Detalhes de cobertura global">
+        <div class="stat-value">20+</div>
+        <div class="stat-label">Países</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================= TRADE SHOWS ======================= -->
+  <section id="trade-shows" class="section">
+    <div class="container">
+      <h2 class="section-title">Feiras & Execução</h2>
+      <div class="grid-3">
+        <article class="strategy-item card clickable" data-strategy="1" tabindex="0">
+          <h3>Stand Design & Merchandising</h3>
+          <p>Experiências imersivas de marca.</p>
+        </article>
+        <article class="strategy-item card clickable" data-strategy="2" tabindex="0">
+          <h3>Reuniões & Lead Capture</h3>
+          <p>Engajamento estruturado para ROI.</p>
+        </article>
+        <article class="strategy-item card clickable" data-strategy="3" tabindex="0">
+          <h3>Negociação & Parcerias</h3>
+          <p>Relacionamentos estratégicos.</p>
+        </article>
+        <article class="strategy-item card clickable" data-strategy="4" tabindex="0">
+          <h3>Tech Discovery & Benchmark</h3>
+          <p>Inovação de mercado.</p>
+        </article>
+        <article class="strategy-item card clickable" data-strategy="5" tabindex="0">
+          <h3>Auditorias de Fábrica</h3>
+          <p>Excelência operacional.</p>
+        </article>
+        <article class="strategy-item card clickable" data-strategy="6" tabindex="0">
+          <h3>Pós‑Feira & Governança</h3>
+          <p>Pipeline e métricas de performance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= VOLUNTEER (Gadsden) ======================= -->
+  <section id="volunteering" class="section">
+    <div class="container">
+      <header class="section-header">
+        <h2 class="section-title">Voluntariado & Comunidade</h2>
+        <p>Gadsden State Community College — Mathematics & English Instructor (1999–2000)</p>
+      </header>
+
+      <div class="volunteer-hero-image frame center-frame">
+        <!-- A imagem é centralizada e com moldura pela CSS -->
+        <img src="gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College — Gadsden Building" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= MODALS ======================= -->
+  <!-- Stats Detail Modal -->
+  <div id="statModalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="statModalTitle" aria-describedby="statModalBody">
+    <div class="modal">
+      <button class="modal-close" aria-label="Fechar" onclick="closeStatModal()">×</button>
+      <div class="modal-header">
+        <i id="statModalIcon" class="fas"></i>
+        <div>
+          <h3 id="statModalTitle"></h3>
+          <p class="muted"><span id="statModalValue"></span></p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Trade shows strategy (6 items) -->
-  <section class="trade-show-strategy" id="trade-shows">
-    <h2><i class="fas fa-handshake" style="color: var(--gold);"></i> Trade Show Strategy</h2>
-    <div class="strategy-grid">
-      <div class="strategy-item" onclick="openStrategyModal(1)"><i class="fas fa-drafting-compass"></i><p>Stand Design & Merchandising</p></div>
-      <div class="strategy-item" onclick="openStrategyModal(2)"><i class="fas fa-calendar-check"></i><p>Meetings & Lead Capture</p></div>
-      <div class="strategy-item" onclick="openStrategyModal(3)"><i class="fas fa-handshake-angle"></i><p>Negotiations & Partnering</p></div>
-      <div class="strategy-item" onclick="openStrategyModal(4)"><i class="fas fa-microchip"></i><p>Tech Discovery & Benchmark</p></div>
-      <div class="strategy-item" onclick="openStrategyModal(5)"><i class="fas fa-industry"></i><p>Factory Audits & Capability</p></div>
-      <div class="strategy-item" onclick="openStrategyModal(6)"><i class="fas fa-chart-line"></i><p>Pipeline, ROI & Governance</p></div>
-    </div>
-  </section>
-
-  <!-- Volunteer photo (center + frame) -->
-  <section id="volunteering">
-    <div class="section-header"><h2>Volunteering</h2></div>
-    <div class="volunteer-hero-image">
-      <img src="./gadsdenstatecommunitycollege.jpg" alt="Gadsden State Community College"/>
-    </div>
-  </section>
-
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <!-- Stat Modal -->
-  <div class="stat-modal-overlay" id="statModalOverlay">
-    <div class="stat-modal">
-      <button class="stat-modal-close" onclick="closeStatModal()">×</button>
-      <div class="stat-modal-icon"><i class="fas" id="statModalIcon"></i></div>
-      <h3 id="statModalTitle"></h3>
-      <span class="stat-modal-value" id="statModalValue"></span>
-      <div class="stat-modal-details"><ul id="statModalDetails"></ul></div>
-    </div>
-  </div>
-
-  <!-- Strategy Modal -->
-  <div class="strategy-detail-overlay" id="strategyDetailOverlay">
-    <div class="strategy-detail-card">
-      <div class="strategy-detail-header">
-        <button class="strategy-detail-close" onclick="closeStrategyModal()">×</button>
-        <i class="fas" id="strategyDetailIcon" style="color: var(--gold);"></i>
-        <h3 id="strategyDetailTitle"></h3>
-        <p id="strategyDetailSubtitle"></p>
+      <div id="statModalBody" class="modal-body">
+        <ul id="statModalDetails" class="list"></ul>
       </div>
-      <div class="strategy-detail-body" id="strategyDetailBody"></div>
     </div>
   </div>
 
-  <script src="js/script.js" defer></script>
+  <!-- Strategy Detail Modal -->
+  <div id="strategyDetailOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="strategyDetailTitle">
+    <div class="modal modal-lg">
+      <button class="modal-close" aria-label="Fechar" onclick="closeStrategyModal()">×</button>
+      <div class="modal-header">
+        <i id="strategyDetailIcon" class="fas"></i>
+        <div>
+          <h3 id="strategyDetailTitle"></h3>
+          <p id="strategyDetailSubtitle" class="muted"></p>
+        </div>
+      </div>
+      <div id="strategyDetailBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox (opcional) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true"><img id="lightbox-img" alt="Imagem" /></div>
+
+  <!-- Toast & ScrollTop -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <button id="scrollTop" class="scrolltop" onclick="scrollToTop()" aria-label="Topo">↑</button>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
