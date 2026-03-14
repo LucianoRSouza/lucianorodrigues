@@ -1,5 +1,5 @@
 /* =========================================================
-   Portfolio JS — v5.fix (Chrome + Edge)
+   Portfolio JS — v5 corrigida (Chrome + Edge)
    ========================================================= */
 const PG_state = { images: [], index: 0, currentLang: 'en' };
 
@@ -171,7 +171,7 @@ const strategyDetailsData = {
     ]},
     {title:'On-Site Execution', items:[
       'Structured 30-min slots',
-      'Real-time capture via CRM app',
+      'Real-time lead capture via CRM app',
       'Follow-ups in 4 hours',
       'Standardized meeting notes',
       'Daily team huddles'
@@ -312,7 +312,7 @@ document.addEventListener('click',(ev)=>{
   }
 }, true);
 
-/* ---------- Blaupunkt (mapeamento estrito por nomes) ---------- */
+/* ---------- Blaupunkt (mapeamento estrito) ---------- */
 function collectCandidates(){
   const set=new Set();
   $$('img[src]').forEach(img=>set.add(img.getAttribute('src')));
@@ -324,7 +324,7 @@ function collectCandidates(){
 function mapBlaupunkt(){
   const all=collectCandidates();
   const isFair=s=>/Illumi|HK_Fair|Booth|Fair/i.test(s);
-  const tools = all.filter(s=>/Blaupunkt_.*Tools/i.test(s) && !isFair(s));   // tudo com "Tools" (exceto feiras)
+  const tools = all.filter(s=>/Blaupunkt_.*Tools/i.test(s) && !isFair(s));   // tudo com "Tools"
   const power = all.filter(s=>/Power_Tools/i.test(s) && !isFair(s));         // só Power_Tools
   const garden= all.filter(s=>/Garden_Tools/i.test(s) && !isFair(s));        // só Garden_Tools
   const set=(key,arr)=>{ const el=document.querySelector(`.project-card[data-gallery="${key}"]`); if(!el) return; el.setAttribute('data-images',(arr.length?arr:tools).join(','));};
