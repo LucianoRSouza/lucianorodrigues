@@ -5,116 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Luciano Rodrigues de Souza — Portfolio</title>
   <meta name="description" content="AI-driven procurement & operations — portfolio de projetos, resultados e certificações" />
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
+
   <!-- Loading -->
-  <div id="loading" aria-hidden="true"><div class="spinner"></div></div>
+  <div id="loading"><div class="spinner"></div></div>
 
   <!-- Navbar -->
-  <header id="navbar" class="navbar" role="banner">
+  <header id="navbar" class="navbar">
     <div class="container nav-inner">
       <div class="brand">
-        <img id="logo-img" src="./logo.png" alt="Logotipo" onerror="this.style.display='none'" />
         <span>LR.</span>
       </div>
-      <nav aria-label="Navegação principal">
-        <a href="#about" data-i18n="nav.about">Sobre</a>
-        <a href="#timeline" data-i18n="nav.experience">Experiência</a>
-        <a href="#projects" data-i18n="nav.projects">Projetos</a>
-        <a href="#trade-shows" data-i18n="nav.trade">Feiras</a>
-        <a href="#certs" data-i18n="nav.certs">Certificações</a>
-        <a href="#contact" data-i18n="nav.contact">Contacto</a>
+
+      <nav>
+        <a href="#about">Sobre</a>
+        <a href="#timeline">Experiência</a>
+        <a href="#projects">Projetos</a>
+        <a href="#trade">Feiras</a>
+        <a href="#certs">Certificações</a>
+        <a href="#contact">Contacto</a>
       </nav>
-      <div id="langSwitcher" class="lang-switcher" aria-label="Selecionar idioma">
-        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-        <button class="lang-btn" data-lang="pt" aria-pressed="true">PT</button>
-        <button class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
-        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+
+      <div id="langSwitcher" class="lang-switcher">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero" id="about">
-    <div id="particles" aria-hidden="true"></div>
+  <section id="about" class="hero">
+    <div id="particles"></div>
+
     <div class="container hero-inner">
       <div class="hero-content">
-        <h1 data-i18n="hero.title">Luciano Rodrigues de Souza</h1>
-        <p class="subtitle" data-i18n="hero.subtitle">AI-Driven Procurement & Operations Leader · Strategic Transformation</p>
+        <h1>Luciano Rodrigues de Souza</h1>
+        <p class="subtitle">AI‑Driven Procurement & Operations Leader · Strategic Transformation</p>
+
         <div class="hero-cta">
-          <a href="#contact" class="btn primary" data-i18n="hero.cta">Falar comigo</a>
-          <a href="#timeline" class="btn" data-i18n="hero.journey">Ver jornada</a>
+          <a href="#contact" class="btn primary">Falar comigo</a>
+          <a href="#timeline" class="btn">Ver jornada</a>
         </div>
       </div>
-      <figure class="hero-portrait" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Abrir foto">
-        <img src="./portrait.jpg" alt="Retrato de Luciano" />
+
+      <figure class="hero-portrait" onclick="openLightbox(this)">
+        <img src="portrait.jpg" alt="Retrato" />
       </figure>
     </div>
   </section>
 
   <!-- Stats -->
-  <section class="stats container">
-    <div class="stat-box" data-stat="savings" tabindex="0" role="button">
+  <section class="container stats">
+    <div class="stat-box" data-stat="savings">
       <div class="stat-value">€1M+</div>
-      <div class="stat-label" data-i18n="stats.savings">Poupança acumulada</div>
+      <div class="stat-label">Poupança acumulada</div>
     </div>
-    <div class="stat-box" data-stat="rfps" tabindex="0" role="button">
-      <div class="stat-value">120+</div>
-      <div class="stat-label" data-i18n="stats.rfps">Concursos liderados</div>
-    </div>
-    <div class="stat-box" data-stat="projects" tabindex="0" role="button">
-      <div class="stat-value">€10M+</div>
-      <div class="stat-label" data-i18n="stats.projects">Portefólio de projetos</div>
-    </div>
-    <div class="stat-box" data-stat="regions" tabindex="0" role="button">
-      <div class="stat-value">20+</div>
-      <div class="stat-label" data-i18n="stats.regions">Países</div>
-    </div>
-  </section>
 
-  <!-- Leadership Philosophy -->
-  <section class="container two-col">
-    <div>
-      <h2 data-i18n="about.title">Filosofia de liderança</h2>
-      <p data-i18n="about.p1">Desenho sistemas de procurement que escalam: playbooks RFI/RFP, BidMaps, governance e auditoria. Resultado: decisões mais rápidas, menor risco e maior responsabilização.</p>
-      <ul class="pillars">
-        <li data-i18n="about.pillar1">Arquitetura de processos</li>
-        <li data-i18n="about.pillar2">IA & Analytics</li>
-        <li data-i18n="about.pillar3">Estratégia de fornecedores</li>
-        <li data-i18n="about.pillar4">Confiança dos stakeholders</li>
-      </ul>
+    <div class="stat-box" data-stat="rfps">
+      <div class="stat-value">120+</div>
+      <div class="stat-label">Concursos liderados</div>
     </div>
-    <aside class="langs">
-      <h3 data-i18n="about.langs">Idiomas</h3>
-      <ul>
-        <li>Português · EN · ES · FR</li>
-      </ul>
-    </aside>
+
+    <div class="stat-box" data-stat="projects">
+      <div class="stat-value">€10M+</div>
+      <div class="stat-label">Portefólio de projetos</div>
+    </div>
+
+    <div class="stat-box" data-stat="regions">
+      <div class="stat-value">20+</div>
+      <div class="stat-label">Países</div>
+    </div>
   </section>
 
   <!-- Timeline -->
   <section id="timeline" class="container timeline">
-    <h2 data-i18n="timeline.title">Jornada profissional</h2>
+    <h2>Jornada profissional</h2>
+
     <div class="timeline-items">
-      <article class="timeline-item animate-on-scroll" data-logo="./logo_company_a.png">
+      <div class="timeline-item" data-logo="logo_company_a.png">
         <h3>Senior Buyer — Strategic Procurement & Operations <small>2025–Presente</small></h3>
-        <p>Transformação de procurement em hospitality (Portugal): playbooks RFI/RFP, BidMap, dashboards e integração Primavera → e‑procurement.</p>
-      </article>
-      <article class="timeline-item animate-on-scroll" data-logo="./logo_company_b.png">
+        <p>Transformação de procurement em hospitality com playbooks RFI/RFP, BidMap e integração Primavera → e‑procurement.</p>
+      </div>
+
+      <div class="timeline-item" data-logo="logo_company_b.png">
         <h3>Director of International Expansion — SKN Global <small>2022–2025</small></h3>
-        <p>Go‑to‑market multi-país e desenvolvimento de portefólio premium na UE & Ásia.</p>
-      </article>
-      <article class="timeline-item animate-on-scroll" data-logo="./logo_company_c.png">
+        <p>Go‑to‑market multi‑país e desenvolvimento de portefólio premium UE & Ásia.</p>
+      </div>
+
+      <div class="timeline-item" data-logo="logo_company_c.png">
         <h3>International Product & Licensing Manager — SKN Global <small>2018–2022</small></h3>
-        <p>Lançamento de linhas Blaupunkt (ferramentas & jardim) com conformidade CE e inspeções de linha.</p>
-      </article>
-      <article class="timeline-item animate-on-scroll" data-logo="./logo_company_d.png">
+        <p>Lançamento de linhas Blaupunkt (tools & garden) com conformidade CE.</p>
+      </div>
+
+      <div class="timeline-item" data-logo="logo_company_d.png">
         <h3>LATAM Area Manager — SKN do Brasil <small>2011–2018</small></h3>
         <p>Rede de distribuidores em 12 países e negociações OEM.</p>
-      </article>
+      </div>
     </div>
-    <div class="timeline-indicators" aria-hidden="true">
+
+    <div class="timeline-indicators">
       <span class="indicator-dot"></span>
       <span class="indicator-dot"></span>
       <span class="indicator-dot"></span>
@@ -122,89 +116,68 @@
     </div>
   </section>
 
-  <!-- Strategy (Trade Shows) -->
-  <section id="trade-shows" class="container strategy">
-    <h2 data-i18n="strategy.title">Feiras & Estratégia</h2>
+  <!-- Strategy -->
+  <section id="trade" class="container strategy">
+    <h2>Feiras & Estratégia</h2>
+
     <div class="strategy-grid">
-      <button class="strategy-item" onclick="openStrategyModal(1)">
-        <span class="icon">🎯</span>
-        <span data-i18n="strategy.s1">Stand & Merchandising</span>
-      </button>
-      <button class="strategy-item" onclick="openStrategyModal(2)">
-        <span class="icon">📅</span>
-        <span data-i18n="strategy.s2">Reuniões & Leads</span>
-      </button>
-      <button class="strategy-item" onclick="openStrategyModal(3)">
-        <span class="icon">🤝</span>
-        <span data-i18n="strategy.s3">Negociação & Parcerias</span>
-      </button>
-      <button class="strategy-item" onclick="openStrategyModal(4)">
-        <span class="icon">🧪</span>
-        <span data-i18n="strategy.s4">Tech & Benchmark</span>
-      </button>
-      <button class="strategy-item" onclick="openStrategyModal(5)">
-        <span class="icon">🏭</span>
-        <span data-i18n="strategy.s5">Auditorias & Capacidades</span>
-      </button>
-      <button class="strategy-item" onclick="openStrategyModal(6)">
-        <span class="icon">📈</span>
-        <span data-i18n="strategy.s6">Pipeline & ROI</span>
-      </button>
+      <button class="strategy-item" onclick="openStrategyModal(1)">🎯 Stand & Merchandising</button>
+      <button class="strategy-item" onclick="openStrategyModal(2)">📅 Reuniões & Leads</button>
+      <button class="strategy-item" onclick="openStrategyModal(3)">🤝 Parcerias</button>
+      <button class="strategy-item" onclick="openStrategyModal(4)">🧪 Tech & Benchmark</button>
+      <button class="strategy-item" onclick="openStrategyModal(5)">🏭 Auditorias</button>
+      <button class="strategy-item" onclick="openStrategyModal(6)">📈 Pipeline & ROI</button>
     </div>
   </section>
 
   <!-- Projects -->
   <section id="projects" class="container projects">
-    <h2 data-i18n="projects.title">Projetos em destaque</h2>
+    <h2>Projetos em destaque</h2>
+
     <div class="project-grid">
+
       <article class="project-card" data-gallery="blaupunkt-tools" data-autoslide="true" data-interval="2600">
         <div class="project-gallery">
-          <div class="gallery-main"><img src="./Blaupunkt_Tools.png" alt="Blaupunkt Tools"/></div>
-          <div class="gallery-overlay" title="Abrir galeria"></div>
+          <div class="gallery-main"><img src="Blaupunkt_Tools.png" alt=""></div>
+          <div class="gallery-overlay"></div>
         </div>
-        <h3>Blaupunkt Tools Portfolio</h3>
-        <p>Criação e lançamento de linha completa para UE — conceito a produção.</p>
+        <h3>Blaupunkt Tools</h3>
       </article>
+
       <article class="project-card" data-gallery="blaupunkt-power" data-autoslide="true" data-interval="2600">
         <div class="project-gallery">
-          <div class="gallery-main"><img src="./Blaupunkt_Power_Tools.png" alt="Blaupunkt Power Tools"/></div>
-          <div class="gallery-overlay" title="Abrir galeria"></div>
+          <div class="gallery-main"><img src="Blaupunkt_Power_Tools.png" alt=""></div>
+          <div class="gallery-overlay"></div>
         </div>
         <h3>Blaupunkt Power Tools</h3>
-        <p>Gama profissional com auditorias e certificações de segurança.</p>
       </article>
+
       <article class="project-card" data-gallery="blaupunkt-garden" data-autoslide="true" data-interval="2600">
         <div class="project-gallery">
-          <div class="gallery-main"><img src="./Blaupunkt_Garden_Tools.png" alt="Blaupunkt Garden"/></div>
-          <div class="gallery-overlay" title="Abrir galeria"></div>
+          <div class="gallery-main"><img src="Blaupunkt_Garden_Tools.png" alt=""></div>
+          <div class="gallery-overlay"></div>
         </div>
         <h3>Blaupunkt Garden</h3>
-        <p>Equipamentos outdoor com documentação e segurança.</p>
       </article>
+
     </div>
   </section>
 
-  <!-- Certifications & Volunteering -->
+  <!-- Certifications -->
   <section id="certs" class="container certs">
-    <h2 data-i18n="certs.title">Certificações & Educação</h2>
+    <h2>Certificações & Educação</h2>
     <div class="certs-grid">
-      <figure class="cert-logo"><img src="./ibm.png" alt="IBM" onerror="this.style.display='none'"/></figure>
-      <figure class="cert-logo"><img src="./mit.png" alt="MIT" onerror="this.style.display='none'"/></figure>
-      <figure class="cert-logo"><img src="./harvard.png" alt="Harvard" onerror="this.style.display='none'"/></figure>
-      <figure class="cert-logo"><img src="./gadsdenstatecommunitycollege_logo.jpg" alt="Gadsden State Community College" onerror="this.style.display='none'"/></figure>
+      <img src="ibm.png" alt="" class="cert-logo">
+      <img src="mit.png" alt="" class="cert-logo">
+      <img src="harvard.png" alt="" class="cert-logo">
+      <img src="gadsdenstate.png" alt="" class="cert-logo">
     </div>
-    <section id="volunteering" class="volunteering">
-      <header class="section-header">
-        <h3 data-i18n="vol.title">Voluntariado & Comunidade</h3>
-      </header>
-      <!-- A imagem hero é inserida via JS (initVolunteerEnhancement) -->
-    </section>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="container contact">
-    <h2 data-i18n="contact.title">Vamos conversar?</h2>
-    <ul class="contact-list">
+    <h2>Contacto</h2>
+    <ul>
       <li><strong>Email:</strong> <a href="mailto:luciano.vlap@gmail.com">luciano.vlap@gmail.com</a></li>
       <li><strong>Localização:</strong> Lisbon, Portugal</li>
     </ul>
@@ -217,78 +190,50 @@
     </div>
   </footer>
 
-  <!-- Scroll to Top -->
-  <button id="scrollTop" class="scroll-top" aria-label="Voltar ao topo" onclick="scrollToTop()">↑</button>
+  <!-- Scroll top -->
+  <button id="scrollTop" class="scroll-top">↑</button>
 
   <!-- Toast -->
-  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="toast"></div>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <img id="lightbox-img" alt="Imagem ampliada" />
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" alt="">
   </div>
 
-  <!-- Modals: Stats -->
-  <div id="statModalOverlay" class="modal-overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="statModalTitle">
-      <button class="modal-close" onclick="closeStatModal()" aria-label="Fechar">×</button>
-      <div class="modal-icon"><i id="statModalIcon" aria-hidden="true"></i></div>
-      <h3 id="statModalTitle">Título</h3>
-      <div class="modal-value" id="statModalValue"></div>
+  <!-- Modals -->
+  <div id="statModalOverlay" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" onclick="closeStatModal()">×</button>
+      <i id="statModalIcon" class="modal-icon"></i>
+      <h3 id="statModalTitle"></h3>
+      <div id="statModalValue" class="modal-value"></div>
       <ul id="statModalDetails" class="modal-list"></ul>
     </div>
   </div>
 
-  <!-- Modals: Strategy -->
-  <div id="strategyDetailOverlay" class="modal-overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="strategyDetailTitle">
-      <button class="modal-close" onclick="closeStrategyModal()" aria-label="Fechar">×</button>
-      <div class="modal-icon"><i id="strategyDetailIcon" aria-hidden="true"></i></div>
-      <h3 id="strategyDetailTitle">Detalhe</h3>
-      <p id="strategyDetailSubtitle" class="muted"></p>
+  <div id="strategyDetailOverlay" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" onclick="closeStrategyModal()">×</button>
+      <i id="strategyDetailIcon" class="modal-icon"></i>
+      <h3 id="strategyDetailTitle"></h3>
+      <p id="strategyDetailSubtitle"></p>
       <div id="strategyDetailBody"></div>
     </div>
   </div>
 
-  <!-- Modal: Project Gallery -->
-  <div id="projectGalleryModal" class="modal-overlay" aria-hidden="true">
-    <div class="modal modal-wide" role="dialog" aria-modal="true" aria-label="Galeria de projeto">
-      <button class="modal-close" onclick="closeProjectGallery()" aria-label="Fechar">×</button>
+  <div id="projectGalleryModal" class="modal-overlay">
+    <div class="modal modal-wide">
+      <button class="modal-close" onclick="closeProjectGallery()">×</button>
       <div class="gallery-controls">
-        <button class="btn" onclick="changeProjectSlide(-1)">‹</button>
-        <button class="btn" onclick="changeProjectSlide(1)">›</button>
+        <button onclick="changeProjectSlide(-1)">‹</button>
+        <button onclick="changeProjectSlide(1)">›</button>
       </div>
-      <div id="gallerySlider" class="gallery-slider"></div>
-      <div id="galleryDots" class="gallery-dots"></div>
+      <div id="gallerySlider"></div>
+      <div id="galleryDots"></div>
     </div>
   </div>
 
-  <!-- I18N dictionary (mínimo) -->
-  <script>
-    window.I18N = {
-      en: {
-        nav: { about: 'About', experience: 'Experience', projects: 'Projects', trade: 'Trade Shows', certs: 'Certifications', contact: 'Contact' },
-        hero: { title: 'Luciano Rodrigues de Souza', subtitle: 'AI-Driven Procurement & Operations Leader · Strategic Transformation', cta: 'Contact me', journey: 'View journey' },
-        stats: { savings: 'Cumulative Savings', rfps: 'Tenders led', projects: 'Project Portfolio', regions: 'Countries' },
-        strategy: { title: 'Trade Shows & Strategy', s1: 'Stand & Merchandising', s2: 'Meetings & Leads', s3: 'Negotiation & Partnerships', s4: 'Tech & Benchmark', s5: 'Factory Audits', s6: 'Pipeline & ROI' },
-        projects: { title: 'Featured Projects' },
-        certs: { title: 'Certifications & Education' },
-        vol: { title: 'Volunteering & Community' },
-        contact: { title: "Let's talk?" }
-      },
-      pt: {
-        nav: { about: 'Sobre', experience: 'Experiência', projects: 'Projetos', trade: 'Feiras', certs: 'Certificações', contact: 'Contacto' },
-        hero: { title: 'Luciano Rodrigues de Souza', subtitle: 'Procurement & Operações com IA · Transformação Estratégica', cta: 'Falar comigo', journey: 'Ver jornada' },
-        stats: { savings: 'Poupança acumulada', rfps: 'Concursos liderados', projects: 'Portefólio de projetos', regions: 'Países' },
-        strategy: { title: 'Feiras & Estratégia', s1: 'Stand & Merchandising', s2: 'Reuniões & Leads', s3: 'Negociação & Parcerias', s4: 'Tech & Benchmark', s5: 'Auditorias & Capacidades', s6: 'Pipeline & ROI' },
-        projects: { title: 'Projetos em destaque' },
-        certs: { title: 'Certificações & Educação' },
-        vol: { title: 'Voluntariado & Comunidade' },
-        contact: { title: 'Vamos conversar?' }
-      }
-    };
-  </script>
-
-  <script src="./js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
