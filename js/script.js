@@ -112,7 +112,7 @@ const STAT_I18N = {
   ]}}
 };
 
-/* ---------- Dados dos Stat ---------- */
+/* ---------- Dados (stat e strategy) ---------- */
 const statDetailsData = {
   savings:{icon:'fa-piggy-bank', title:'Cumulative Savings Delivered', value:'€1M+', details:[
     'Multi-category strategic sourcing initiatives across direct and indirect spend',
@@ -144,7 +144,6 @@ const statDetailsData = {
   ]}
 };
 
-/* ---------- Strategy Details ---------- */
 const strategyDetailsData = {
   1:{title:'Stand Design & Merchandising', subtitle:'Creating immersive brand experiences', icon:'fa-drafting-compass', sections:[
     {title:'Strategic Approach', items:[
@@ -246,101 +245,69 @@ const strategyDetailsData = {
 
 /* ---------- Stat modal ---------- */
 function openStatModal(key){
-  const data = statDetailsData[key];
-  const overlay = $('#statModalOverlay');
-  if(!data || !overlay) return;
-  $('#statModalIcon').className = `fas ${data.icon}`;
-
-  const lang = PG_state.currentLang || 'en';
-  const tr = (STAT_I18N[lang] && STAT_I18N[lang][key]) || null;
-  $('#statModalTitle').textContent = tr ? tr.title : data.title;
-  $('#statModalValue').textContent = data.value;
-  const list = tr ? tr.details : data.details;
-  $('#statModalDetails').innerHTML = list.map(it=>`<li>${it}</li>`).join('');
-
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  const data=statDetailsData[key], overlay=$('#statModalOverlay'); if(!data||!overlay) return;
+  $('#statModalIcon').className=`fas ${data.icon}`;
+  const lang=PG_state.currentLang||'en', tr=(STAT_I18N[lang]&&STAT_I18N[lang][key])||null;
+  $('#statModalTitle').textContent=tr?tr.title:data.title;
+  $('#statModalValue').textContent=data.value;
+  $('#statModalDetails').innerHTML=(tr?tr.details:data.details).map(t=>`<li>${t}</li>`).join('');
+  overlay.classList.add('active'); document.body.style.overflow='hidden';
 }
-function closeStatModal(){
-  const o = $('#statModalOverlay'); if(!o) return;
-  o.classList.remove('active'); document.body.style.overflow = 'auto';
-}
-window.openStatModal = openStatModal;
-window.closeStatModal = closeStatModal;
+function closeStatModal(){ const o=$('#statModalOverlay'); if(!o) return; o.classList.remove('active'); document.body.style.overflow='auto'; }
+window.openStatModal=openStatModal; window.closeStatModal=closeStatModal;
 
 /* ---------- Strategy modal ---------- */
-function openStrategyModal(num){
-  const data = strategyDetailsData[num];
-  const overlay = $('#strategyDetailOverlay');
-  if(!data || !overlay) return;
-
-  $('#strategyDetailIcon').className = `fas ${data.icon}`;
-  $('#strategyDetailTitle').textContent = data.title;
-  $('#strategyDetailSubtitle').textContent = data.subtitle;
-  const body = data.sections.map(sec=>{
-    const lis = sec.items.map(li=>`<li>${li}</li>`).join('');
-    return `<div class="strategy-detail-section"><h4><i class="fas fa-chevron-right"></i> ${sec.title}</h4><ul>${lis}</ul></div>`;
-  }).join('');
-  $('#strategyDetailBody').innerHTML = body;
-
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
+function openStrategyModal(n){
+  const d=strategyDetailsData[n], o=$('#strategyDetailOverlay'); if(!d||!o) return;
+  $('#strategyDetailIcon').className=`fas ${d.icon}`;
+  $('#strategyDetailTitle').textContent=d.title;
+  $('#strategyDetailSubtitle').textContent=d.subtitle;
+  const body=d.sections.map(sec=>`<div class="strategy-detail-section"><h4><i class="fas fa-chevron-right"></i> ${sec.title}</h4><ul>${sec.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('');
+  $('#strategyDetailBody').innerHTML=body;
+  o.classList.add('active'); document.body.style.overflow='hidden';
 }
-function closeStrategyModal(){
-  const o = $('#strategyDetailOverlay'); if(!o) return;
-  o.classList.remove('active'); document.body.style.overflow = 'auto';
-}
-window.openStrategyModal = openStrategyModal;
-window.closeStrategyModal = closeStrategyModal;
+function closeStrategyModal(){ const o=$('#strategyDetailOverlay'); if(!o) return; o.classList.remove('active'); document.body.style.overflow='auto'; }
+window.openStrategyModal=openStrategyModal; window.closeStrategyModal=closeStrategyModal;
 
-/* ---------- Project Gallery ---------- */
+/* ---------- Gallery ---------- */
 function buildProjectSlides(images){
-  const slider=$('#gallerySlider'), dots=$('#galleryDots'); if(!slider||!dots) return;
-  slider.innerHTML=''; dots.innerHTML='';
+  const s=$('#gallerySlider'), d=$('#galleryDots'); if(!s||!d) return;
+  s.innerHTML=''; d.innerHTML='';
   images.forEach((src,i)=>{
-    const s=document.createElement('div'); s.className='gallery-slide'+(i===0?' active':'');
+    const slide=document.createElement('div'); slide.className='gallery-slide'+(i===0?' active':'');
     const img=document.createElement('img'); img.src=src; img.alt=`Project image ${i+1}`;
-    s.appendChild(img); slider.appendChild(s);
-    const d=document.createElement('div'); d.className='gallery-dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>goToProjectSlide(i)); dots.appendChild(d);
+    slide.appendChild(img); s.appendChild(slide);
+    const dot=document.createElement('div'); dot.className='gallery-dot'+(i===0?' active':'');
+    dot.addEventListener('click',()=>goToProjectSlide(i)); d.appendChild(dot);
   });
   PG_state.images=images.slice(); PG_state.index=0;
 }
 function openProjectGalleryFromCard(card){
-  const modal=$('#projectGalleryModal'); if(!modal) return;
+  const m=$('#projectGalleryModal'); if(!m) return;
   let images=[]; const csv=(card.getAttribute('data-images')||'').trim();
   if(csv){ images=csv.split(',').map(s=>s.trim()).filter(Boolean); }
-  else { const m=card.querySelector('.gallery-main img'); if(m?.src) images=[m.src]; }
+  else{ const main=card.querySelector('.gallery-main img'); if(main?.src) images=[main.src]; }
   if(!images.length) return;
-  buildProjectSlides(images);
-  modal.classList.add('active'); document.body.style.overflow='hidden';
+  buildProjectSlides(images); m.classList.add('active'); document.body.style.overflow='hidden';
 }
-function changeProjectSlide(dir){
-  if(!PG_state.images.length) return;
+function changeProjectSlide(d){ if(!PG_state.images.length) return;
   const slides=$$('.gallery-slide'), dots=$$('.gallery-dot');
   slides[PG_state.index]?.classList.remove('active'); dots[PG_state.index]?.classList.remove('active');
-  PG_state.index=(PG_state.index+dir+PG_state.images.length)%PG_state.images.length;
+  PG_state.index=(PG_state.index+d+PG_state.images.length)%PG_state.images.length;
   slides[PG_state.index]?.classList.add('active'); dots[PG_state.index]?.classList.add('active');
 }
-function goToProjectSlide(i){
-  if(!PG_state.images.length) return;
+function goToProjectSlide(i){ if(!PG_state.images.length) return;
   const slides=$$('.gallery-slide'), dots=$$('.gallery-dot');
   slides[PG_state.index]?.classList.remove('active'); dots[PG_state.index]?.classList.remove('active');
   PG_state.index=i; slides[i]?.classList.add('active'); dots[i]?.classList.add('active');
 }
-function closeProjectGallery(){
-  const m=$('#projectGalleryModal'); if(!m) return;
-  m.classList.remove('active'); document.body.style.overflow='auto';
-}
-window.openProjectGalleryFromCard=openProjectGalleryFromCard;
-window.changeProjectSlide=changeProjectSlide;
-window.goToProjectSlide=goToProjectSlide;
-window.closeProjectGallery=closeProjectGallery;
+function closeProjectGallery(){ const m=$('#projectGalleryModal'); if(!m) return; m.classList.remove('active'); document.body.style.overflow='auto'; }
+window.openProjectGalleryFromCard=openProjectGalleryFromCard; window.changeProjectSlide=changeProjectSlide; window.goToProjectSlide=goToProjectSlide; window.closeProjectGallery=closeProjectGallery;
 
 /* Clique robusto no card */
 document.addEventListener('click',(ev)=>{
   const card=ev.target.closest('.project-card'); if(!card) return;
-  if(ev.target.closest('.gallery-main') || ev.target.closest('.gallery-overlay') || ev.target.closest('.project-image')){
+  if(ev.target.closest('.gallery-main')||ev.target.closest('.gallery-overlay')||ev.target.closest('.project-image')){
     ev.preventDefault(); openProjectGalleryFromCard(card);
   }
 }, true);
@@ -360,11 +327,7 @@ function mapBlaupunkt(){
   const tools = all.filter(s=>/Blaupunkt_.*Tools/i.test(s) && !isFair(s));
   const power = all.filter(s=>/Power_Tools/i.test(s) && !isFair(s));
   const garden= all.filter(s=>/Garden_Tools/i.test(s) && !isFair(s));
-
-  const set=(key,arr)=>{
-    const el=document.querySelector(`.project-card[data-gallery="${key}"]`);
-    if(!el) return; el.setAttribute('data-images',(arr.length?arr:tools).join(','));
-  };
+  const set=(key,arr)=>{ const el=document.querySelector(`.project-card[data-gallery="${key}"]`); if(!el) return; el.setAttribute('data-images',(arr.length?arr:tools).join(','));};
   set('blaupunkt-tools', tools);
   set('blaupunkt-power', power);
   set('blaupunkt-garden', garden);
@@ -375,14 +338,11 @@ function updateTimelineSpy(){
   const items=$$('.timeline-item'); if(!items.length) return;
   const logoImg=$('#logo-img'); if(!logoImg) return;
   let activeIndex=0, h=innerHeight, mt=h*.62, mb=h*.38;
-  items.forEach((it,i)=>{const r=it.getBoundingClientRect(); if(r.top<mt && r.bottom>mb) activeIndex=i;});
-  const active=items[activeIndex], src=active?.getAttribute('data-logo'); if(src && src!==logoImg.src){
-    logoImg.style.opacity='0'; setTimeout(()=>{ logoImg.src=src; logoImg.onload=()=>logoImg.style.opacity='1'; },140);
-  }
+  items.forEach((it,i)=>{ const r=it.getBoundingClientRect(); if(r.top<mt && r.bottom>mb) activeIndex=i; });
+  const active=items[activeIndex], src=active?.getAttribute('data-logo');
+  if(src && src!==logoImg.getAttribute('src')){ logoImg.style.opacity='0'; setTimeout(()=>{ logoImg.src=src; logoImg.onload=()=>logoImg.style.opacity='1'; },140); }
 }
-function initTimelineSpy(){
-  updateTimelineSpy(); window.addEventListener('scroll',updateTimelineSpy,{passive:true});
-}
+function initTimelineSpy(){ updateTimelineSpy(); addEventListener('scroll',updateTimelineSpy,{passive:true}); }
 function injectTimelineMobileBadges(){
   if(window.matchMedia && !window.matchMedia('(max-width: 768px)').matches) return;
   $$('.timeline-item').forEach(item=>{
@@ -396,71 +356,41 @@ function injectTimelineMobileBadges(){
 }
 
 /* ---------- Voluntariado ---------- */
-function swapVolunteerIconToG(){
-  const icon=$('.volunteer-icon'); if(!icon) return;
-  icon.innerHTML=''; const im=document.createElement('img');
-  im.src='./gadsdenstatecommunitycollege_logo.jpg'; im.alt='Gadsden logo'; im.className='g-badge';
-  icon.appendChild(im);
-}
-function fixVolunteerHero(){
-  const hero=$('.volunteer-hero-image'), img=hero?.querySelector('img');
-  if(!hero||!img) return;
-  hero.style.maxWidth='1000px'; hero.style.margin='0 auto 3rem';
-  hero.style.border='4px solid var(--gold)'; hero.style.borderRadius='24px'; hero.style.overflow='hidden';
-  img.style.display='block'; img.style.width='100%'; img.style.height='auto';
-  img.style.objectFit='cover'; img.style.objectPosition='center center';
-}
+function swapVolunteerIconToG(){ const icon=$('.volunteer-icon'); if(!icon) return; icon.innerHTML=''; const im=document.createElement('img'); im.src='./gadsdenstatecommunitycollege_logo.jpg'; im.alt='Gadsden logo'; im.className='g-badge'; icon.appendChild(im); }
+function fixVolunteerHero(){ const h=$('.volunteer-hero-image'), img=h?.querySelector('img'); if(!h||!img) return; h.style.maxWidth='1000px'; h.style.margin='0 auto 3rem'; h.style.border='4px solid var(--gold)'; h.style.borderRadius='24px'; h.style.overflow='hidden'; img.style.display='block'; img.style.width='100%'; img.style.height='auto'; img.style.objectFit='cover'; img.style.objectPosition='center center'; }
 
 /* ---------- Idioma ---------- */
-function translateAll(lang){
-  PG_state.currentLang=lang; document.documentElement.lang=lang;
-  // UI geral permanece; somente os modais de stat são traduzidos ao abrir
-}
+function translateAll(lang){ PG_state.currentLang=lang; document.documentElement.lang=lang; }
 function markActiveLang(lang){ $$('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang)); }
 function initLangSwitcher(){
   const sw=$('#langSwitcher'); if(!sw) return;
-  on(sw,'click',(e)=>{
-    const btn=e.target.closest('.lang-btn'); if(!btn) return;
-    const lang=btn.dataset.lang||'en'; translateAll(lang); markActiveLang(lang);
-    try{localStorage.setItem('lang',lang);}catch(_){}
+  on(sw,'click',(e)=>{ const btn=e.target.closest('.lang-btn'); if(!btn) return; const lang=btn.dataset.lang||'en'; translateAll(lang); markActiveLang(lang); try{localStorage.setItem('lang',lang);}catch(_){}
     const t=$('#toast'); if(t){t.textContent=`Lang: ${lang.toUpperCase()}`; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1400);}
   });
-  try{
-    const stored=localStorage.getItem('lang');
-    const browser=(navigator.language||'en').slice(0,2).toLowerCase();
-    const initial = stored || (['en','pt','es','fr'].includes(browser)?browser:'en');
-    translateAll(initial); markActiveLang(initial);
-  }catch(_){ translateAll('en'); markActiveLang('en'); }
+  try{ const stored=localStorage.getItem('lang'); const browser=(navigator.language||'en').slice(0,2).toLowerCase(); const initial = stored || (['en','pt','es','fr'].includes(browser)?browser:'en'); translateAll(initial); markActiveLang(initial); }catch(_){ translateAll('en'); markActiveLang('en'); }
 }
 
 /* ---------- Misc ---------- */
-function initLoading(){
-  const el=$('#loading'); if(!el) return;
-  window.addEventListener('load',()=>{ setTimeout(()=>{ el.classList.add('hidden'); setTimeout(()=>el.remove(), 300); }, 700); });
-}
-function initNavbarScroll(){
-  const navbar=$('#navbar'), topBtn=$('#scrollTop');
-  const fn=()=>{ const y=scrollY||document.documentElement.scrollTop; navbar?.classList.toggle('scrolled',y>50); topBtn?.classList.toggle('visible',y>600); };
-  fn(); addEventListener('scroll',fn,{passive:true});
-}
-function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+function initLoading(){ const el=$('#loading'); if(!el) return; addEventListener('load',()=>{ setTimeout(()=>{ el.classList.add('hidden'); setTimeout(()=>el.remove(), 300); }, 700); }); }
+function initNavbarScroll(){ const navbar=$('#navbar'), topBtn=$('#scrollTop'); const fn=()=>{ const y=scrollY||document.documentElement.scrollTop; navbar?.classList.toggle('scrolled',y>50); topBtn?.classList.toggle('visible',y>600); }; fn(); addEventListener('scroll',fn,{passive:true}); }
+function scrollToTop(){ scrollTo({top:0,behavior:'smooth'}); }
 window.scrollToTop=scrollToTop;
 
-/* ---------- Keyboard ESC global ---------- */
+/* ---------- Strategy click & keyboard ---------- */
+function initStrategyClick(){
+  $$('.strategy-item[data-strategy]').forEach(el=>{
+    on(el,'click',()=>{ const n=Number(el.getAttribute('data-strategy')); if(!isNaN(n)) openStrategyModal(n); });
+    on(el,'keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); const n=Number(el.getAttribute('data-strategy')); if(!isNaN(n)) openStrategyModal(n); }});
+  });
+}
+
+/* ---------- ESC global ---------- */
 document.addEventListener('keydown',(e)=>{
   if(e.key!=='Escape') return;
   try{ closeStatModal(); }catch(_){}
   try{ closeStrategyModal(); }catch(_){}
   const pg=$('#projectGalleryModal'); if(pg?.classList.contains('active')) closeProjectGallery();
 });
-
-/* ---------- Strategy click (sem inline) ---------- */
-function initStrategyClick(){
-  $$('.strategy-item[data-strategy]').forEach(el=>{
-    on(el,'click',()=>{ const n=Number(el.getAttribute('data-strategy')); if(!isNaN(n)) openStrategyModal(n); });
-    on(el,'keydown',(e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); const n=Number(el.getAttribute('data-strategy')); if(!isNaN(n)) openStrategyModal(n); }});
-  });
-}
 
 /* ---------- DOM Ready ---------- */
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -473,7 +403,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   swapVolunteerIconToG();
   fixVolunteerHero();
 
-  // Stat boxes: bind explícito (Edge/Chrome)
+  // Stat boxes (clique + teclado)
   $$('.stat-box').forEach(b=>{
     on(b,'click',()=>{ const key=b.dataset.stat; if(key) openStatModal(key); });
     on(b,'keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); const key=b.dataset.stat; if(key) openStatModal(key); }});
@@ -486,6 +416,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(e.target?.id==='projectGalleryModal') closeProjectGallery();
   });
 
-  // Mapeia Blaupunkt após o DOM (para montar corretamente as galerias)
+  // Blaupunkt
   mapBlaupunkt();
 });
