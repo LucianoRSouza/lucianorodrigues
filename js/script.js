@@ -626,18 +626,17 @@ const strategyDetailsData = {
 --------------------------*/
 
 function openStatModal(key){
-  const lang = PG_state?.currentLang || document.documentElement.lang || 'en';
-  const dict = (typeof I18N_STAT_DETAILS!=='undefined' && (I18N_STAT_DETAILS[lang]||I18N_STAT_DETAILS['en']))||null;
-  const data = dict ? dict[key] : null;
-  if(!data) return;
-  $('#statModalIcon').className = `fas ${data.icon}`;
-  $('#statModalTitle').textContent = data.title;
-  $('#statModalValue').textContent = data.value;
-  $('#statModalDetails').innerHTML = data.details.map(it=>`<li>${it}</li>`).join('');
-  $('#statModalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  var lang=(window.PG_state&&PG_state.currentLang)||document.documentElement.lang||'en';
+  var dict=(typeof I18N_STAT_DETAILS!=='undefined'&&(I18N_STAT_DETAILS[lang]||I18N_STAT_DETAILS['en']))||null;
+  var data=dict?dict[key]:null; if(!data) return;
+  document.getElementById('statModalIcon').className='fas '+data.icon;
+  document.getElementById('statModalTitle').textContent=data.title;
+  document.getElementById('statModalValue').textContent=data.value;
+  document.getElementById('statModalDetails').innerHTML=data.details.map(function(it){return '<li>'+it+'</li>';}).join('');
+  document.getElementById('statModalOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
 }
-            `;
+`;
   $('#statModalTitle').textContent = data.title;
   $('#statModalValue').textContent = data.value;
   $('#statModalDetails').innerHTML = data.details.map(it => `<li>${it}</li>`).join('');
@@ -656,21 +655,24 @@ function closeStatModal() {
 --------------------------*/
 
 function openStrategyModal(num){
-  const lang = PG_state?.currentLang || document.documentElement.lang || 'en';
-  const data = (typeof I18N_STRATEGY_DETAILS!=='undefined' && (I18N_STRATEGY_DETAILS[lang]||I18N_STRATEGY_DETAILS['en']))[num];
+  var lang=(window.PG_state&&PG_state.currentLang)||document.documentElement.lang||'en';
+  var data=(typeof I18N_STRATEGY_DETAILS!=='undefined'&&(I18N_STRATEGY_DETAILS[lang]||I18N_STRATEGY_DETAILS['en']))[num];
   if(!data) return;
-  $('#strategyDetailIcon').className = `fas ${data.icon}`;
-  $('#strategyDetailTitle').textContent = data.title;
-  $('#strategyDetailSubtitle').textContent = data.subtitle;
-  const body = data.sections.map(sec => {
-    const items = sec.items.map(li=>`<li>${li}</li>`).join('');
-    return `<div class="strategy-detail-section"><h4><i class="fas fa-chevron-right"></i> ${sec.title}</h4><ul>${items}</ul></div>`;
-  }).join('');
-  $('#strategyDetailBody').innerHTML = body;
-  $('#strategyDetailOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.getElementById('strategyDetailIcon').className='fas '+data.icon;
+  document.getElementById('strategyDetailTitle').textContent=data.title;
+  document.getElementById('strategyDetailSubtitle').textContent=data.subtitle;
+  var body='';
+  for(var i=0;i<data.sections.length;i++){
+    var sec=data.sections[i];
+    var items='';
+    for(var j=0;j<sec.items.length;j++){ items += '<li>'+sec.items[j]+'</li>'; }
+    body += '<div class="strategy-detail-section"><h4><i class="fas fa-chevron-right"></i> '+sec.title+'</h4><ul>'+items+'</ul></div>';
+  }
+  document.getElementById('strategyDetailBody').innerHTML=body;
+  document.getElementById('strategyDetailOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
 }
-            `;
+`;
   $('#strategyDetailTitle').textContent = data.title;
   $('#strategyDetailSubtitle').textContent = data.subtitle;
   const body = data.sections.map(sec => {
@@ -1071,7 +1073,7 @@ function initLangSwitcher() {
     translateAll(lang);
     markActiveLang(lang);
     try { localStorage.setItem('lang', lang); } catch(e) {}
-    showToast(`Translated to ${lang.toUpperCase()}`); try{ document.dispatchEvent(new Event('i18n:changed')); }catch(e){}
+    showToast(`Translated to ${lang.toUpperCase()}`);
   });
 }
 function initI18N() {
@@ -1131,7 +1133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Galerias & cartões
   enhanceProjectGalleries();
-  $$('.project-card').forEach(c=>{ c.classList.add('gold-pulse'); setupCardAutoSlide(c); });
+  $$('.project-card').forEach(setupCardAutoSlide);
 
   // Voluntariado + correções de imagem
   initVolunteerEnhancement();
@@ -1180,18 +1182,17 @@ function initStatModals() {
 
 
 function openStatModal(key){
-  const lang = PG_state?.currentLang || document.documentElement.lang || 'en';
-  const dict = (typeof I18N_STAT_DETAILS!=='undefined' && (I18N_STAT_DETAILS[lang]||I18N_STAT_DETAILS['en']))||null;
-  const data = dict ? dict[key] : null;
-  if(!data) return;
-  $('#statModalIcon').className = `fas ${data.icon}`;
-  $('#statModalTitle').textContent = data.title;
-  $('#statModalValue').textContent = data.value;
-  $('#statModalDetails').innerHTML = data.details.map(it=>`<li>${it}</li>`).join('');
-  $('#statModalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  var lang=(window.PG_state&&PG_state.currentLang)||document.documentElement.lang||'en';
+  var dict=(typeof I18N_STAT_DETAILS!=='undefined'&&(I18N_STAT_DETAILS[lang]||I18N_STAT_DETAILS['en']))||null;
+  var data=dict?dict[key]:null; if(!data) return;
+  document.getElementById('statModalIcon').className='fas '+data.icon;
+  document.getElementById('statModalTitle').textContent=data.title;
+  document.getElementById('statModalValue').textContent=data.value;
+  document.getElementById('statModalDetails').innerHTML=data.details.map(function(it){return '<li>'+it+'</li>';}).join('');
+  document.getElementById('statModalOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
 }
-            
+
   
   document.getElementById('statModalIcon').className = `fas ${data.icon}`;
   document.getElementById('statModalTitle').textContent = data.title;
@@ -1254,129 +1255,46 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-/* === I18N: Stat details & Strategy details === */
-const I18N_STAT_DETAILS = {
-  en:{
-    savings:{icon:'fa-piggy-bank',title:'Cumulative Savings Delivered',value:'€1M+',details:[
-      'Multi-category strategic sourcing initiatives across direct and indirect spend',
-      'Negotiated favorable payment terms (60–90 days) improving cash flow',
-      'Should-cost modeling identifying 15–25% cost opportunities',
-      'Supplier base consolidation with performance dashboards',
-      'Zero-based budgeting on CAPEX projects (avg. 20% savings)']},
-    rfps:{icon:'fa-file-contract',title:'Strategic Tenders Led',value:'120+',details:[
-      'End-to-end RFI/RFP/RFQ with technical annexes (A1/A2)',
-      'Weighted scoring matrices (technical, commercial, ESG)',
-      'E-procurement integration with full audit trail',
-      'Cross-functional evaluation committees',
-      'Cycle time reduced from 45 to 28 days']},
-    projects:{icon:'fa-project-diagram',title:'Project Portfolio Value',value:'€10M+',details:[
-      'New product development from concept to mass production',
-      'Licensed portfolio launches (Blaupunkt, S&J, Pininfarina)',
-      'Factory audits and capability assessments across Asia',
-      'Quality systems and compliance frameworks',
-      'Cross-border logistics optimization']},
-    regions:{icon:'fa-globe',title:'Global Operations Coverage',value:'20+',details:[
-      'Europe: key EU markets','LATAM: distributor network build-out','Asia: supplier development and oversight',
-      'Multi-cultural negotiation and governance','24/7 coordination across time zones']}
-  },
-  pt:{
-    savings:{icon:'fa-piggy-bank',title:'Poupança Acumulada',value:'€1M+',details:[
-      'Sourcing estratégico multi-categoria (diretos e indiretos)','Prazos de pagamento 60–90 dias','Should-cost com 15–25% em oportunidades',
-      'Racionalização da base de fornecedores','Zero-based budgeting em CAPEX (≈20%)']},
-    rfps:{icon:'fa-file-contract',title:'Tenders Estratégicos Conduzidos',value:'120+',details:[
-      'RFI/RFP/RFQ ponta a ponta com anexos técnicos (A1/A2)','Matrizes de scoring ponderado (técnico/comercial/ESG)',
-      'Integração com e-procurement e auditoria','Comitês multifuncionais','Ciclo reduzido de 45 → 28 dias']},
-    projects:{icon:'fa-project-diagram',title:'Valor do Portfólio de Projetos',value:'€10M+',details:[
-      'Desenvolvimento do produto do conceito à produção','Lançamentos licenciados','Auditorias e mapeamentos na Ásia',
-      'Sistemas de qualidade e compliance','Otimização logística internacional']},
-    regions:{icon:'fa-globe',title:'Cobertura Operacional Global',value:'20+',details:[
-      'Europa: principais mercados da UE','LATAM: rede de distribuidores','Ásia: desenvolvimento de fornecedores',
-      'Negociação multicultural e governança','Coordenação 24/7 entre fusos']}
-  },
-  es:{
-    savings:{icon:'fa-piggy-bank',title:'Ahorro Acumulado',value:'€1M+',details:[
-      'Sourcing estratégico multi-categoría','Plazos 60–90 días','Should-cost 15–25%',
-      'Racionalización de proveedores','Base cero en CAPEX (≈20%)']},
-    rfps:{icon:'fa-file-contract',title:'Licitaciones Estratégicas',value:'120+',details:[
-      'RFI/RFP/RFQ de extremo a extremo','Matrices de puntuación (técnico/comercial/ESG)',
-      'Integración con e-procurement','Comités multifuncionales','Ciclo 45 → 28 días']},
-    projects:{icon:'fa-project-diagram',title:'Valor del Portafolio de Proyectos',value:'€10M+',details:[
-      'Desarrollo de producto','Lanzamientos licenciados','Auditorías en Asia','Sistemas de calidad','Optimización logística']},
-    regions:{icon:'fa-globe',title:'Cobertura Operativa Global',value:'20+',details:[
-      'Europa: mercados clave','LATAM: red de distribuidores','Asia: desarrollo de proveedores','Negociación multicultural','Coordinación 24/7']}
-  },
-  fr:{
-    savings:{icon:'fa-piggy-bank',title:'Économies Cumulées',value:'€1M+',details:[
-      'Sourcing stratégique multi-catégorie','Délais 60–90 jours','Should-cost 15–25%',
-      'Rationalisation du panel','Budget base zéro CAPEX (≈20%)']},
-    rfps:{icon:'fa-file-contract',title:"Appels d'Offres Menés",value:'120+',details:[
-      'RFI/RFP/RFQ de bout en bout','Matrices de scoring (tech/com/ESG)',
-      'Intégration e‑procurement','Comités interfonctionnels','Cycle 45 → 28 jours']},
-    projects:{icon:'fa-project-diagram',title:'Valeur du Portefeuille',value:'€10M+',details:[
-      'Développement produit','Lancements sous licence','Audits en Asie','Systèmes qualité','Optimisation logistique']},
-    regions:{icon:'fa-globe',title:'Couverture Opérationnelle',value:'20+',details:[
-      'Europe: marchés UE','LATAM: réseau distributeurs','Asie: développement fournisseurs','Négociation multiculturelle','Coordination 24/7']}
-  }
-};
-
-const I18N_STRATEGY_DETAILS = {
-  en:{
-    1:{title:'Stand Design & Merchandising',subtitle:'Creating immersive brand experiences',icon:'fa-drafting-compass',sections:[
-      {title:'Strategic Approach',items:['Co-created with Marketing','Traffic flow optimization','Display hierarchy','Lighting & VM','Interactive demos']},
-      {title:'Technical Execution',items:['3D mockups approved','Modular components','Digital signage','Storage/logistics 500+ SKUs','On-site supervision']} ]},
-    2:{title:'Meetings Orchestration & Lead Capture',subtitle:'Maximizing ROI through structured engagement',icon:'fa-calendar-check',sections:[
-      {title:'Pre-Event',items:['Target list (200+)','Scheduling & reminders','Briefings & decks','Lead scoring (BANT)','KPIs defined']},
-      {title:'On-Site',items:['30-min slots','Real-time capture','Immediate follow-ups','Standardized notes','Daily huddles']} ]},
-    3:{title:'Negotiations & Partnering',subtitle:'Building strategic supplier relationships',icon:'fa-handshake-angle',sections:[
-      {title:'Partnership Development',items:['Qualification & audits','Term sheet (MOQ/terms/exclusivity)','Pricing & rebates','Quality agreements','IP/NDA']},
-      {title:'Contractual Framework',items:['MSA & SoW','SLA (bonus/malus)','Continuity provisions','Exit clauses','Knowledge transfer']} ]},
-    4:{title:'Tech Discovery & Benchmark',subtitle:'Staying ahead of market innovation',icon:'fa-microchip',sections:[
-      {title:'Market Intelligence',items:['Tech scouting','Teardowns','Cost benchmarks','Innovation mapping','Patent checks']},
-      {title:'Technical Evaluation',items:['Samples & tests','Feasibility','DFM feedback','Certifications','Roadmap alignment']} ]},
-    5:{title:'Factory Audits & Capability Mapping',subtitle:'Ensuring operational excellence',icon:'fa-industry',sections:[
-      {title:'Audit Framework',items:['ISO 9001','Capacity analysis','Maintenance & calibration','Workforce & training','Environmental compliance']},
-      {title:'Risk Assessment',items:['Financial health','Resilience/dual sourcing','Social compliance','Cybersecurity','BCP/DR']} ]},
-    6:{title:'Post-Fair Pipeline, ROI & Governance',subtitle:'Converting leads into revenue',icon:'fa-chart-line',sections:[
-      {title:'Pipeline',items:['Lead categorization','CRM integration','Opportunity sizing','Regional handover','Weekly reviews']},
-      {title:'Metrics',items:['Cost per lead','Conversion','Average deal size','Time-to-close','Annual ROI']} ]}
-  },
-  pt:{ 1:{title:'Design de Stand & Merchandising',subtitle:'Experiências de marca',icon:'fa-drafting-compass',sections:[{title:'Abordagem',items:['Co-criação com Marketing','Fluxo otimizado','Hierarquia de exposição','Iluminação & VM','Demos interativas']},{title:'Execução',items:['Mockups aprovados','Módulos reutilizáveis','Sinalização digital','Logística 500+ SKUs','Supervisão on-site']} ]}, 2:{title:'Reuniões & Captação de Leads',subtitle:'ROI com engajamento estruturado',icon:'fa-calendar-check',sections:[{title:'Pré-Evento',items:['Lista alvo (200+)','Agenda & lembretes','Briefings & decks','Lead scoring (BANT)','KPIs']},{title:'No Evento',items:['Slots de 30 min','Captação em tempo real','Follow-up imediato','Notas padronizadas','Daily huddles']} ]}, 3:{title:'Negociações & Parcerias',subtitle:'Relacionamentos estratégicos',icon:'fa-handshake-angle',sections:[{title:'Parcerias',items:['Qualificação & auditorias','Term sheet (MOQ/prazos/exclusividade)','Preço & rebates','Acordos de qualidade','IP/NDA']},{title:'Contratos',items:['MSA & SoW','SLA (bônus/malus)','Continuidade','Cláusulas de saída','Transferência de know-how']} ]}, 4:{title:'Descoberta & Benchmark Tecnológico',subtitle:'À frente da inovação',icon:'fa-microchip',sections:[{title:'Inteligência de Mercado',items:['Scouting','Teardowns','Benchmark de custos','Mapa de inovação','Patentes']},{title:'Avaliação Técnica',items:['Amostras & testes','Viabilidade','Feedback DFM','Certificações','Roadmap P&D']} ]}, 5:{title:'Auditorias & Capacidades de Fábrica',subtitle:'Excelência operacional',icon:'fa-industry',sections:[{title:'Auditoria',items:['ISO 9001','Capacidade produtiva','Manutenção & calibração','Treino e skills','Ambiental']},{title:'Risco',items:['Saúde financeira','Resiliência/dual sourcing','Compliance social','Cibersegurança','BCP/DR']} ]}, 6:{title:'Pipeline Pós-Feira, ROI & Governança',subtitle:'Convertendo leads em receita',icon:'fa-chart-line',sections:[{title:'Pipeline',items:['Categorização de leads','Integração CRM','Dimensionamento','Handover regional','Revisões semanais']},{title:'Métricas',items:['Custo por lead','Conversão','Ticket médio','Tempo de fecho','ROI anual']} ]} },
-  es:{ 1:{title:'Diseño de Stand & Merchandising',subtitle:'Experiencias de marca',icon:'fa-drafting-compass',sections:[{title:'Estrategia',items:['Co-creación','Flujo optimizado','Jerarquía de exposición','Iluminación & VM','Demos interactivas']},{title:'Ejecución',items:['Maquetas aprobadas','Módulos reutilizables','Señalización digital','Logística 500+ SKUs','Supervisión']} ]}, 2:{title:'Reuniones & Leads',subtitle:'ROI con engagement',icon:'fa-calendar-check',sections:[{title:'Pre-Evento',items:['Lista objetivo (200+)','Agenda & recordatorios','Briefings & decks','Lead scoring (BANT)','KPIs']},{title:'En el Evento',items:['Turnos de 30 min','Captura en tiempo real','Seguimiento inmediato','Notas estandarizadas','Reuniones diarias']} ]}, 3:{title:'Negociaciones & Alianzas',subtitle:'Relaciones estratégicas',icon:'fa-handshake-angle',sections:[{title:'Alianzas',items:['Calificación & auditorías','Term sheet','Precios & rebates','Acuerdos de calidad','IP/NDA']},{title:'Contrato',items:['MSA & SoW','SLA','Continuidad','Cláusulas de salida','Transferencia']} ]}, 4:{title:'Descubrimiento & Benchmark',subtitle:'A la vanguardia',icon:'fa-microchip',sections:[{title:'Mercado',items:['Scouting','Teardowns','Benchmark de costos','Mapa de innovación','Patentes']},{title:'Técnico',items:['Muestras & tests','Viabilidad','DFM','Certificaciones','Roadmap']} ]}, 5:{title:'Auditorías & Capacidades',subtitle:'Excelencia operativa',icon:'fa-industry',sections:[{title:'Auditoría',items:['ISO 9001','Capacidad','Mantenimiento & calibración','Formación','Medioambiente']},{title:'Riesgo',items:['Salud financiera','Resiliencia/dual sourcing','Compliance social','Ciberseguridad','BCP/DR']} ]}, 6:{title:'Pipeline Post-Feria, ROI & Gobernanza',subtitle:'Ingresos a partir de leads',icon:'fa-chart-line',sections:[{title:'Pipeline',items:['Categorización','Integración CRM','Sizing','Handover regional','Revisiones semanales']},{title:'Métricas',items:['Costo por lead','Conversión','Ticket medio','Tiempo de cierre','ROI anual']} ]} },
-  fr:{ 1:{title:'Design de Stand & Merchandising',subtitle:'Expériences de marque',icon:'fa-drafting-compass',sections:[{title:'Approche',items:['Co‑création','Flux optimisé','Hiérarchie','Lumière & VM','Démos']},{title:'Exécution',items:['Maquettes','Modules','Signalétique digitale','Logistique 500+ réf.','Supervision']} ]}, 2:{title:'Réunions & Leads',subtitle:'ROI structuré',icon:'fa-calendar-check',sections:[{title:'Pré‑Évènement',items:['Liste cible (200+)','Planif. & rappels','Briefings & decks','Lead scoring (BANT)','KPIs']},{title:'Sur site',items:['Créneaux de 30 min','Capture temps réel','Suivi immédiat','Notes standard','Points quotidiens']} ]}, 3:{title:'Négociations & Partenariats',subtitle:'Relations stratégiques',icon:'fa-handshake-angle',sections:[{title:'Partenariats',items:['Qualification & audits','Term sheet','Tarification & remises','Accords qualité','IP/NDA']},{title:'Cadre',items:['MSA & SoW','SLA','Continuité','Clauses de sortie','Transfert de savoir']} ]}, 4:{title:'Veille & Benchmark Technologique',subtitle:'Rester en avance',icon:'fa-microchip',sections:[{title:'Marché',items:['Veille techno','Teardowns','Benchmarks de coûts','Carte d’innovation','Brevets']},{title:'Technique',items:['Échantillons & tests','Faisabilité','DFM','Certifications','Roadmap']} ]}, 5:{title:'Audits d’Usine & Capacités',subtitle:'Excellence opérationnelle',icon:'fa-industry',sections:[{title:'Audit',items:['ISO 9001','Capacité','Maintenance & étalonnage','Compétences & formation','Environnement']},{title:'Risque',items:['Santé financière','Résilience/dual sourcing','Social compliance','Cybersécurité','PCA/PRA']} ]}, 6:{title:'Pipeline Post‑Salon, ROI & Gouvernance',subtitle:'Transformer les leads en revenus',icon:'fa-chart-line',sections:[
-      {title:'Pipeline',items:['Catégorisation','Intégration CRM','Sizing','Transfert régional','Revue hebdo']},
-      {title:'Indicateurs',items:['Coût par lead','Conversion','Panier moyen','Time‑to‑close','ROI annuel']} ]} }
-};
-
-
 function initTradeShowAuto(){
-  $$('.gallery-content').forEach(content=>{
-    const imgs = Array.from(content.querySelectorAll('.gallery-grid img')).map(i=>i.getAttribute('src')).filter(Boolean);
+  var contents=document.querySelectorAll('.gallery-content');
+  Array.prototype.forEach.call(contents,function(content){
+    var imgs=Array.prototype.map.call(content.querySelectorAll('.gallery-grid img'),function(i){return i.getAttribute('src');}).filter(function(x){return !!x;});
     if(!imgs.length) return;
-    let auto = content.querySelector('.trade-auto');
-    if(!auto){ auto = document.createElement('div'); auto.className = 'trade-auto'; auto.innerHTML = '<img alt="trade show image" />'; content.insertBefore(auto, content.firstChild); }
-    const imgEl = auto.querySelector('img');
-    let idx = 0; imgEl.src = imgs[0];
-    setInterval(()=>{ idx = (idx+1)%imgs.length; imgEl.style.opacity='0'; setTimeout(()=>{ imgEl.src = imgs[idx]; imgEl.onload = ()=>{ imgEl.style.opacity='1'; } }, 120); }, 1000);
-    auto.addEventListener('click', ()=>{ buildProjectSlides(imgs); document.getElementById('projectGalleryModal').classList.add('active'); document.body.style.overflow='hidden'; });
+    var auto=content.querySelector('.trade-auto');
+    if(!auto){ auto=document.createElement('div'); auto.className='trade-auto'; auto.innerHTML='<img alt="trade show image" />'; content.insertBefore(auto, content.firstChild); }
+    var imgEl=auto.querySelector('img'); var idx=0; imgEl.src=imgs[0];
+    setInterval(function(){ idx=(idx+1)%imgs.length; imgEl.style.opacity='0'; setTimeout(function(){ imgEl.src=imgs[idx]; imgEl.onload=function(){ imgEl.style.opacity='1'; }; },120); },1000);
+    auto.addEventListener('click', function(){ buildProjectSlides(imgs); document.getElementById('projectGalleryModal').classList.add('active'); document.body.style.overflow='hidden'; });
   });
 }
 
-
 function injectMobileTimelineLogos(){
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  if(!isMobile) return;
-  $$('.timeline-item').forEach(item=>{
-    const logo = item.getAttribute('data-logo');
-    const card = item.querySelector('.timeline-content');
+  var isMob = window.matchMedia('(max-width: 768px)').matches;
+  if(!isMob) return;
+  var items=document.querySelectorAll('.timeline-item');
+  Array.prototype.forEach.call(items,function(item){
+    var logo=item.getAttribute('data-logo');
+    var card=item.querySelector('.timeline-content');
     if(logo && card && !card.querySelector('.tl-mobile-logo')){
-      const img = document.createElement('img');
-      img.className = 'tl-mobile-logo';
-      img.src = logo; img.alt = 'Company logo';
-      card.prepend(img);
+      var img=document.createElement('img');
+      img.className='tl-mobile-logo'; img.src=logo; img.alt='Company logo';
+      card.insertBefore(img, card.firstChild);
     }
   });
 }
 
 /* ===== Loader robust fallback (idempotent) ===== */
-(function(){var loader=document.querySelector('#loading,#page-loader,#loader,.loading');function hide(){if(!loader||loader.dataset._hidden==='1')return;try{document.body.classList.remove('no-scroll')}catch(e){};loader.classList.add('hidden');loader.classList.add('loader--hidden');loader.setAttribute('aria-busy','false');loader.dataset._hidden='1';setTimeout(function(){try{loader.parentNode&&loader.parentNode.removeChild(loader)}catch(e){}},400)};if(document.readyState==='complete'||document.readyState==='interactive'){setTimeout(hide,120)}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,120)},{once:true})};window.addEventListener('load',hide,{once:true});window.addEventListener('pageshow',function(e){if(e.persisted)hide()});setTimeout(hide,7000);})();
+(function(){
+  var L=document.querySelector('#loading,#page-loader,#loader,.loading');
+  function hide(){
+    if(!L||L.dataset._hidden==='1')return;
+    try{ document.body.classList.remove('no-scroll'); }catch(e){}
+    L.classList.add('hidden'); L.classList.add('loader--hidden'); L.setAttribute('aria-busy','false'); L.dataset._hidden='1';
+    setTimeout(function(){ try{ L.parentNode && L.parentNode.removeChild(L); }catch(e){} }, 400);
+  }
+  if(document.readyState==='complete' || document.readyState==='interactive'){ setTimeout(hide,120); }
+  else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(hide,120); }, { once:true }); }
+  window.addEventListener('load', hide, { once:true });
+  window.addEventListener('pageshow', function(e){ if(e.persisted) hide(); });
+  setTimeout(hide, 7000);
+})();
